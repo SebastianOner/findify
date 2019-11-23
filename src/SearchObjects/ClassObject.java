@@ -20,8 +20,20 @@ public class ClassObject extends SearchObject {
         return hasGeneric;
     }
 
+    public boolean isImplemented() {
+        return isImplemented;
+    }
+
     public List<FieldObject> getAttributes() {
         return attributes;
+    }
+
+    public List<ClassObject> getClassList() {
+        return classList;
+    }
+
+    public List<MethodObject> getMethodList() {
+        return methodList;
     }
 
     /**
@@ -70,5 +82,21 @@ public class ClassObject extends SearchObject {
             return;
         }
         this.classType = type;
+    }
+
+    public void print() {
+        System.out.println("Class " + getName());
+        for(ClassObject c: classList) {
+            c.print();
+            System.out.println();
+        }
+        for (FieldObject f: attributes) {
+            f.print();
+            System.out.println();
+        }
+        for (MethodObject m: methodList) {
+            m.print();
+            System.out.println();
+        }
     }
 }

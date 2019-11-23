@@ -19,5 +19,19 @@ public class MethodObject extends SearchObject{
         this.parameters = parameters;
     }
 
+    public List<FieldObject> getParameters() {
+        return parameters;
+    }
+
     // TODO: 23-Nov-19 implement Attributes and Getters
+
+    public void print() {
+        System.out.print(getName()+"(");
+        parameters.get(0).print();
+        for(int i = 1; i < parameters.size(); i++) {
+            System.out.print(", ");
+            parameters.get(i).print();
+        }
+        System.out.println(")");
+    }
 }

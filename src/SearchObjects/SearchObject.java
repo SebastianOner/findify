@@ -15,6 +15,8 @@ public abstract class SearchObject {
         this.content = content;
     }
 
+    public abstract void print();
+
     //Getters
 
     public String getName() {

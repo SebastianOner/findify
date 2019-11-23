@@ -1,4 +1,5 @@
 package FileParser;
+
 import SearchObjects.*;
 
 import java.util.ArrayList;
@@ -23,4 +24,15 @@ public class Project {
     public void addJavaClass(ClassObject classObject) {
         this.javaFileList.add(classObject);
     }
+
+    public void printTreeStructure() {
+        int i = 1;
+        for (ClassObject c : javaFileList) {
+            System.out.print("File" + i);
+            c.print();
+            i++;
+            System.out.println();
+        }
+    }
+
 }
