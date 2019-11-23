@@ -9,14 +9,25 @@ import java.util.List;
 public class ClassParser2 {
 
     public static void main(String[] args) {
-        String[] test = {"import Doggy.*;", "public class Dog {", "private int b;", "public int a(int b, int a) {",
-                "int a = 4;", "int b = 2;", "}", "private int c;", "}"};
-
-        String wtf = test.toString();
-        test = refineText(Arrays.asList(test));
-        ClassObject lol = classParser(test, "path");
-        System.out.println(Arrays.toString(test));
-        System.out.println(lol.toString());
+        String reptile = "package CodeBase;\n" +
+                "\n" +
+                "abstract class Reptile implements Animal {\n" +
+                "    boolean hasScales;\n" +
+                "\n" +
+                "//class hello whats up    " +
+                "static class ReptileActions {\n" +
+                "        void bite() {\n" +
+                "\n" +
+                "        }\n" +
+                "    }\n" +
+                "}";
+        List<String> reptileLines = Arrays.asList(reptile.split("\n"));
+        String[] a = refineText(reptileLines);
+        for (int i = 0; i < a.length; i++) {
+            System.out.println(a[i]);
+        }
+        ClassObject file = fileParser("Path", reptileLines);
+        System.out.println(file.toString());
     }
 
     public static ClassObject fileParser(String path, List<String> content) {
@@ -25,6 +36,8 @@ public class ClassParser2 {
         return javaFile;
     }
 
+    private static int i = 1;
+
     public static ClassObject classParser(String[] refinedText, String path) {
         int number = Integer.parseInt(refinedText[0].substring(0, refinedText[0].indexOf(' ')));
         ClassObject classObject = classHeadParser(refinedText[0]);
@@ -32,7 +45,7 @@ public class ClassParser2 {
         classObject.setClasses(new ArrayList<>());
         classObject.setMethods(new ArrayList<>());
         classObject.setAttributes(new ArrayList<>());
-        for (int i = 1; i < refinedText.length; i++) {
+        for (; i < refinedText.length; i++) {
             String line = getChunk(refinedText, i);
             if (line.contains("class ")) {
                 String[] inClassText = line.split("\n");
@@ -109,18 +122,23 @@ public class ClassParser2 {
         boolean isClass = true;
         StringBuilder result = new StringBuilder();
         for (int i = 0; i < content.size(); i++) {
-            content.get(i).replace("    ", "");
+            content.set(i, content.get(i).replaceAll("  ",""));
+        }
+        for (int i = 0; i < content.size(); i++) {
+
             if ((!content.get(i).contains("class ") || !content.get(i).contains("interface ")
                     || !content.get(i).contains("enum ")) && content.get(i).contains("{")) {
                 String replace = i + " " + content.get(i) + "\n";
                 result.append(replace);
                 isClass = false;
             }
-            if (content.get(i).equals("}")) {
+            if (content.get(i).contains("}")) {
+                result.append(i+" "+content.get(i) + "\n");
                 isClass = true;
+                continue;
             }
             if (content.get(i).isEmpty() || content.get(i).isBlank() || !isClass
-                    || content.get(i).contains("import ")) {
+                    || content.get(i).contains("import ") || content.get(i).contains("package ")) {
                 continue;
             }
             String replace = i + " " + content.get(i) + "\n";
@@ -175,6 +193,9 @@ public class ClassParser2 {
 
         result = new MethodObject(front[front.length - 1], visibilityParser(method), path, 0, null, method.contains("static"), front[front.length - 2]);
         result.setLine(number);
+        if(back[0].isEmpty()) {
+            return result;
+        }
         List<FieldObject> parameters = new ArrayList<>();
         for (String param : back) {
             parameters.add(fieldParser(param, path));
