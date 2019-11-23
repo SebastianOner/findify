@@ -22,8 +22,4 @@ public class FileCrawler {
             crawl(f.getAbsolutePath());
         }
     }
-
-    public static void main(String[] args) {
-        crawl("/home/sebastian/OneDrive/Repositories/findify/findify");
-    }
 }
