@@ -1,5 +1,6 @@
 package SearchObjects;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class MethodObject extends SearchObject{
@@ -11,6 +12,7 @@ public class MethodObject extends SearchObject{
         super(name, visibility, path, content);
         this.isStatic = isStatic;
         this.returnType = returnType;
+        this.parameters = new ArrayList<FieldObject>();
     }
 
     public void setParameters(List<FieldObject> parameters) {
