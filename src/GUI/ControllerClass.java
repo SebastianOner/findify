@@ -153,6 +153,7 @@ public class ControllerClass {
     }
 
     public void goFired(){
-        System.out.println("GOOOO");
+        GUIClassInstance classInstance = new GUIClassInstance();
+        goButton.setOnAction(e -> System.out.println("hello"));
     }
 }

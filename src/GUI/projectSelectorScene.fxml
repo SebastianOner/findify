@@ -24,7 +24,7 @@
                   <Label layoutX="20.0" layoutY="24.0" prefHeight="21.0" prefWidth="161.0" text="Welcome to findify!" />
                   <Button fx:id="projectButton" layoutX="270.0" layoutY="88.0" mnemonicParsing="false" onAction="#projectButtonFired" prefHeight="41.0" prefWidth="85.0" text="Select File" AnchorPane.leftAnchor="270.0" AnchorPane.rightAnchor="43.0" AnchorPane.topAnchor="88.0" />
                   <Label layoutX="31.0" layoutY="283.0" prefHeight="17.0" prefWidth="312.0" text="Created by: Daniel, Marvin, Moritz, und Sebastian" AnchorPane.bottomAnchor="8.0" />
-                  <Label layoutX="20.0" layoutY="69.0" prefHeight="153.0" prefWidth="185.0" text="Search through your java&#10;code forclasses, methods,&#10;and attributes.Find them&#10;instanstly with a clickof a &#10;button!Search through your&#10; ava code forclasses, methods,&#10;and attributes.Find them &#10;instanstly with a clickof a &#10;button!" />
+                  <Label layoutX="20.0" layoutY="68.0" prefHeight="101.0" prefWidth="185.0" text="Search through your java&#10;class, methods, and attributes.&#10;Find them instantly with the click&#10;of a button!" />
                </children>
             </AnchorPane>
         </items>
