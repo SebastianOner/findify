@@ -10,14 +10,13 @@
 <?import javafx.scene.text.Font?>
 
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1"
-            fx:controller="GUI.Controller">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <SplitPane dividerPositions="0.12814070351758794" layoutX="99.0" layoutY="30.0" orientation="VERTICAL" prefHeight="400.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
         <items>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
                <children>
-                  <Label layoutX="346.0" layoutY="3.0" prefHeight="26.0" prefWidth="107.0" text="CLASS">
+                  <Label layoutX="346.0" layoutY="3.0" prefHeight="26.0" prefWidth="107.0" text="CLASS" AnchorPane.bottomAnchor="-6.0" AnchorPane.rightAnchor="345.0" AnchorPane.topAnchor="3.0">
                      <font>
                         <Font name="Avenir Book" size="34.0" />
                      </font>
@@ -234,8 +233,8 @@
                       <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
                            <children>
                               <Label layoutX="14.0" layoutY="53.0" prefHeight="18.0" prefWidth="246.0" text="Name of Class (leave blank if unknown):" />
-                              <TextField fx:id="searchField" layoutX="260.0" layoutY="49.0" onAction="#searchFired" prefHeight="26.0" prefWidth="388.0" promptText="class name" />
-                              <Button fx:id="goButton" layoutX="714.0" layoutY="75.0" mnemonicParsing="false" onAction="#goFired" text="GO" />
+                              <TextField fx:id="searchField" layoutX="260.0" layoutY="49.0" onAction="#searchFired" prefHeight="26.0" prefWidth="388.0" promptText="class name" AnchorPane.bottomAnchor="47.0" AnchorPane.leftAnchor="260.0" AnchorPane.rightAnchor="148.0" AnchorPane.topAnchor="49.0" />
+                              <Button fx:id="goButton" layoutX="714.0" layoutY="75.0" mnemonicParsing="false" onAction="#goFired" text="GO" AnchorPane.rightAnchor="28.5" AnchorPane.topAnchor="75.0" />
                            </children>
                         </AnchorPane>
                     </items>
