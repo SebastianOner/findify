@@ -148,6 +148,6 @@ final public class SemanticWeb{
 	}
 	
 	private int map(int i){
-		return i > 0 ? i : i + entries.length;
+		return i >= 0 ? i : i + entries.length;
 	}
 }
