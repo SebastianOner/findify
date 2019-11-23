@@ -129,7 +129,7 @@ public class ClassParser {
         if (declarationLine.contains("final")) {
             classTypeArr[3] = true;
         }
-        classObject.setClassType(classTypeArr);
+        classObject.setClassType(null);
         if (declarationLine.contains("extends")) {
             classObject.setChild(true);
         }
