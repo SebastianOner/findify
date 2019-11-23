@@ -1,2 +1,2 @@
 # findify
-Intelligent Code Navigator for Java
+Intelligent Code search engine for Java
