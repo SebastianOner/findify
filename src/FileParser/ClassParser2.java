@@ -19,6 +19,12 @@ public class ClassParser2 {
         System.out.println(lol.toString());
     }
 
+    public static ClassObject fileParser(String path, List<String> content) {
+        String[] refined = refineText(content);
+        ClassObject javaFile = classParser(refined, path);
+        return javaFile;
+    }
+
     public static ClassObject classParser(String[] refinedText, String path) {
         int number = Integer.parseInt(refinedText[0].substring(0, refinedText[0].indexOf(' ')));
         ClassObject classObject = classHeadParser(refinedText[0]);
