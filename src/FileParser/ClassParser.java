@@ -14,7 +14,8 @@ public class ClassParser {
             if (content.get(i).contains("class") || content.get(i).contains("enum")) {
                 ClassObject classObject = parseClassDecLine(getDeclarationLine(content, i));
                 classObject.setPath(path);
-                getContent(content, i);
+                // getContent(content, i);
+                System.out.println(classObject.toString());
                 //extractContent(content, getContent(content, i), classObject);
             }
         }
@@ -58,7 +59,7 @@ public class ClassParser {
     private static String getDeclarationLine(List<String> content, int i) {
         String declarationLine = content.get(i);
         while (!content.get(i).contains("{")) {
-            declarationLine += content.get(i++);
+            declarationLine += content.get(++i);
         }
         return declarationLine;
     }
