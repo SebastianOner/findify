@@ -19,19 +19,22 @@ import java.util.Stack;
 
 public class GUIMain extends Application{
 
-    Stage window;
-    Scene chooseProjectScene, startupScene, classScene, methodScene, attributeScene;
-    Button projectButton, classButton, methodButton, attributeButton;
+    //Stage window;
 
     @Override
     public void start(Stage primaryStage) throws Exception {
+        Controller1 controller1 = new Controller1();
+
+        controller1.showStage();
+
+        /*
         Parent root = FXMLLoader.load(getClass().getResource("projectSelectorScene.fxml"));
         //window definitions
         window = primaryStage;
         window.setTitle("findify");
-        window.setScene(new Scene(root, 300, 275));
+        window.setScene(new Scene(root, 400, 400));
         window.show();
-
+*/
 
 
         //startup window buttons definitions
