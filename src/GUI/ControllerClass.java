@@ -229,8 +229,22 @@ public class ControllerClass {
     }
 
     public void goFired(){
+        String name = searchFired();
+        Boolean isChild = extendedYFired();
+        Boolean isImplemented = implementedYFired();
+        Boolean isGeneric = genericYFired();
+        Boolean isENUM = ENUMFired();
+        Boolean isFinal = finalFired();
+        Boolean isAbstract = abstractFired();
+        //access modifiers
+        Boolean isDefault = standardClassFired();
+        Boolean isPublic = publicFired();
+        Boolean isPrivate = privateFired();
+        Boolean isProtected = protectedFired();
 
-        //ClassObject CO = new ClassObject()
+        Boolean isStatic = staticFired();
+
+        ClassObject CO = new ClassObject(name, asdas, isChild, isGeneric, isImplemented, asdas, asdas, asdas)
 
         GUIClassInstance classInstance = new GUIClassInstance();
         classInstance.interfaceAtt = interfaceFired();
