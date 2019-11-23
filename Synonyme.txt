@@ -1,12 +1,13 @@
 Search: find, inquire, request, explore, hunt
 Sort: arrange, catalogue, categorize, comb, separate, sift, classify, group, rank, order
-Input: load, take, download, pull, ask, request, query
-Output: print, write, respond, inform, send, display, visualize
-Add: combine, merge, plus, collect, append, prepend, attach, push
-Remove: subtract, delete, clear, get rid of, erase, pop
-Iterates: repeats, loops, for every, while, for, every
-Filter: if, case, when, whenever
-Array: field, saves, data, matrix
-Math: add, plus, addition, sub, subtract, minus, multiply, times, divide, division, power, root, square root, logarithm, round, absolute, factorial, binomial
+"input", "load", "take", "download", "pull", "ask", "request", "query"
+"output", "print", "write", "respond", "inform", "send", "display", "visualize"
+"add", "combine", "merge", "plus", "collect", "append", "prepend", "attach", "push"
+"remove", "subtract", "delete", "clear", "get rid of", "erase", "pop"
+"iterates", "repeats", "loops", "for every", "while", "for", "every"
+"filter", "if", "case", "when", "whenever"
+"array", "field", "saves", "data", "matrix"
+"math", "add", "plus", "addition", "sub", "subtract", "minus", "multiply", "times", "divide",
+"division", "power", "root", "square root", "logarithm", "round", "absolute", "factorial", "binomial"
 
  
