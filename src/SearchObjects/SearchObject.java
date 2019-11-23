@@ -4,7 +4,7 @@ import java.util.List;
 
 public abstract class SearchObject {
 	public static enum AccessModifier{
-		PUBLIC, PROTECTED, PRIVATE, DEFAULT;
+		PUBLIC, PROTECTED, PRIVATE, DEFAULT
 	}
     private String         name;
     private AccessModifier accessModifier;

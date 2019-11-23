@@ -4,112 +4,120 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-public class ClassObject extends SearchObject {
-    private boolean[] classType = new boolean[4];
-    private boolean isChild;
-    private boolean hasGeneric;
-    private boolean isImplemented;
-    private List<FieldObject> attributes;
-    private List<ClassObject> classList;
-    private List<MethodObject> methodList;
-
-    public boolean isChild() {
-        return isChild;
-    }
-
-    public boolean hasGeneric() {
-        return hasGeneric;
-    }
-
-    public boolean isImplemented() {
-        return isImplemented;
-    }
-
-    public List<FieldObject> getAttributes() {
-        return attributes;
-    }
-
-    public List<ClassObject> getClassList() {
-        return classList;
-    }
-
-    public List<MethodObject> getMethodList() {
-        return methodList;
-    }
-
-    /**
-     * Setters for Lists of Class-, Method-, and AttributeObject
-     * Useful for the ClassParser that will browse the content of
-     * the class and find internal classes, methods, and attributes.
-     * It will then use the setters.
-     */
-    public void setClassList(List<ClassObject> classList) {
-        this.classList = classList;
-    }
-
-    public void setMethodList(List<MethodObject> methodList) {
-        this.methodList = methodList;
-    }
-
-    public void setAttributes(List<FieldObject> attributes) {
-        this.attributes = attributes;
-    }
-
-    //Constructor for normal Class without inheritance, generic, implementing Class
-    public ClassObject(String name, String path, AccessModifier accessModifier, int line,
-                       List<String> content) {
-        super(name, accessModifier, path, content, line);
-        this.classList = new ArrayList<>();
-        this.methodList = new ArrayList<>();
-        this.attributes = new ArrayList<>();
-    }
-
-    public ClassObject(String name, String path, AccessModifier accessModifier, int line,
-                       boolean isChild, boolean hasGeneric, List<String> content) {
-        super(name, accessModifier, path, content, line);
-        this.isChild = isChild;
-        this.hasGeneric = hasGeneric;
-        this.classList = new ArrayList<>();
-        this.methodList = new ArrayList<>();
-        this.attributes = new ArrayList<>();
-    }
-
-    /**
-     * @param type boolean array with 4 Elements: Interface, Abstract, ENUM, Final
-     */
-    public void setClassType(boolean[] type) {
-        if (type.length != 4 || type == null) {
-            System.out.println("Not valid ClassType");
-            return;
-        }
-        this.classType = type;
-    }
-
-    public boolean[] getClassType() {
-        return classType;
-    }
-
-    public boolean isHasGeneric() {
-        return hasGeneric;
-    }
-
-    public void setChild(boolean child) {
-        isChild = child;
-    }
-
-    public void setHasGeneric(boolean hasGeneric) {
-        this.hasGeneric = hasGeneric;
-    }
-
-    public void setImplemented(boolean implemented) {
-        isImplemented = implemented;
-    }
-
-    @Override
-    public String toString() {
-        return "CLASS:\nname: " + getName() + "\nvisibility: " + getAccessModifier() +
-               "\nisChild: " + isChild + "\nisImplemented: " +
-                isImplemented + "\nHas Generics: " + hasGeneric + "\n" + Arrays.toString(classType) + "\n" +
-                getAttributes().toString() + "\n" + getMethodList().toString() + "\n" + getClassList().toString();
-    }
+public class ClassObject extends SearchObject{
+	private enum InheritanceType{
+		ABSTRACT, FINAL, DEFAULT
+	}
+	private enum ClassType{
+		ENUM, INTERFACE, DEFAULT
+	}
+	private boolean            isChild;
+	private boolean            hasGeneric;
+	private boolean            isImplemented;
+	private List<FieldObject>  attributes;
+	private List<ClassObject>  classes;
+	private List<MethodObject> methods;
+	private InheritanceType    inheritanceType;
+	private ClassType          classType;
+	
+	public boolean isChild(){
+		return isChild;
+	}
+	
+	public boolean hasGeneric(){
+		return hasGeneric;
+	}
+	
+	public boolean isImplemented(){
+		return isImplemented;
+	}
+	
+	public List<FieldObject> getAttributes(){
+		return attributes;
+	}
+	
+	public List<ClassObject> getClasses(){
+		return classes;
+	}
+	
+	public List<MethodObject> getMethods(){
+		return methods;
+	}
+	
+	/**
+	 Setters for Lists of Class-, Method-, and AttributeObject
+	 Useful for the ClassParser that will browse the content of
+	 the class and find internal classes, methods, and attributes.
+	 It will then use the setters.
+	 */
+	public void setClasses(List<ClassObject> classes){
+		this.classes = classes;
+	}
+	
+	public void setMethods(List<MethodObject> methods){
+		this.methods = methods;
+	}
+	
+	public void setAttributes(List<FieldObject> attributes){
+		this.attributes = attributes;
+	}
+	
+	//Constructor for normal Class without inheritance, generic, implementing Class
+	public ClassObject(String name, String path, AccessModifier accessModifier,
+	                   int line, List<String> content){
+		super(name, accessModifier, path, content, line);
+		this.classes    = new ArrayList<>();
+		this.methods    = new ArrayList<>();
+		this.attributes = new ArrayList<>();
+	}
+	
+	public ClassObject(String name, String path, AccessModifier accessModifier,
+	                   int line, boolean isChild, boolean hasGeneric,
+	                   List<String> content){
+		super(name, accessModifier, path, content, line);
+		this.isChild    = isChild;
+		this.hasGeneric = hasGeneric;
+		this.classes    = new ArrayList<>();
+		this.methods    = new ArrayList<>();
+		this.attributes = new ArrayList<>();
+	}
+	
+	public void setClassType(ClassType classType){
+		this.classType = classType;
+	}
+	public void setInheritanceType(InheritanceType inheritanceType){
+		this.inheritanceType = inheritanceType;
+	}
+	public ClassType getClassType(){
+		return classType;
+	}
+	
+	public InheritanceType getInheritanceType(){
+		return inheritanceType;
+	}
+	
+	public boolean isHasGeneric(){
+		return hasGeneric;
+	}
+	
+	public void setChild(boolean child){
+		isChild = child;
+	}
+	
+	public void setHasGeneric(boolean hasGeneric){
+		this.hasGeneric = hasGeneric;
+	}
+	
+	public void setImplemented(boolean implemented){
+		isImplemented = implemented;
+	}
+	
+	@Override public String toString(){
+		return "CLASS:\nname: " + getName() + "\nvisibility: " +
+		       getAccessModifier() + "\nisChild: " + isChild +
+		       "\nisImplemented: " + isImplemented + "\nHas Generics: " +
+		       hasGeneric + "\n" + classType + "\n" + inheritanceType + "\n" +
+		       getAttributes().toString() + "\n" + getMethods().toString() +
+		       "\n" + getClasses().toString();
+	}
 }
