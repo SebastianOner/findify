@@ -24,7 +24,7 @@ public class Project {
         return path;
     }
 
-    public List<SearchObject> getJavaFileList() {
+    public List<ClassObject> getJavaFileList() {
         return javaFileList;
     }
 
