@@ -92,7 +92,7 @@ final class SemanticWeb {
         for (Entry entry : entries) {
             unvisitedEntries.enqueue(entry, a.equals(entry.getWord()) ? 1 : 0);
         }
-        Score.FibonacciHeap.Node fibonacciHeapNode;
+        FibonacciHeap.Node fibonacciHeapNode;
         while (!unvisitedEntries.isEmpty()) {
             fibonacciHeapNode = unvisitedEntries.dequeueMax();
             Entry entry = (Entry) fibonacciHeapNode.getObject();
