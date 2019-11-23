@@ -34,19 +34,22 @@ public class Controller2 {
         thisStage.showAndWait();
     }
 
+    //creates the action event for clicking on the class button
     public void classFired(ActionEvent actionEvent){
-
+        initializeControllerClass();
     }
 
+    //creates the action event for clicking on the method button
     public void methodFired(ActionEvent actionEvent){
-
+        initializeControllerMethod();
     }
 
+    //creates the action for clicking on the attribute button
     public void attributeFired(ActionEvent actionEvent){
-
+        initializeControllerAttribute();
     }
 
-    //creates and initializes our third controller and stage
+    //creates and initializes our class controller and stage
     private void initializeControllerClass(){
         try {
             controllerClass = new ControllerClass();
@@ -56,6 +59,7 @@ public class Controller2 {
         }
     }
 
+    //creates and initializes our method controller and stage
     private void initializeControllerMethod(){
         try {
             controllerMethod = new ControllerMethod();
@@ -65,6 +69,7 @@ public class Controller2 {
         }
     }
 
+    //creates and initializes our attribute controller and stage
     private void initializeControllerAttribute(){
         try {
             controllerAttribute = new ControllerAttribute();
