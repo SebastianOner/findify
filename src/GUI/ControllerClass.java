@@ -77,23 +77,32 @@ public class ControllerClass {
     }
 
     public Boolean publicFired(){
-        if(publicCheck.isSelected())
+        if(publicCheck.isSelected()) {
+            privateCheck.setSelected(false);
+            protectedCheck.setSelected(false);
             return Boolean.TRUE;
+        }
         else
             return null;
     }
 
     public Boolean privateFired(){
-        if(privateCheck.isSelected())
+        if(privateCheck.isSelected()){
+            publicCheck.setSelected(false);
+            protectedCheck.setSelected(false);
             return Boolean.TRUE;
+        }
         else
             return null;
 
     }
 
     public Boolean protectedFired(){
-        if(protectedCheck.isSelected())
+        if(protectedCheck.isSelected()) {
+            privateCheck.setSelected(false);
+            publicCheck.setSelected(false);
             return Boolean.TRUE;
+        }
         else
             return null;
     }
@@ -220,6 +229,9 @@ public class ControllerClass {
     }
 
     public void goFired(){
+
+        //ClassObject CO = new ClassObject()
+
         GUIClassInstance classInstance = new GUIClassInstance();
         classInstance.interfaceAtt = interfaceFired();
         classInstance.abstractClassAtt = abstractFired();
@@ -246,9 +258,5 @@ public class ControllerClass {
 
 
         System.out.println(classInstance.toString(classInstance));
-    }
-
-    public ClassObject createClassObject(){
-        ClassObject CO = new
     }
 }

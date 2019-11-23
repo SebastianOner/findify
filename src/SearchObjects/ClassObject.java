@@ -32,8 +32,8 @@ public class ClassObject extends SearchObject{
 	}
 	
 	public ClassObject(String name, AccessModifier accessModifier,
-	                   boolean isChild, boolean hasGeneric,
-	                   boolean isImplemented, InheritanceType inheritanceType
+	                   Boolean isChild, Boolean hasGeneric,
+	                   Boolean isImplemented, InheritanceType inheritanceType
 			, ClassType classType, List<FieldObject> attributes) {
 		super(name, accessModifier);
 		this.isChild = isChild;
@@ -87,7 +87,7 @@ public class ClassObject extends SearchObject{
 	}
 	
 	public ClassObject(String name, String path, AccessModifier accessModifier,
-	                   int line, boolean isChild, boolean hasGeneric,
+	                   int line, Boolean isChild, Boolean hasGeneric,
 	                   List<String> content){
 		super(name, accessModifier, path, content, line);
 		this.isChild    = isChild;
