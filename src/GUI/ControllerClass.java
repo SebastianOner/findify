@@ -3,11 +3,18 @@ package GUI;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
+import javafx.scene.control.CheckBox;
 import javafx.stage.Stage;
 import java.io.IOException;
 
 public class ControllerClass {
     private Stage thisStage;
+    //yes no checkbox variables
+    private CheckBox extendedYCheck, extendedNCheck, implementedYCheck, implementedNCheck, genericsYCheck, genericsNCheck;
+    //rest of the check box variablesü
+    private CheckBox publicCheck, privateCheck, protectedCheck, staticCheck, intCheck, stringCheck, doubleCheck, booleanCheck,
+            charCheck, arraysCheck, abstractCheck, interfaceCheck, ENUMCheck, finalCheck, classCheck;
+
 
     //initializes the controller for the class stage
     public ControllerClass() throws IOException{
@@ -65,11 +72,16 @@ public class ControllerClass {
     }
 
     public void extendedYFired(ActionEvent actionEvent){
+        if(extendedYCheck.isSelected()){
+            extendedNCheck.setSelected(false);
+        }
 
     }
 
     public void extendedNFired(ActionEvent actionEvent){
-
+        if(extendedNCheck.isSelected()){
+            extendedYCheck.setSelected(false);
+        }
     }
 
     public void implementedYFired(ActionEvent actionEvent){
