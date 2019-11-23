@@ -9,9 +9,10 @@ public class FileCrawler {
      *
      * @param path: the path of the file/filder we want to look at
      */
-    static void crawl(String path) {
+    public static void crawl(String path) {
         if (path.endsWith(".java")) {
-            // TODO: 23.11.19 Hand over java file to fileParser
+            System.out.println("FILE: " + path);
+            ClassParser.parse(path, JavaFileReader.readFile(path));
             return;
         }
         File[] files = new File(path).listFiles();

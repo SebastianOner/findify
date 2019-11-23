@@ -1,4 +1,5 @@
 package GUI;
+import FileParser.FileCrawler;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -43,7 +44,7 @@ public class Controller1 {
         chooser.setInitialDirectory(defaultDir);
         File selected = chooser.showDialog(thisStage);
 
-        //TODO hand over to file crawler
+        FileCrawler.crawl(selected.getPath());
 
         thisStage.close();
         initializeController2();
