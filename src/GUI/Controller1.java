@@ -44,6 +44,7 @@ public class Controller1 {
         chooser.setInitialDirectory(defaultDir);
         File selected = chooser.showDialog(thisStage);
 
+        // TODO: 23.11.19 Change this to the project interface, not just crawl
         FileCrawler.crawl(selected.getPath());
 
         thisStage.close();

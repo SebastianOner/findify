@@ -85,22 +85,6 @@ public class ClassObject extends SearchObject {
         this.classType = type;
     }
 
-    public void print() {
-        System.out.println("Class " + getName());
-        for(ClassObject c: classList) {
-            c.print();
-            System.out.println();
-        }
-        for (FieldObject f: attributes) {
-            f.print();
-            System.out.println();
-        }
-        for (MethodObject m: methodList) {
-            m.print();
-            System.out.println();
-        }
-    }
-
     public boolean[] getClassType() {
         return classType;
     }
@@ -123,8 +107,8 @@ public class ClassObject extends SearchObject {
 
     @Override
     public String toString() {
-        return "name: "+getName() + "\nvisibility: " + getVisibility() +"\nisChild: " + isChild + "\nisImplemented: " +
+        return "CLASS:\nname: "+getName() + "\nvisibility: " + getVisibility() +"\nisChild: " + isChild + "\nisImplemented: " +
                 isImplemented + "\nHas Generics: " + hasGeneric + "\n" + Arrays.toString(classType) + "\n" +
-                getContent();
+                getAttributes().toString() + "\n" + getMethodList().toString() + "\n" + getClassList().toString();
     }
 }

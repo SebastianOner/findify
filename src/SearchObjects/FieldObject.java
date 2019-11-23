@@ -12,8 +12,8 @@ public class FieldObject extends SearchObject{
         return type;
     }
 
-    public void print() {
-        System.out.println(getVisibility() + " " + type + " " + getName());
+    public String toString() {
+        return (getVisibility() + " " + type + " " + getName());
     }
 
 }

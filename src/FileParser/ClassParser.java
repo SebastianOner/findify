@@ -23,7 +23,7 @@ public class ClassParser {
     }
 
     /**
-     * Checks whether or not the String " class " here actually belongs to the program or to a comment
+     * Checks whether or not the String "class " here actually belongs to the program or to a comment
      *
      * @param string: the line to be checked for comments
      * @return true if the keyword class is outside of comments, else false
@@ -34,7 +34,7 @@ public class ClassParser {
         }
         // else we have to determine whether the keyword itself is commented or legit
         string = string.substring(0, string.indexOf(" class "));
-        if (!string.contains("//") && !string.contains("*") && !string.contains("/*") && !string.contains("/**") ) {
+        if (!string.contains("//") && !string.contains("*") && !(string.contains("/*")) && !string.contains("/**") ) {
             return true;
         } else {
             return false;

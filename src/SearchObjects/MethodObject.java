@@ -3,7 +3,7 @@ package SearchObjects;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MethodObject extends SearchObject{
+public class MethodObject extends SearchObject {
     private boolean isStatic;
     private List<FieldObject> parameters;
     private String returnType;
@@ -19,19 +19,30 @@ public class MethodObject extends SearchObject{
         this.parameters = parameters;
     }
 
+    public void setStatic(boolean aStatic) {
+        isStatic = aStatic;
+    }
+
+    public void setReturnType(String returnType) {
+        this.returnType = returnType;
+    }
+
+    public boolean isStatic() {
+        return isStatic;
+    }
+
+    public String getReturnType() {
+        return returnType;
+    }
+
     public List<FieldObject> getParameters() {
         return parameters;
     }
 
     // TODO: 23-Nov-19 implement Attributes and Getters
 
-    public void print() {
-        System.out.print(getName()+"(");
-        parameters.get(0).print();
-        for(int i = 1; i < parameters.size(); i++) {
-            System.out.print(", ");
-            parameters.get(i).print();
-        }
-        System.out.println(")");
+    public String toString() {
+        return "METHOD:\nName: " + getName() + "\nreturn type: " + getReturnType() + "\nvisibility: "
+                + getVisibility() + "\nisStatic: " + isStatic() + "\n" + parameters.toString();
     }
 }
