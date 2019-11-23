@@ -1,6 +1,7 @@
 package SearchObjects;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class ClassObject extends SearchObject {
@@ -118,5 +119,12 @@ public class ClassObject extends SearchObject {
 
     public void setImplemented(boolean implemented) {
         isImplemented = implemented;
+    }
+
+    @Override
+    public String toString() {
+        return "name: "+getName() + "\nvisibility: " + getVisibility() +"\nisChild: " + isChild + "\nisImplemented: " +
+                isImplemented + "\nHas Generics: " + hasGeneric + "\n" + Arrays.toString(classType) + "\n" +
+                getContent();
     }
 }

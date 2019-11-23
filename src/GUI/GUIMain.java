@@ -90,11 +90,11 @@ public class GUIMain extends Application{
                 defaultPath = "C:\\Users\\";
             }
 
-            System.out.println(System.getProperty("os.name").toLowerCase());
-
             File defaultDir = new File(defaultPath);
             chooser.setInitialDirectory(defaultDir);
             File selected = chooser.showDialog(window);
+
+            // TODO: 23.11.19 Hand the selected path over to the crawler for indexing over to the crawler
             System.out.println(selected.getPath());
         }
     }
