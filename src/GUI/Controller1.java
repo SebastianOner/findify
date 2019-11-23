@@ -1,6 +1,5 @@
 package GUI;
-
-import javafx.application.Application;
+import FileParser.FileCrawler;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -14,22 +13,22 @@ import java.io.IOException;
 public class Controller1 {
 
     private Stage thisStage;
-
+    private Controller2 controller2;
     public Button projectButton;
 
     public Controller1() throws IOException {
         thisStage = new Stage();
 
         FXMLLoader loader = new FXMLLoader(getClass().getResource("projectSelectorScene.fxml"));
-
         loader.setController(this);
 
         thisStage.setScene(new Scene(loader.load()));
-
         thisStage.setTitle("findify");
     }
 
-    public void projectButtonFired(ActionEvent actionEvent) {
+
+    //executes the button actionEvent for the project file opening
+    public void projectButtonFired(){
         DirectoryChooser chooser = new DirectoryChooser();
         chooser.setTitle("Project Path");
 
@@ -45,20 +44,25 @@ public class Controller1 {
         chooser.setInitialDirectory(defaultDir);
         File selected = chooser.showDialog(thisStage);
 
-        System.out.println(selected.getPath());
+        // TODO: 23.11.19 Change this to the project interface, not just crawl
+        FileCrawler.crawl(selected.getPath());
 
+        thisStage.close();
+        initializeController2();
+
+    }
+
+    //creates and initializes our second controller and stage
+    private void initializeController2(){
+        try {
+            controller2 = new Controller2();
+            controller2.showStage();
+        }catch (IOException e){
+            e.printStackTrace();
+        }
     }
 
     public void showStage() {
-        thisStage.showAndWait();
-    }
-
-    public void classFired(ActionEvent actionEvent) {
-    }
-
-    public void attributeFired(ActionEvent actionEvent) {
-    }
-
-    public void methodFired(ActionEvent actionEvent) {
+        thisStage.show();
     }
 }

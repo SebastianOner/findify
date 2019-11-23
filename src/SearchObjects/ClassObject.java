@@ -56,16 +56,16 @@ public class ClassObject extends SearchObject {
     }
 
     //Constructor for normal Class without inheritance, generic, implementing Class
-    public ClassObject(String name, String path, byte visibilty, List<String> content) {
-        super(name, visibilty, path, content);
+    public ClassObject(String name, String path, byte visibilty, int line, List<String> content) {
+        super(name, visibilty, path, content, line);
         this.classList = new ArrayList<>();
         this.methodList = new ArrayList<>();
         this.attributes = new ArrayList<>();
     }
 
-    public ClassObject(String name, String path, byte visibilty,
+    public ClassObject(String name, String path, byte visibilty, int line,
                        boolean isChild, boolean hasGeneric, List<String> content) {
-        super(name, visibilty, path, content);
+        super(name, visibilty, path, content, line);
         this.isChild = isChild;
         this.hasGeneric = hasGeneric;
         this.classList = new ArrayList<>();
@@ -83,22 +83,6 @@ public class ClassObject extends SearchObject {
             return;
         }
         this.classType = type;
-    }
-
-    public void print() {
-        System.out.println("Class " + getName());
-        for(ClassObject c: classList) {
-            c.print();
-            System.out.println();
-        }
-        for (FieldObject f: attributes) {
-            f.print();
-            System.out.println();
-        }
-        for (MethodObject m: methodList) {
-            m.print();
-            System.out.println();
-        }
     }
 
     public boolean[] getClassType() {
@@ -123,8 +107,8 @@ public class ClassObject extends SearchObject {
 
     @Override
     public String toString() {
-        return "name: "+getName() + "\nvisibility: " + getVisibility() +"\nisChild: " + isChild + "\nisImplemented: " +
+        return "CLASS:\nname: "+getName() + "\nvisibility: " + getVisibility() +"\nisChild: " + isChild + "\nisImplemented: " +
                 isImplemented + "\nHas Generics: " + hasGeneric + "\n" + Arrays.toString(classType) + "\n" +
-                getContent();
+                getAttributes().toString() + "\n" + getMethodList().toString() + "\n" + getClassList().toString();
     }
 }

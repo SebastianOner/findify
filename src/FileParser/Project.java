@@ -7,17 +7,17 @@ import java.util.List;
 
 public class Project {
     private String path;
-    List<ClassObject> javaFileList;
+    List<SearchObject> javaFileList;
 
     public Project(String path) {
-        javaFileList = new ArrayList<ClassObject>();
+        javaFileList = new ArrayList<SearchObject>();
     }
 
     public String getPath() {
         return path;
     }
 
-    public List<ClassObject> getJavaFileList() {
+    public List<SearchObject> getJavaFileList() {
         return javaFileList;
     }
 
@@ -27,12 +27,11 @@ public class Project {
 
     public void printTreeStructure() {
         int i = 1;
-        for (ClassObject c : javaFileList) {
+        for (SearchObject c : javaFileList) {
             System.out.print("File" + i);
-            c.print();
+            c.toString();
             i++;
             System.out.println();
         }
     }
-
 }

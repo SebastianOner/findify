@@ -1,7 +1,6 @@
 package FileParser;
 
-import SearchObjects.ClassObject;
-import SearchObjects.SearchObject;
+import SearchObjects.*;
 
 import java.io.FileReader;
 import java.util.ArrayList;
@@ -11,15 +10,35 @@ public class ClassParser {
     static ArrayList<SearchObject> parse(String path, List<String> content) {
         ArrayList<SearchObject> objects = new ArrayList<>();
         for (int i = 0; i < content.size(); i++) {
-            if (content.get(i).contains("class") || content.get(i).contains("enum")) {
+            if ((content.get(i).contains("class ") || content.get(i).contains("interface"))&& realClass(content.get(i))) {
                 ClassObject classObject = parseClassDecLine(getDeclarationLine(content, i));
                 classObject.setPath(path);
+                classObject.setLine(i);
                 getContent(content, i);
                 System.out.println(classObject.toString());
                 extractContent(getContent(content, i), classObject);
             }
         }
         return null;
+    }
+
+    /**
+     * Checks whether or not the String "class " here actually belongs to the program or to a comment
+     *
+     * @param string: the line to be checked for comments
+     * @return true if the keyword class is outside of comments, else false
+     */
+    private static boolean realClass(String string) {
+        if (!string.contains("//") && !string.contains("*") && !string.contains("/*") && !string.contains("/**") ) {
+            return true;
+        }
+        // else we have to determine whether the keyword itself is commented or legit
+        string = string.substring(0, string.indexOf(" class "));
+        if (!string.contains("//") && !string.contains("*") && !(string.contains("/*")) && !string.contains("/**") ) {
+            return true;
+        } else {
+            return false;
+        }
     }
 
     private static void extractContent(String content, ClassObject classObject) {
@@ -85,7 +104,7 @@ public class ClassParser {
      * @return a basic {@link ClassObject} containing all the info from the declaration line
      */
     private static ClassObject parseClassDecLine(String declarationLine) {
-        ClassObject classObject = new ClassObject(null, null, (byte) 0, null);
+        ClassObject classObject = new ClassObject(null, null, (byte) 0, 0, null);
         String[] lineArgs = declarationLine.split(" ");
         boolean[] classTypeArr = new boolean[4];
 
@@ -111,15 +130,8 @@ public class ClassParser {
             classObject.setImplemented(true);
         }
 
-        if (declarationLine.contains("public")) {
-            classObject.setVisibility((byte) 1);
-        } else if (declarationLine.contains("private")) {
-            classObject.setVisibility((byte) 2);
-        } else if (declarationLine.contains("protected")) {
-            classObject.setVisibility((byte) 3);
-        } else {
-            classObject.setVisibility((byte) 0);
-        }
+        byte visibility = visibilityParser(declarationLine);
+        classObject.setVisibility(visibility);
 
         for (int i = 0; i < lineArgs.length; i++) {
             if (lineArgs[i].contains("class") || lineArgs[i].contains("interface")) {
@@ -134,7 +146,47 @@ public class ClassParser {
         return classObject;
     }
 
-    public static void main(String[] args) {
-        parse("/home/sebastian/OneDrive/Repositories/findify/findify/src/CodeBase/Crocodile.java", JavaFileReader.readFile("/home/sebastian/OneDrive/Repositories/findify/findify/src/CodeBase/Crocodile.java"));
+    public static byte visibilityParser(String line) {
+        if (line.contains("public")) {
+            return 1;
+        } else if (line.contains("private")) {
+            return 2;
+        } else if (line.contains("protected")) {
+            return 3;
+        }
+        return 0;
     }
+
+    /**
+     * @param fieldString: Insert a single line of a Field (private int p)
+     * @param path:        Path of .java
+     * @return FieldObject: A FieldObject
+     */
+    public static FieldObject fieldParser(String fieldString, String path) {
+        byte visibility = visibilityParser(fieldString);
+        String[] stream = fieldString.split(" ");
+        return new FieldObject(stream[stream.length - 1], visibility, path, 0, stream[stream.length - 2]);
+    }
+
+    /**
+     * @param method: String of the headerline of a method
+     * @param path:   Path of .java
+     * @return: MethodObject: A MethodObject with List of Parameters
+     */
+    public static MethodObject methodParser(String method, String path) {
+        byte visibility = visibilityParser(method);
+        String[] front = method.substring(0, method.indexOf('(')).split(" ");
+        String[] back = method.substring(method.indexOf('(') + 1, method.indexOf(')')).split(", ");
+        MethodObject result = null;
+
+        result = new MethodObject(front[front.length - 1], visibility, path, 0, null, method.contains("static"), front[front.length - 2]);
+
+        List<FieldObject> parameters = new ArrayList<>();
+        for (String param : back) {
+            parameters.add(fieldParser(param, path));
+        }
+        result.setParameters(parameters);
+        return result;
+    }
+
 }
