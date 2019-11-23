@@ -12,12 +12,12 @@ import java.io.IOException;
 public class ControllerClass {
     private Stage thisStage;
     //yes no checkbox variables
-    private CheckBox extendedYCheck, extendedNCheck, implementedYCheck, implementedNCheck, genericsYCheck, genericsNCheck;
+    public CheckBox extendedYCheck, extendedNCheck, implementedYCheck, implementedNCheck, genericsYCheck, genericsNCheck;
     //rest of the check box variables
-    private CheckBox publicCheck, privateCheck, protectedCheck, staticCheck, intCheck, stringCheck, doubleCheck, booleanCheck,
+    public CheckBox publicCheck, privateCheck, protectedCheck, staticCheck, intCheck, stringCheck, doubleCheck, booleanCheck,
             charCheck, arraysCheck, abstractCheck, interfaceCheck, ENUMCheck, finalCheck, classCheck;
-    private TextField searchField;
-    private Button goButton;
+    public TextField searchField;
+    public Button goButton;
 
 
     //initializes the controller for the class stage
@@ -99,12 +99,12 @@ public class ControllerClass {
 
     public void implementedYFired(){
         if(implementedYCheck.isSelected())
-            extendedNCheck.setSelected(false);
+            implementedNCheck.setSelected(false);
     }
 
     public void implementedNFired(){
         if(implementedNCheck.isSelected())
-            extendedYCheck.setSelected(false);
+            implementedYCheck.setSelected(false);
     }
 
     public void genericYFired(){
@@ -150,7 +150,6 @@ public class ControllerClass {
     public void searchFired(){
         CharSequence charSequence = searchField.getCharacters();
         System.out.println(charSequence.toString());
-
     }
 
     public void goFired(){

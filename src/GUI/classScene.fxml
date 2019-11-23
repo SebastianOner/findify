@@ -111,12 +111,12 @@
                                                                   <Label layoutX="39.0" layoutY="5.0" text="Extended" underline="true" />
                                                                   <VBox layoutX="14.0" layoutY="29.0" spacing="10.0">
                                                                      <children>
-                                                                        <CheckBox fx:id="extendedYCheck" mnemonicParsing="false" text="Yes">
+                                                                        <CheckBox fx:id="extendedYCheck" mnemonicParsing="false" onAction="#extendedYFired" text="Yes">
                                                                            <font>
                                                                               <Font size="12.0" />
                                                                            </font>
                                                                         </CheckBox>
-                                                                        <CheckBox fx:id="extendedNCheck" mnemonicParsing="false" text="No">
+                                                                        <CheckBox fx:id="extendedNCheck" mnemonicParsing="false" onAction="#extendedNFired" text="No">
                                                                            <font>
                                                                               <Font size="12.0" />
                                                                            </font>
