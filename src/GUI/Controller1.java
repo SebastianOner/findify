@@ -1,6 +1,4 @@
 package GUI;
-
-import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -21,14 +19,14 @@ public class Controller1 {
         thisStage = new Stage();
 
         FXMLLoader loader = new FXMLLoader(getClass().getResource("projectSelectorScene.fxml"));
-
         loader.setController(this);
 
         thisStage.setScene(new Scene(loader.load()));
-
         thisStage.setTitle("findify");
     }
 
+
+    //executes the button actionEvent for the project file opening
     public void projectButtonFired(ActionEvent actionEvent){
         DirectoryChooser chooser = new DirectoryChooser();
         chooser.setTitle("Project Path");
@@ -51,6 +49,7 @@ public class Controller1 {
 
     }
 
+    //creates and initializes our second controller and stage
     private void initializeController2(){
         try {
             controller2 = new Controller2();
