@@ -169,11 +169,16 @@ final class PriorityHeap<T>{
 		return 1;
 	}
 	Node find(T object){
-		//nicht ganz richtig
 		Node current = max;
-		while(current.degree > 0 && object != current.getObject()){
-			current = current.child;
-		}
+		do {
+			while(current.degree > 0){
+				if(object == current.getObject())
+					return current;
+				current = current.child;
+			}
+			current = current.next;
+		} while(current != max);
+		
 		return null;
 	}
 }

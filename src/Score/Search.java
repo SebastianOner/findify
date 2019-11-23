@@ -1,20 +1,19 @@
 package Score;
 
 import FileParser.Project;
-import GUI.GUIClassInstance;
 import SearchObjects.ClassObject;
 import SearchObjects.MethodObject;
 import SearchObjects.SearchObject;
 
-import java.util.Arrays;
 import java.util.List;
 
 final public class Search{
 	private static PriorityHeap<SearchObject> priorityHeap;
 	
-	public static SearchObject[] getBests(Project project, SearchObject request){
+	public static SearchObject[] getBests(Project project,
+	                                      SearchObject request){
 		List<SearchObject> searchObjects = project.getJavaFileList();
-		searchObjects.forEach(o->traverse(o,request));
+		searchObjects.forEach(o -> traverse(o, request));
 		SearchObject[] bests = new SearchObject[5];
 		for(SearchObject best : bests)
 			best = priorityHeap.dequeueMax().getObject();
