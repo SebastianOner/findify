@@ -21,8 +21,4 @@ public class JavaFileReader {
         }
         return arr;
     }
-
-    public static void main(String[] args) {
-        readFile("~/OneDrive/Repositories/findify/findify/src/CodeBase/Reptile.java");
-    }
 }
