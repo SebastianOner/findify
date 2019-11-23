@@ -4,6 +4,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.NoSuchElementException;
 
+/**
+ Implemented as fibonacci heap
+ */
 final class PriorityHeap<T>{
 	static final class Node<T>{
 		private int     degree   = 0;
@@ -71,7 +74,7 @@ final class PriorityHeap<T>{
 		max = mergeLists(max, maxElem.child);
 		if(max == null)
 			return maxElem;
-		List<Node<T>>                     nodes   = new ArrayList<>();
+		List<Node<T>> nodes   = new ArrayList<>();
 		List<Node<T>> toVisit = new ArrayList<>();
 		for(Node<T> current = max;
 		    toVisit.isEmpty() || toVisit.get(0) != current;
@@ -170,14 +173,14 @@ final class PriorityHeap<T>{
 	}
 	Node find(T object){
 		Node current = max;
-		do {
+		do{
 			while(current.degree > 0){
 				if(object == current.getObject())
 					return current;
 				current = current.child;
 			}
 			current = current.next;
-		} while(current != max);
+		}while(current != max);
 		
 		return null;
 	}

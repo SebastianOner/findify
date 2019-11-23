@@ -98,6 +98,7 @@ final public class SemanticWeb{
 			if(b.equals(entry.getWord())){
 				return priorityHeapNode.getPriority();
 			}
+			//verbesserungswürdig
 			entry.getReferences().stream().filter(reference -> null !=
 			                                                   unvisitedEntries
 					                                                   .find(entries[reference
