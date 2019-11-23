@@ -17,5 +17,8 @@ public class FieldObject extends SearchObject {
     public String toString() {
         return (getAccessModifier() + " " + type + " " + getName());
     }
-
+	
+	@Override public double getSimilarity(SearchObject searchObject){
+		return 0;
+	}
 }
