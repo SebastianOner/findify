@@ -5,10 +5,10 @@ import java.util.Arrays;
 import java.util.List;
 
 public class ClassObject extends SearchObject{
-	private enum InheritanceType{
+	public enum InheritanceType{
 		ABSTRACT, FINAL, DEFAULT
 	}
-	private enum ClassType{
+	public enum ClassType{
 		ENUM, INTERFACE, DEFAULT
 	}
 	private boolean            isChild;

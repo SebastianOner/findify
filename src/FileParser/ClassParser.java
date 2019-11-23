@@ -113,23 +113,21 @@ public class ClassParser {
     private static ClassObject parseClassDecLine(String declarationLine) {
         ClassObject classObject = new ClassObject(null, null, SearchObject.AccessModifier.DEFAULT, 0, null);
         String[] lineArgs = declarationLine.split(" ");
-        boolean[] classTypeArr = new boolean[4];
 
 
         // this is good enough for now ~6am
-        if (declarationLine.contains("interface")) {
-            classTypeArr[0] = true;
-        }
-        if (declarationLine.contains("abstract")) {
-            classTypeArr[1] = true;
-        }
-        if (declarationLine.contains("enum")) {
-            classTypeArr[2] = true;
-        }
-        if (declarationLine.contains("final")) {
-            classTypeArr[3] = true;
-        }
-        classObject.setClassType(null);
+        if (declarationLine.contains("interface"))
+           classObject.setClassType(ClassObject.ClassType.INTERFACE);
+        else if (declarationLine.contains("enum"))
+	        classObject.setClassType(ClassObject.ClassType.ENUM);
+        else classObject.setClassType(ClassObject.ClassType.DEFAULT);
+        
+        if (declarationLine.contains("abstract"))
+            classObject.setInheritanceType(ClassObject.InheritanceType.ABSTRACT);
+        else if (declarationLine.contains("final"))
+        	classObject.setInheritanceType(ClassObject.InheritanceType.FINAL);
+        else classObject.setInheritanceType(ClassObject.InheritanceType.DEFAULT);
+        
         if (declarationLine.contains("extends")) {
             classObject.setChild(true);
         }

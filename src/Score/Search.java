@@ -34,27 +34,27 @@ final public class Search{
 	private static String[] split(String string){
 		return string.split("_|,| |-");
 	}
-//	public static double getSimilarity(String a, String b){
-//		String[][] words =
-//				a.length() < b.length() ? new String[][]{split(a), split(b)} :
-//				new String[][]{split(b), split(a)};
-//		double product = 1, sum;
-//		for(String wordA : words[0]){
-//			sum = 0;
-//			for(String wordB : words[1]){
-//				sum += semanticWeb.getSimilarity(wordA, wordB);
-//			}
-//			product *= sum;
-//		}
-//		return product;
-//	}
-//
+	public static double getStringSimilarity(String a, String b){
+		String[][] words =
+				a.length() < b.length() ? new String[][]{split(a), split(b)} :
+				new String[][]{split(b), split(a)};
+		double product = 1, sum;
+		for(String wordA : words[0]){
+			sum = 0;
+			for(String wordB : words[1]){
+				sum += semanticWeb.getSimilarity(wordA, wordB);
+			}
+			product *= sum;
+		}
+		return product;
+	}
+
 //	public static SearchObject[] getBest(Project project,
 //	                                     SearchObject request){
 //		List<SearchObject> searchObjects = project.getJavaFileList();
 //		for(SearchObject searchObject : searchObjects) {
 //			if(request.getClass() == searchObject.getClass()) {
-//				priorityHeap.enqueue(searchObject, request.getSimilarity());
+//				priorityHeap.enqueue(searchObject, request.getSimilarity(searchObject));
 //			}
 //		}
 //
