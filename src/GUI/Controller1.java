@@ -57,7 +57,6 @@ public class Controller1 {
         }catch (IOException e){
             e.printStackTrace();
         }
-
     }
 
     public void showStage() {

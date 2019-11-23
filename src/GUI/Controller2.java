@@ -8,6 +8,9 @@ import java.io.IOException;
 
 public class Controller2 {
     private Stage thisStage;
+    private ControllerClass controllerClass;
+    private ControllerMethod controllerMethod;
+    private ControllerAttribute controllerAttribute;
 
     public Controller2() throws IOException {
 
@@ -41,5 +44,33 @@ public class Controller2 {
 
     public void attributeFired(ActionEvent actionEvent){
 
+    }
+
+    //creates and initializes our third controller and stage
+    private void initializeControllerClass(){
+        try {
+            controllerClass = new ControllerClass();
+            controllerClass.showStage();
+        }catch (IOException e){
+            e.printStackTrace();
+        }
+    }
+
+    private void initializeControllerMethod(){
+        try {
+            controllerMethod = new ControllerMethod();
+            controllerMethod.showStage();
+        }catch (IOException e){
+            e.printStackTrace();
+        }
+    }
+
+    private void initializeControllerAttribute(){
+        try {
+            controllerAttribute = new ControllerAttribute();
+            controllerAttribute.showStage();
+        }catch (IOException e){
+            e.printStackTrace();
+        }
     }
 }
