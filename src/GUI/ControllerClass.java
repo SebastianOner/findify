@@ -1,6 +1,7 @@
 package GUI;
 
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -39,56 +40,75 @@ public class ControllerClass {
         thisStage.show();
     }
 
-    public void interfaceFired(){
+    public Boolean interfaceFired(){
         if(interfaceCheck.isSelected())
-            System.out.println("True");
+            return Boolean.TRUE;
+        else
+            return null;
     }
 
-    public void abstractFired(){
+    public Boolean abstractFired(){
         if(abstractCheck.isSelected())
-            System.out.println("True");
+            return Boolean.TRUE;
+        else
+            return null;
     }
 
-    public void ENUMFired(){
+    public Boolean ENUMFired(){
         if(ENUMCheck.isSelected())
-            System.out.println("True");
+            return Boolean.TRUE;
+        else
+            return null;
     }
 
-    public void finalFired(){
+    public Boolean finalFired(){
         if(finalCheck.isSelected())
-            System.out.println("True");
+            return Boolean.TRUE;
+        else
+            return null;
     }
 
-    public void standardClassFired(){
+    public Boolean standardClassFired(){
         if(classCheck.isSelected())
-            System.out.println("True");
+            return Boolean.TRUE;
+        else
+            return null;
     }
 
-    public void publicFired(){
+    public Boolean publicFired(){
         if(publicCheck.isSelected())
-            System.out.println("True");
+            return Boolean.TRUE;
+        else
+            return null;
     }
 
-    public void privateFired(){
+    public Boolean privateFired(){
         if(privateCheck.isSelected())
-            System.out.println("True");
+            return Boolean.TRUE;
+        else
+            return null;
+
     }
 
-    public void protectedFired(){
+    public Boolean protectedFired(){
         if(protectedCheck.isSelected())
-            System.out.println("True");
+            return Boolean.TRUE;
+        else
+            return null;
     }
 
-    public void staticFired(){
+    public Boolean staticFired(){
         if(staticCheck.isSelected())
-            System.out.println("True");
+            return Boolean.TRUE;
+        else
+            return null;
     }
 
-    public void extendedYFired(){
+    public Boolean extendedYFired(){
         if(extendedYCheck.isSelected()){
             extendedNCheck.setSelected(false);
         }
-
+        return Boolean.TRUE;
     }
 
     public void extendedNFired(){
@@ -117,9 +137,11 @@ public class ControllerClass {
             genericsYCheck.setSelected(false);
     }
 
-    public void intFired(){
+    public Boolean intFired(){
         if(intCheck.isSelected())
-            System.out.println("True");
+            return Boolean.TRUE;
+        else
+            return Boolean.FALSE;
     }
 
     public void stringFired(){
@@ -154,6 +176,15 @@ public class ControllerClass {
 
     public void goFired(){
         GUIClassInstance classInstance = new GUIClassInstance();
-        goButton.setOnAction(e -> System.out.println("hello"));
+        goButton.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent actionEvent) {
+                classInstance.interfaceAtt = interfaceFired();
+            }
+        });
+
+        classInstance.toString();
     }
+
+
 }
