@@ -14,6 +14,7 @@ import java.io.IOException;
 public class Controller1 {
 
     private Stage thisStage;
+    private Controller2 controller2;
 
     public Button projectButton;
 
@@ -45,7 +46,11 @@ public class Controller1 {
         chooser.setInitialDirectory(defaultDir);
         File selected = chooser.showDialog(thisStage);
 
-        System.out.println(selected.getPath());
+        //TODO hand over to file crawler
+
+        controller2 = new Controller2();
+
+        controller2.showStage();
 
     }
 
