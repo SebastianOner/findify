@@ -45,6 +45,7 @@ public class Controller1 {
 
         //TODO hand over to file crawler
 
+        thisStage.close();
         initializeController2();
 
     }

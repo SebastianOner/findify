@@ -36,16 +36,19 @@ public class Controller2 {
 
     //creates the action event for clicking on the class button
     public void classFired(ActionEvent actionEvent){
+        thisStage.close();
         initializeControllerClass();
     }
 
     //creates the action event for clicking on the method button
     public void methodFired(ActionEvent actionEvent){
+        thisStage.close();
         initializeControllerMethod();
     }
 
     //creates the action for clicking on the attribute button
     public void attributeFired(ActionEvent actionEvent){
+        thisStage.close();
         initializeControllerAttribute();
     }
 
