@@ -1,6 +1,6 @@
 package SearchObjects;
 
-public class SearchObject {
+public abstract class SearchObject {
     private String name;
     private String visibility;
     private String path;
