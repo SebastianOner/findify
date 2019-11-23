@@ -107,71 +107,115 @@ public class ControllerClass {
     public Boolean extendedYFired(){
         if(extendedYCheck.isSelected()){
             extendedNCheck.setSelected(false);
+            return Boolean.TRUE;
         }
-        return Boolean.TRUE;
+        else if((extendedNCheck.isSelected()==false) && (extendedYCheck.isSelected()==false))
+            return null;
+        else
+            return Boolean.FALSE;
     }
 
-    public void extendedNFired(){
+    public Boolean extendedNFired(){
         if(extendedNCheck.isSelected()){
             extendedYCheck.setSelected(false);
+            return Boolean.FALSE;
         }
+        else if((extendedYCheck.isSelected()==false)&&(extendedNCheck.isSelected()==false))
+            return null;
+        else
+            return Boolean.TRUE;
     }
 
-    public void implementedYFired(){
-        if(implementedYCheck.isSelected())
+    public Boolean implementedYFired(){
+        if(implementedYCheck.isSelected()){
             implementedNCheck.setSelected(false);
+            return Boolean.TRUE;
+        }
+        else if(extendedNCheck.isSelected()==false && extendedYCheck.isSelected()==false)
+            return null;
+        else
+            return Boolean.FALSE;
     }
 
-    public void implementedNFired(){
-        if(implementedNCheck.isSelected())
+    public Boolean implementedNFired(){
+        if(implementedNCheck.isSelected()){
             implementedYCheck.setSelected(false);
+            return Boolean.FALSE;
+        }
+        else if(extendedNCheck.isSelected()==false && extendedYCheck.isSelected()==false)
+            return null;
+        else
+            return Boolean.TRUE;
     }
 
-    public void genericYFired(){
-        if(genericsYCheck.isSelected())
+    public Boolean genericYFired(){
+        if(genericsYCheck.isSelected()){
             genericsNCheck.setSelected(false);
+            return Boolean.TRUE;
+        }
+        else if((genericsYCheck.isSelected()==false)&&(genericsNCheck.isSelected()==false))
+            return null;
+        else
+            return Boolean.FALSE;
     }
 
-    public void genericNFired(){
-        if(genericsNCheck.isSelected())
+    public Boolean genericNFired(){
+        if(genericsNCheck.isSelected()){
             genericsYCheck.setSelected(false);
+            return Boolean.FALSE;
+        }
+        else if((genericsNCheck.isSelected()==false)&&genericsYCheck.isSelected()==false)
+            return null;
+        else
+            return Boolean.TRUE;
     }
 
     public Boolean intFired(){
         if(intCheck.isSelected())
             return Boolean.TRUE;
         else
-            return Boolean.FALSE;
+            return null;
     }
 
-    public void stringFired(){
+    public Boolean stringFired(){
         if(stringCheck.isSelected())
-            System.out.println("True");
+            return Boolean.TRUE;
+        else
+            return null;
+
     }
 
-    public void arraysFired(){
+    public Boolean arraysFired(){
         if(arraysCheck.isSelected())
-            System.out.println("True");
+            return Boolean.TRUE;
+        else
+            return null;
     }
 
-    public void doubleFired(){
+    public Boolean doubleFired(){
         if(doubleCheck.isSelected())
-            System.out.println("True");
+            return Boolean.TRUE;
+        else
+            return null;
     }
 
-    public void booleanFired(){
+    public Boolean booleanFired(){
         if(booleanCheck.isSelected())
-            System.out.println("True");
+            return Boolean.TRUE;
+        else
+            return null;
     }
 
-    public void charFired(){
+    public Boolean charFired(){
         if(charCheck.isSelected())
-            System.out.println("True");
+            return Boolean.TRUE;
+        else
+            return null;
     }
 
-    public void searchFired(){
+    public String searchFired(){
         CharSequence charSequence = searchField.getCharacters();
-        System.out.println(charSequence.toString());
+        return charSequence.toString();
     }
 
     public void goFired(){
@@ -180,6 +224,27 @@ public class ControllerClass {
             @Override
             public void handle(ActionEvent actionEvent) {
                 classInstance.interfaceAtt = interfaceFired();
+                classInstance.abstractClassAtt = abstractFired();
+                classInstance.ENUMAtt = ENUMFired();
+                classInstance.finalAtt = finalFired();
+                classInstance.standardClassAtt = standardClassFired();
+                classInstance.publicAtt = publicFired();
+                classInstance.privateAtt = privateFired();
+                classInstance.protectedAtt = protectedFired();
+                classInstance.staticAtt = staticFired();
+                classInstance.extendedYes = extendedYFired();
+                classInstance.extendedNo = extendedNFired();
+                classInstance.implementedYes = implementedYFired();
+                classInstance.implementedNo = implementedNFired();
+                classInstance.genericsYes = genericYFired();
+                classInstance.genericsNo = genericNFired();
+                classInstance.intAtt = intFired();
+                classInstance.stringAtt = stringFired();
+                classInstance.doubleAtt = doubleFired();
+                classInstance.charAtt = charFired();
+                classInstance.arraysAtt = arraysFired();
+                classInstance.booleanAtt = booleanFired();
+                classInstance.name = searchFired();
             }
         });
 

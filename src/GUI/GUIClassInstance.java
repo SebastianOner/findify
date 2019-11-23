@@ -54,7 +54,9 @@ public class GUIClassInstance {
                 "\nArrays: " + arraysAtt.toString() +
                 "\nDoubles: " + doubleAtt.toString() +
                 "\nBooleans: " + booleanAtt.toString() +
-                "\nChars: " + charAtt.toString();
+                "\nChars: " + charAtt.toString() +
+                "\nName: " + name;
+
     }
 
 }
