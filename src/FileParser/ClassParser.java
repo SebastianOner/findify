@@ -10,7 +10,7 @@ public class ClassParser {
     static ArrayList<SearchObject> parse(String path, List<String> content) {
         ArrayList<SearchObject> objects = new ArrayList<>();
         for (int i = 0; i < content.size(); i++) {
-            if (content.get(i).contains("class")) {
+            if (content.get(i).contains("class") || content.get(i).contains("enum")) {
                 // passing path as param is good enough for now
                 parseClassDecLine(path, content.get(i));
             }
@@ -18,42 +18,42 @@ public class ClassParser {
         return null;
     }
 
-    
-
-    private static ClassObject parseClassDecLine(String path, String s) {
-        ClassObject classObject = new ClassObject("", "", "", null);
-        String[] lineArgs = s.split(" ");
+    private static ClassObject parseClassDecLine(String path, String declarationLine) {
+        ClassObject classObject = new ClassObject(null, null, (byte) 0, null);
+        String[] lineArgs = declarationLine.split(" ");
+        classObject.setPath(path);
         boolean[] classTypeArr = new boolean[4];
 
 
         // this is good enough for now ~6am
-        if (s.contains("interface")) {
+        if (declarationLine.contains("interface")) {
             classTypeArr[0] = true;
         }
-        if (s.contains("abstract")) {
+        if (declarationLine.contains("abstract")) {
             classTypeArr[1] = true;
         }
-        if (s.contains("enum")) {
+        if (declarationLine.contains("enum")) {
             classTypeArr[2] = true;
         }
-        if (s.contains("final")) {
+        if (declarationLine.contains("final")) {
             classTypeArr[3] = true;
         }
         classObject.setClassType(classTypeArr);
-        if (s.contains("extends")) {
+        if (declarationLine.contains("extends")) {
             classObject.setChild(true);
         }
-        if (s.contains("implements")) {
+        if (declarationLine.contains("implements")) {
             classObject.setImplemented(true);
         }
 
-        classObject.setPath(path);
-        if (s.contains("public")) {
-            classObject.setVisibility("public");
-        } else if (s.contains("private")) {
-            classObject.setVisibility("private");
-        } else if (s.contains("protected")) {
-            classObject.setVisibility("protected");
+        if (declarationLine.contains("public")) {
+            classObject.setVisibility((byte) 1);
+        } else if (declarationLine.contains("private")) {
+            classObject.setVisibility((byte) 2);
+        } else if (declarationLine.contains("protected")) {
+            classObject.setVisibility((byte) 3);
+        } else {
+            classObject.setVisibility((byte) 0);
         }
 
         for (int i = 0; i < lineArgs.length; i++) {
