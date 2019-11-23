@@ -11,7 +11,7 @@ public class ClassParser {
     static ArrayList<SearchObject> parse(String path, List<String> content) {
         ArrayList<SearchObject> objects = new ArrayList<>();
         for (int i = 0; i < content.size(); i++) {
-            if (content.get(i).contains("class") || content.get(i).contains("enum")) {
+            if ((content.get(i).contains("class ") || content.get(i).contains("interface"))&& realClass(content.get(i))) {
                 ClassObject classObject = parseClassDecLine(getDeclarationLine(content, i));
                 classObject.setPath(path);
                 getContent(content, i);
@@ -20,6 +20,25 @@ public class ClassParser {
             }
         }
         return null;
+    }
+
+    /**
+     * Checks whether or not the String " class " here actually belongs to the program or to a comment
+     *
+     * @param string: the line to be checked for comments
+     * @return true if the keyword class is outside of comments, else false
+     */
+    private static boolean realClass(String string) {
+        if (!string.contains("//") && !string.contains("*") && !string.contains("/*") && !string.contains("/**") ) {
+            return true;
+        }
+        // else we have to determine whether the keyword itself is commented or legit
+        string = string.substring(0, string.indexOf(" class "));
+        if (!string.contains("//") && !string.contains("*") && !string.contains("/*") && !string.contains("/**") ) {
+            return true;
+        } else {
+            return false;
+        }
     }
 
     private static void extractContent(String content, ClassObject classObject) {
