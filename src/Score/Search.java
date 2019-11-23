@@ -12,10 +12,9 @@ import java.util.List;
 final public class Search{
 	private static PriorityHeap<SearchObject> priorityHeap;
 	
-	public static ArrayList<SearchObject> getBests(Project project,
-	                                               SearchObject request){
-		List<SearchObject> searchObjects = project.getJavaFileList();
-		searchObjects.forEach(o -> traverse(o, request));
+	public static ArrayList<SearchObject> getBests(
+			ArrayList<ClassObject> classObjects, SearchObject request){
+		classObjects.forEach(o -> traverse(o, request));
 		ArrayList<SearchObject> bests = new ArrayList<>();
 		for(int i = 0; i < 5 && !priorityHeap.isEmpty(); ++i)
 		    bests.add(priorityHeap.dequeueMax().getObject());

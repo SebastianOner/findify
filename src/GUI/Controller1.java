@@ -1,5 +1,6 @@
 package GUI;
 import FileParser.FileCrawler;
+import FileParser.Project;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -11,6 +12,7 @@ import java.io.File;
 import java.io.IOException;
 
 public class Controller1 {
+    public Project project;
 
     private Stage thisStage;
     private Controller2 controller2;
@@ -46,7 +48,7 @@ public class Controller1 {
 
         // TODO: 23.11.19 Change this to the project interface, not just crawl
         FileCrawler.crawl(selected.getPath());
-
+        this.project = new Project(selected.getPath());
         thisStage.close();
         initializeController2();
 
