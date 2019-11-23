@@ -121,18 +121,23 @@ public class ClassObject extends SearchObject{
 		       "\n" + getClasses().toString();
 	}
 	@Override public double getSimilarity(SearchObject searchObject){
-		double similarity = 1;
 		ClassObject classObject = ((ClassObject) searchObject);
+		double similarity =
+				semanticWeb.getSimilarity(getName(), classObject.getName());
+		if(!getName().equals(classObject.getName()))
+			similarity *= 0.9;
+		if(getAccessModifier() != classObject.getAccessModifier())
+			similarity *= 0.9;
 		if(isChild != classObject.isChild)
 			similarity *= 0.9;
 		if(hasGeneric != classObject.hasGeneric)
 			similarity *= 0.9;
-		if(inheritanceType != classObject.inheritanceType)
+		if(getInheritanceType() != classObject.getInheritanceType())
 			similarity *= 0.9;
-		if(classType != classObject.classType) {
+		if(getClassType() != classObject.getClassType()) {
 			similarity *= 0.9;
 		}
-		//TODO: Add further comparisons
+		//TODO: Change weights
 		return similarity;
 	}
 }

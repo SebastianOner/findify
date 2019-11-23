@@ -2,7 +2,7 @@ package Score;
 
 import java.util.ArrayList;
 
-final class SemanticWeb{
+final public class SemanticWeb{
 	class Entry{
 		class Reference{
 			private int    position;
@@ -84,7 +84,7 @@ final class SemanticWeb{
 		}
 	}
 	
-	double getSimilarity(String a, String b){
+	public double getSimilarity(String a, String b){
 		PriorityHeap<Entry> unvisitedEntries = new PriorityHeap<Entry>();
 		for(Entry entry : entries){
 			unvisitedEntries.enqueue(entry, a.equals(entry.getWord()) ? 1 : 0);
