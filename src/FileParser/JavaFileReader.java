@@ -23,6 +23,10 @@ public class JavaFileReader {
     }
 
     public static void main(String[] args) {
-        readFile("~/OneDrive/Repositories/findify/findify/src/CodeBase/Reptile.java");
+        List<String> list = readFile("C:\\Users\\kruge\\Documents\\GitHub\\findify\\src\\CodeBase\\Reptile.java");
+        for (int i = 0; i < list.size(); i++) {
+            System.out.println("Zeile" + (i+1) + ": "+list.get(i));
+
+        }
     }
 }
