@@ -7,6 +7,5 @@ class Crocodile<T> extends Reptile
     Crocodile father, mother;
 
     public static void main(String[] args) {
-
     }
 }
