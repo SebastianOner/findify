@@ -24,9 +24,8 @@ public class GUIMain extends Application {
     Button classButton, methodButton, attributeButton;
 
     @Override
-    public void start(Stage primaryStage) throws Exception{
-        /*
-        DirectoryChooser chooser = new DirectoryChooser();
+    public void start(Stage primaryStage) throws Exception {
+        /*DirectoryChooser chooser = new DirectoryChooser();
         chooser.setTitle("Project Path");
 
         String os = System.getProperty("os.name").toLowerCase();
@@ -34,7 +33,7 @@ public class GUIMain extends Application {
         if (os.equals("linux") || os.equals("mac os x")) {
             defaultPath = "/home/";
         } else if (os.contains("windows")) {
-            defaultPath = "%userprofile%";
+            defaultPath = "C:\\Users\\";
         }
 
         System.out.println(System.getProperty("os.name").toLowerCase());
@@ -43,11 +42,7 @@ public class GUIMain extends Application {
         chooser.setInitialDirectory(defaultDir);
         File selected = chooser.showDialog(primaryStage);
         System.out.println(selected.getPath());
-
-         */
-
-        System.out.println(System.getProperty("os.name").toLowerCase());
-
+*/
         //window definitions
         window = primaryStage;
         window.setTitle("findify");
@@ -80,5 +75,8 @@ public class GUIMain extends Application {
 
 
     }
-    public static void main(String[] args) {launch(args);}
+
+    public static void main(String[] args) {
+        launch(args);
+    }
 }
