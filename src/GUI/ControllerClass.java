@@ -305,6 +305,8 @@ public class ControllerClass {
 
         ClassObject CO = new ClassObject(name, am, isChild, isGeneric, isImplemented, inh, type, attributeList);
 
+        //Score.Search.getBests(CO);
+
         GUIClassInstance classInstance = new GUIClassInstance();
         classInstance.interfaceAtt = interfaceFired();
         classInstance.abstractClassAtt = abstractFired();
