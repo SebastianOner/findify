@@ -72,7 +72,7 @@ final class FibonacciHeap<T>{
 		if(max == null)
 			return maxElem;
 		List<Node<T>>                     nodes   = new ArrayList<>();
-		List<Score.FibonacciHeap.Node<T>> toVisit = new ArrayList<>();
+		List<Node<T>> toVisit = new ArrayList<>();
 		for(Node<T> current = max;
 		    toVisit.isEmpty() || toVisit.get(0) != current;
 		    current = current.next)
