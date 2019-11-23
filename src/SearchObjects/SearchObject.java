@@ -50,7 +50,8 @@ public abstract class SearchObject{
 		}
 		return product;
 	}
-	
+	//Constructors
+
 	public SearchObject(String name, AccessModifier accessModifier, String path,
 	                    List<String> content, int line){
 		this.name           = name;
@@ -63,6 +64,8 @@ public abstract class SearchObject{
 	    this.name = name;
 	    this.accessModifier = accessModifier;
     }
+
+    public SearchObject(){} //default Constructor
 	
 	//Getters
 	

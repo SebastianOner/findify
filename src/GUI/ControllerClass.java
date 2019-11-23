@@ -1,5 +1,6 @@
 package GUI;
 
+import SearchObjects.ClassObject;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
@@ -242,6 +243,12 @@ public class ControllerClass {
         classInstance.arraysAtt = arraysFired();
         classInstance.booleanAtt = booleanFired();
         classInstance.name = searchFired();
+
+
         System.out.println(classInstance.toString(classInstance));
+    }
+
+    public ClassObject createClassObject(){
+        ClassObject CO = new
     }
 }

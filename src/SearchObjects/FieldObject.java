@@ -8,6 +8,11 @@ public class FieldObject extends SearchObject{
 		super(name, accessModifier, path, null, line);
 		this.type = type;
 	}
+
+	public FieldObject(String type){
+		super();
+		this.type = type;
+	}
 	
 	public String getType(){
 		return type;

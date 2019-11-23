@@ -16,6 +16,8 @@ public class GUIClassInstance {
     //possible class name
     public String name = "";
 
+
+
     public String toString(GUIClassInstance classInstance) {
         String extend, implement, generic;
         if (classInstance.extendedYes!=null && classInstance.extendedYes) {
