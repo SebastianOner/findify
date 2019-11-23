@@ -1,5 +1,6 @@
 package SearchObjects;
 
+import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -46,4 +47,14 @@ public class MethodObject extends SearchObject {
         return "METHOD:\nName: " + getName() + "\nreturn type: " + getReturnType() + "\nvisibility: "
                + getAccessModifier() + "\nisStatic: " + isStatic() + "\n" + parameters.toString();
     }
+	@Override public double getSimilarity(SearchObject searchObject){
+		MethodObject methodObject = ((MethodObject) searchObject);
+		double similarity = 1;
+		if(isStatic != methodObject.isStatic)
+			similarity *= 0.9;
+		if(!returnType.equals(methodObject.returnType))
+			similarity *= 0.9;
+		//TODO: Add further comparisons
+		return similarity;
+	}
 }

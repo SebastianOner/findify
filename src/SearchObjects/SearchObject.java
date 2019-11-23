@@ -52,4 +52,5 @@ public abstract class SearchObject {
     public void setLine(int line) {
         this.line = line;
     }
+    public abstract double getSimilarity(SearchObject searchObject);
 }

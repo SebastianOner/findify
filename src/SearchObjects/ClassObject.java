@@ -120,4 +120,19 @@ public class ClassObject extends SearchObject{
 		       getAttributes().toString() + "\n" + getMethods().toString() +
 		       "\n" + getClasses().toString();
 	}
+	@Override public double getSimilarity(SearchObject searchObject){
+		double similarity = 1;
+		ClassObject classObject = ((ClassObject) searchObject);
+		if(isChild != classObject.isChild)
+			similarity *= 0.9;
+		if(hasGeneric != classObject.hasGeneric)
+			similarity *= 0.9;
+		if(inheritanceType != classObject.inheritanceType)
+			similarity *= 0.9;
+		if(classType != classObject.classType) {
+			similarity *= 0.9;
+		}
+		//TODO: Add further comparisons
+		return similarity;
+	}
 }
