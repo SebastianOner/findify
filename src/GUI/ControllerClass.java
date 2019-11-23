@@ -1,6 +1,8 @@
 package GUI;
 
 import SearchObjects.ClassObject;
+import SearchObjects.FieldObject;
+import SearchObjects.SearchObject;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
@@ -10,6 +12,8 @@ import javafx.scene.control.CheckBox;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 public class ControllerClass {
     private Stage thisStage;
@@ -233,18 +237,69 @@ public class ControllerClass {
         Boolean isChild = extendedYFired();
         Boolean isImplemented = implementedYFired();
         Boolean isGeneric = genericYFired();
+
+        Boolean isInterface = interfaceFired();
         Boolean isENUM = ENUMFired();
+        Boolean isDefaultClass = standardClassFired();
+
         Boolean isFinal = finalFired();
         Boolean isAbstract = abstractFired();
         //access modifiers
-        Boolean isDefault = standardClassFired();
         Boolean isPublic = publicFired();
         Boolean isPrivate = privateFired();
         Boolean isProtected = protectedFired();
 
-        Boolean isStatic = staticFired();
+        List<FieldObject> attributeList = new ArrayList<FieldObject>();
+        if (intFired() != null) {
+            attributeList.add(new FieldObject("int"));
+        }
+        if (stringFired() != null) {
+            attributeList.add(new FieldObject("String"));
+        }
+        if (arraysFired() != null) {
+            attributeList.add(new FieldObject("int[]"));
+        }
+        if (doubleFired() != null) {
+            attributeList.add(new FieldObject("double"));
+        }
+        if (booleanFired() != null) {
+            attributeList.add(new FieldObject("boolean"));
+        }
+        if (charFired() != null) {
+            attributeList.add(new FieldObject("char"));
+        }
 
-        ClassObject CO = new ClassObject(name, asdas, isChild, isGeneric, isImplemented, asdas, asdas, asdas)
+        Boolean isStatic = staticFired();
+        SearchObject.AccessModifier am;
+        if (isProtected != null) {
+            am = SearchObject.AccessModifier.PROTECTED;
+        } else if (isPublic != null) {
+            am = SearchObject.AccessModifier.PUBLIC;
+        } else if (isPrivate != null) {
+            am = SearchObject.AccessModifier.PRIVATE;
+        } else {
+            am = SearchObject.AccessModifier.DEFAULT;
+        }
+
+        ClassObject.InheritanceType inh;
+        if (isFinal) {
+            inh = ClassObject.InheritanceType.FINAL;
+        } else if (isAbstract) {
+            inh = ClassObject.InheritanceType.ABSTRACT;
+        } else {
+            inh = ClassObject.InheritanceType.DEFAULT;
+        }
+
+        ClassObject.ClassType type;
+        if (isInterface) {
+            type = ClassObject.ClassType.INTERFACE;
+        } else if (isENUM) {
+            type = ClassObject.ClassType.ENUM;
+        } else {
+            type = ClassObject.ClassType.DEFAULT;
+        }
+
+        ClassObject CO = new ClassObject(name, am, isChild, isGeneric, isImplemented, inh, type, attributeList);
 
         GUIClassInstance classInstance = new GUIClassInstance();
         classInstance.interfaceAtt = interfaceFired();
