@@ -7,10 +7,18 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ClassParser {
+    /**
+     * Iterates over a file, finding and parsing all the SearchObjects in it, adding them to a list
+     * and returning that list
+     *
+     * @param path:    path of the .java file we have to parse
+     * @param content: content is the String-List read by {@link JavaFileReader}
+     * @return A list of SearchObjects that were found in the java file
+     */
     static ArrayList<SearchObject> parse(String path, List<String> content) {
         ArrayList<SearchObject> objects = new ArrayList<>();
         for (int i = 0; i < content.size(); i++) {
-            if ((content.get(i).contains("class ") || content.get(i).contains("interface"))&& realClass(content.get(i))) {
+            if ((content.get(i).contains("class ") || content.get(i).contains("interface")) && realClass(content.get(i))) {
                 ClassObject classObject = parseClassDecLine(getDeclarationLine(content, i));
                 classObject.setPath(path);
                 classObject.setLine(i);
@@ -29,12 +37,12 @@ public class ClassParser {
      * @return true if the keyword class is outside of comments, else false
      */
     private static boolean realClass(String string) {
-        if (!string.contains("//") && !string.contains("*") && !string.contains("/*") && !string.contains("/**") ) {
+        if (!string.contains("//") && !string.contains("*") && !string.contains("/*") && !string.contains("/**")) {
             return true;
         }
         // else we have to determine whether the keyword itself is commented or legit
         string = string.substring(0, string.indexOf(" class "));
-        if (!string.contains("//") && !string.contains("*") && !(string.contains("/*")) && !string.contains("/**") ) {
+        if (!string.contains("//") && !string.contains("*") && !(string.contains("/*")) && !string.contains("/**")) {
             return true;
         } else {
             return false;
@@ -49,7 +57,7 @@ public class ClassParser {
      * Extracts the raw content of a class as a String
      *
      * @param content: the content of the file with the class to be extracted
-     * @param i: index of the start of the class
+     * @param i:       index of the start of the class
      * @return String containing whats inside the class for further parsing
      */
     private static String getContent(List<String> content, int i) {
@@ -74,7 +82,7 @@ public class ClassParser {
             classContent.add(content.get(i++));
         }
         String ret = "";
-        for (int j = 0; j < classContent.size()-1; j++) {
+        for (int j = 0; j < classContent.size() - 1; j++) {
             ret += classContent.get(j).replaceFirst("    ", "") + "\n";
         }
         return ret;
@@ -85,7 +93,7 @@ public class ClassParser {
      * and adds all the lines leading up to a "{" to pass them on to the declarationParser
      *
      * @param content: The content of our .java file
-     * @param i: the index of the line, where a "class" appears
+     * @param i:       the index of the line, where a "class" appears
      * @return the entire class declaration leading up to a "{"
      */
     private static String getDeclarationLine(List<String> content, int i) {
@@ -135,11 +143,11 @@ public class ClassParser {
 
         for (int i = 0; i < lineArgs.length; i++) {
             if (lineArgs[i].contains("class") || lineArgs[i].contains("interface")) {
-                if (lineArgs[i+1].contains("<") && lineArgs[i+1].contains(">")) {
-                    classObject.setHasGeneric(lineArgs[i+1].contains("<") && lineArgs[i+1].contains(">"));
-                    classObject.setName(lineArgs[i+1].substring(0, lineArgs[i+1].indexOf("<")));
+                if (lineArgs[i + 1].contains("<") && lineArgs[i + 1].contains(">")) {
+                    classObject.setHasGeneric(lineArgs[i + 1].contains("<") && lineArgs[i + 1].contains(">"));
+                    classObject.setName(lineArgs[i + 1].substring(0, lineArgs[i + 1].indexOf("<")));
                 } else {
-                    classObject.setName(lineArgs[i+1]);
+                    classObject.setName(lineArgs[i + 1]);
                 }
             }
         }

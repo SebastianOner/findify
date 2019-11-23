@@ -74,11 +74,10 @@ public class ClassObject extends SearchObject {
     }
 
     /**
-     *
      * @param type boolean array with 4 Elements: Interface, Abstract, ENUM, Final
      */
     public void setClassType(boolean[] type) {
-        if(type.length != 4 || type == null) {
+        if (type.length != 4 || type == null) {
             System.out.println("Not valid ClassType");
             return;
         }
@@ -107,7 +106,7 @@ public class ClassObject extends SearchObject {
 
     @Override
     public String toString() {
-        return "CLASS:\nname: "+getName() + "\nvisibility: " + getVisibility() +"\nisChild: " + isChild + "\nisImplemented: " +
+        return "CLASS:\nname: " + getName() + "\nvisibility: " + getVisibility() + "\nisChild: " + isChild + "\nisImplemented: " +
                 isImplemented + "\nHas Generics: " + hasGeneric + "\n" + Arrays.toString(classType) + "\n" +
                 getAttributes().toString() + "\n" + getMethodList().toString() + "\n" + getClassList().toString();
     }

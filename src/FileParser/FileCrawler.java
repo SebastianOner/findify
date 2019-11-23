@@ -10,6 +10,7 @@ public class FileCrawler {
      * @param path: the path of the file/filder we want to look at
      */
     public static void crawl(String path) {
+        // A java file is atomic, if we find one of those, we hand it over to the parser
         if (path.endsWith(".java")) {
             System.out.println("FILE: " + path);
             ClassParser.parse(path, JavaFileReader.readFile(path));
@@ -19,6 +20,7 @@ public class FileCrawler {
         if (files == null) {
             return;
         }
+        // We now have to recursively crawl through this folder
         for (File f : files) {
             crawl(f.getAbsolutePath());
         }

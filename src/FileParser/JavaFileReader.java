@@ -5,10 +5,16 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class JavaFileReader {
+
+    /**
+     * Reading a java file into a String-List, that you can parse easily
+     *
+     * @param path: the path of the .java file
+     * @return ArrayList over the lines of the file, thus preserving the line number
+     */
     public static List<String> readFile(String path) {
         ArrayList<String> arr = new ArrayList<String>();
-        try
-        {
+        try {
             BufferedReader br = new BufferedReader(new FileReader(path));
             String sCurrentLine;
 

@@ -1,6 +1,6 @@
 package SearchObjects;
 
-public class FieldObject extends SearchObject{
+public class FieldObject extends SearchObject {
     private String type;
 
     public FieldObject(String name, byte visibility, String path, int line, String type) {
