@@ -16,29 +16,29 @@ public class GUIClassInstance {
     //possible class name
     public String name = null;
 
-    public String toString() {
+    public String toString(GUIClassInstance classInstance) {
         String extend, implement, generic;
-        if (extendedYes) {
+        if (classInstance.extendedYes!=null && classInstance.extendedYes) {
             extend = "Yes";
-        } else if (!extendedNo) {
+        } else if (classInstance.extendedNo!=null && !classInstance.extendedNo) {
             extend = "No";
         } else {
             extend = "Not specified";
         }
-        if (implementedYes)
+        if (classInstance.implementedYes!=null && classInstance.implementedYes)
             implement = "Yes";
-        else if (implementedNo.booleanValue() == false)
+        else if (classInstance.implementedNo!=null && !classInstance.implementedNo)
             implement = "No";
         else
             implement = "Not specified";
-        if (genericsYes.booleanValue() == true)
+        if (classInstance.genericsYes!=null && classInstance.genericsYes)
             generic = "Yes";
-        else if (genericsNo.booleanValue() == false)
+        else if (classInstance.genericsNo!=null && !classInstance.genericsNo)
             generic = "No";
         else
             generic = "Not specified";
 
-        return "Interface: " + interfaceAtt.toString() +
+        return  "Interface: " + interfaceAtt.toString() +
                 "\nAbstract Class: " + abstractClassAtt.toString() +
                 "\nENUM: " + ENUMAtt.toString() +
                 "\nFinal: " + finalAtt.toString() +

@@ -248,7 +248,7 @@ public class ControllerClass {
             }
         });
 
-        classInstance.toString();
+        classInstance.toString(classInstance);
     }
 
 
