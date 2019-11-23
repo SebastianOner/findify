@@ -12,6 +12,7 @@ import javafx.scene.control.CheckBox;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import java.io.IOException;
+import java.nio.charset.Charset;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -22,9 +23,7 @@ public class ControllerClass {
     //rest of the check box variables
     public CheckBox publicCheck, privateCheck, protectedCheck, staticCheck, intCheck, stringCheck, doubleCheck, booleanCheck,
             charCheck, arraysCheck, abstractCheck, interfaceCheck, ENUMCheck, finalCheck, classCheck;
-    public TextField searchField;
-    public Button goButton;
-
+    public TextField searchField, tagsField;
 
     //initializes the controller for the class stage
     public ControllerClass() throws IOException{
@@ -229,6 +228,11 @@ public class ControllerClass {
 
     public String searchFired(){
         CharSequence charSequence = searchField.getCharacters();
+        return charSequence.toString();
+    }
+
+    public String tagsField(){
+        CharSequence charSequence = tagsField.getCharacters();
         return charSequence.toString();
     }
 

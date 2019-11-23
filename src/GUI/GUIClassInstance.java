@@ -15,6 +15,8 @@ public class GUIClassInstance {
     public Boolean intAtt = null, stringAtt = null, arraysAtt = null, doubleAtt = null, booleanAtt = null, charAtt = null;
     //possible class name
     public String name = "";
+    //possible tags
+    public String tags = "";
 
 
 
@@ -40,7 +42,7 @@ public class GUIClassInstance {
         else
             generic = "Not specified";
 
-        return  ("Interface: " + classInstance.interfaceAtt +
+        return  "Interface: " + classInstance.interfaceAtt +
                 "\nAbstract Class: " + classInstance.abstractClassAtt +
                 "\nENUM: " + classInstance.ENUMAtt +
                 "\nFinal: " + classInstance.finalAtt +
@@ -58,6 +60,7 @@ public class GUIClassInstance {
                 "\nDoubles: " + classInstance.doubleAtt +
                 "\nBooleans: " + classInstance.booleanAtt +
                 "\nChars: " + classInstance.charAtt +
-                "\nName: " + classInstance.name);
+                "\nName: " + classInstance.name +
+                "\nTags: " + tags;
     }
 }

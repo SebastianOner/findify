@@ -71,11 +71,11 @@
                                     </AnchorPane>
                                   <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
                                        <children>
-                                          <SplitPane dividerPositions="0.1887366818873668" layoutX="93.0" layoutY="7.0" prefHeight="209.0" prefWidth="468.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                          <SplitPane dividerPositions="0.19548872180451127" layoutX="93.0" layoutY="7.0" prefHeight="209.0" prefWidth="468.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                             <items>
                                               <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="207.0" prefWidth="135.0">
                                                    <children>
-                                                      <Label layoutX="33.0" layoutY="5.0" text="Modifiers" underline="true" />
+                                                      <Label layoutX="33.0" layoutY="5.0" text="Visibilities" underline="true" />
                                                       <VBox layoutX="7.0" layoutY="31.0" spacing="10.0">
                                                          <children>
                                                             <CheckBox fx:id="publicCheck" mnemonicParsing="false" onAction="#publicFired" text="public">
@@ -186,7 +186,7 @@
                                                                                                       <Font size="12.0" />
                                                                                                    </font>
                                                                                                 </CheckBox>
-                                                                                                <CheckBox fx:id="arraysCheck" mnemonicParsing="false" onAction="#arraysFired" text="Arrays">
+                                                                                                <CheckBox fx:id="arraysCheck" mnemonicParsing="false" onAction="#arraysFired" text="Int Array">
                                                                                                    <font>
                                                                                                       <Font size="12.0" />
                                                                                                    </font>
@@ -232,9 +232,11 @@
                         </AnchorPane>
                       <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
                            <children>
-                              <Label layoutX="14.0" layoutY="53.0" prefHeight="18.0" prefWidth="246.0" text="Name of Class (leave blank if unknown):" />
-                              <TextField fx:id="searchField" layoutX="260.0" layoutY="49.0" onAction="#searchFired" prefHeight="26.0" prefWidth="388.0" promptText="class name" AnchorPane.bottomAnchor="47.0" AnchorPane.leftAnchor="260.0" AnchorPane.rightAnchor="148.0" AnchorPane.topAnchor="49.0" />
+                              <Label layoutX="14.0" layoutY="25.0" prefHeight="18.0" prefWidth="246.0" text="Name of Class (leave blank if unknown):" />
+                              <TextField fx:id="searchField" layoutX="260.0" layoutY="21.0" onAction="#searchFired" prefHeight="26.0" prefWidth="388.0" promptText="class name" AnchorPane.bottomAnchor="75.0" AnchorPane.leftAnchor="260.0" AnchorPane.rightAnchor="148.0" AnchorPane.topAnchor="21.0" />
                               <Button fx:id="goButton" layoutX="714.0" layoutY="75.0" mnemonicParsing="false" onAction="#goFired" text="GO" AnchorPane.rightAnchor="28.5" AnchorPane.topAnchor="75.0" />
+                              <Label layoutX="14.0" layoutY="75.0" prefHeight="18.0" prefWidth="233.0" text="Tags Assosciated to your class:" />
+                              <TextField fx:id="tagsField" layoutX="216.0" layoutY="71.0" onAction="#tagsFired" prefHeight="26.0" prefWidth="359.0" promptText="tags" />
                            </children>
                         </AnchorPane>
                     </items>
