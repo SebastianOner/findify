@@ -16,6 +16,10 @@ public class Project {
         javaFileList = new ArrayList<SearchObject>();
     }
 
+    public void start() {
+        
+    }
+
     public String getPath() {
         return path;
     }
