@@ -34,4 +34,20 @@ public abstract class SearchObject {
     public List<String> getContent() {
         return content;
     }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setVisibility(String visibility) {
+        this.visibility = visibility;
+    }
+
+    public void setPath(String path) {
+        this.path = path;
+    }
+
+    public void setContent(List<String> content) {
+        this.content = content;
+    }
 }

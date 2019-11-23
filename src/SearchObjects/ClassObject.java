@@ -99,4 +99,24 @@ public class ClassObject extends SearchObject {
             System.out.println();
         }
     }
+
+    public boolean[] getClassType() {
+        return classType;
+    }
+
+    public boolean isHasGeneric() {
+        return hasGeneric;
+    }
+
+    public void setChild(boolean child) {
+        isChild = child;
+    }
+
+    public void setHasGeneric(boolean hasGeneric) {
+        this.hasGeneric = hasGeneric;
+    }
+
+    public void setImplemented(boolean implemented) {
+        isImplemented = implemented;
+    }
 }
