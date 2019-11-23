@@ -9,7 +9,7 @@ import java.util.ArrayList;
 
 public class FileCrawler {
 
-    private static ArrayList<ClassObject> projectClasses = new ArrayList<>();
+    public static ArrayList<ClassObject> projectClasses = new ArrayList<>();
     /**
      * crawler gets handed a path and finds all java files and hands their contents over to
      * the parser, to get parsed into a class

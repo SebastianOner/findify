@@ -10,10 +10,10 @@ import java.util.List;
  */
 public class Project {
     private String path;
-    private List<SearchObject> javaFileList;
+    private List<ClassObject> javaFileList;
 
     public Project(String path) {
-        javaFileList = new ArrayList<SearchObject>();
+        javaFileList = new ArrayList<ClassObject>();
     }
 
     public void start() {
