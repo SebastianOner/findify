@@ -41,13 +41,11 @@ public class Controller1 {
             defaultPath = "C:\\Users\\";
         }
 
-        System.out.println(System.getProperty("os.name").toLowerCase());
-
         File defaultDir = new File(defaultPath);
         chooser.setInitialDirectory(defaultDir);
         File selected = chooser.showDialog(thisStage);
 
-
+        System.out.println(selected.getPath());
 
     }
 
