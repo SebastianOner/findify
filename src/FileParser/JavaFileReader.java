@@ -1,38 +1,28 @@
 package FileParser;
 
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.IOException;
+import java.io.*;
+import java.util.ArrayList;
+import java.util.List;
 
 public class JavaFileReader {
+    public static List<String> readFile(String path) {
+        ArrayList<String> arr = new ArrayList<String>();
+        try
+        {
+            BufferedReader br = new BufferedReader(new FileReader(path));
+            String sCurrentLine;
 
-    public static String readFile(String path) {
-        File file = new File((path));
-        FileInputStream fis = null;
-        StringBuilder fileString = new StringBuilder();
-
-        try {
-            fis = new FileInputStream(file);
-            int content;
-            while ((content = fis.read()) != -1) {
-                fileString.append((char) content);
+            while ((sCurrentLine = br.readLine()) != null) {
+                arr.add(sCurrentLine);
             }
+
         } catch (IOException e) {
             e.printStackTrace();
-        } finally {
-            try {
-                if (fis != null)
-                    fis.close();
-            } catch (IOException ex) {
-                ex.printStackTrace();
-            }
         }
-        return fileString.toString();
+        return arr;
     }
 
     public static void main(String[] args) {
-        System.out.println(
-                readFile("C:\\Users\\kruge\\Documents\\GitHub\\findify\\src\\CodeBase\\Crocodile.java")
-        );
+        readFile("~/OneDrive/Repositories/findify/findify/src/CodeBase/Reptile.java");
     }
 }
