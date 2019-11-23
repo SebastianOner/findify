@@ -3,6 +3,7 @@ package FileParser;
 import SearchObjects.ClassObject;
 import SearchObjects.SearchObject;
 
+import java.io.FileReader;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -11,17 +12,67 @@ public class ClassParser {
         ArrayList<SearchObject> objects = new ArrayList<>();
         for (int i = 0; i < content.size(); i++) {
             if (content.get(i).contains("class") || content.get(i).contains("enum")) {
-                // passing path as param is good enough for now
-                parseClassDecLine(path, content.get(i));
+                ClassObject classObject = parseClassDecLine(getDeclarationLine(content, i));
+                classObject.setPath(path);
+                getContent(content, i);
+                //extractContent(content, getContent(content, i), classObject);
             }
         }
         return null;
     }
 
-    private static ClassObject parseClassDecLine(String path, String declarationLine) {
+    private static String getContent(List<String> content, int i) {
+        while (!content.get(i).contains("{")) {
+            i++;
+        }
+        i++;
+        // number of open currently open curly-braces
+        int open = 0;
+        List<String> classContent = new ArrayList<>();
+        while (open != -1) {
+            for (int j = 0; j < content.get(i).length(); j++) {
+                if (content.get(i).charAt(j) == '{') {
+                    open++;
+                } else if (content.get(i).charAt(j) == '}') {
+                    open--;
+                }
+            }
+            classContent.add(content.get(i++));
+        }
+
+        for (int j = 0; j < classContent.size(); j++) {
+            System.out.println(classContent.get(j));
+        }
+
+        return null;
+    }
+
+    /**
+     * takes the content of our file, and the index of the line with a class declaration,
+     * and adds all the lines leading up to a "{" to pass them on to the declarationParser
+     *
+     * @param content: The content of our .java file
+     * @param i: the index of the line, where a "class" appears
+     * @return the entire class declaration leading up to a "{"
+     */
+    private static String getDeclarationLine(List<String> content, int i) {
+        String declarationLine = content.get(i);
+        while (!content.get(i).contains("{")) {
+            declarationLine += content.get(i++);
+        }
+        return declarationLine;
+    }
+
+    /**
+     * Takes the declaration of a class and creates the first couple of attributes of our
+     * Class-class (easy right?)
+     *
+     * @param declarationLine: The declaration of out class, containng things like inheritance
+     * @return a basic {@link ClassObject} containing all the info from the declaration line
+     */
+    private static ClassObject parseClassDecLine(String declarationLine) {
         ClassObject classObject = new ClassObject(null, null, (byte) 0, null);
         String[] lineArgs = declarationLine.split(" ");
-        classObject.setPath(path);
         boolean[] classTypeArr = new boolean[4];
 
 
@@ -58,12 +109,18 @@ public class ClassParser {
 
         for (int i = 0; i < lineArgs.length; i++) {
             if (lineArgs[i].contains("class") || lineArgs[i].contains("interface")) {
-                classObject.setHasGeneric(lineArgs[i+1].contains("<") && lineArgs[i+1].contains(">"));
-                classObject.setName(lineArgs[i+1].substring(0, lineArgs[i+1].indexOf("<")));
-            } else {
-                classObject.setName(lineArgs[i+1]);
+                if (lineArgs[i+1].contains("<") && lineArgs[i+1].contains(">")) {
+                    classObject.setHasGeneric(lineArgs[i+1].contains("<") && lineArgs[i+1].contains(">"));
+                    classObject.setName(lineArgs[i+1].substring(0, lineArgs[i+1].indexOf("<")));
+                } else {
+                    classObject.setName(lineArgs[i+1]);
+                }
             }
         }
         return classObject;
+    }
+
+    public static void main(String[] args) {
+        parse("/home/sebastian/OneDrive/Repositories/findify/findify/src/CodeBase/Crocodile.java", JavaFileReader.readFile("/home/sebastian/OneDrive/Repositories/findify/findify/src/CodeBase/Crocodile.java"));
     }
 }
