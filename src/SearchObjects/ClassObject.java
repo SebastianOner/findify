@@ -55,16 +55,16 @@ public class ClassObject extends SearchObject {
     }
 
     //Constructor for normal Class without inheritance, generic, implementing Class
-    public ClassObject(String name, String path, byte visibilty, List<String> content) {
-        super(name, visibilty, path, content);
+    public ClassObject(String name, String path, byte visibilty, int line, List<String> content) {
+        super(name, visibilty, path, content, line);
         this.classList = new ArrayList<>();
         this.methodList = new ArrayList<>();
         this.attributes = new ArrayList<>();
     }
 
-    public ClassObject(String name, String path, byte visibilty,
+    public ClassObject(String name, String path, byte visibilty, int line,
                        boolean isChild, boolean hasGeneric, List<String> content) {
-        super(name, visibilty, path, content);
+        super(name, visibilty, path, content, line);
         this.isChild = isChild;
         this.hasGeneric = hasGeneric;
         this.classList = new ArrayList<>();
