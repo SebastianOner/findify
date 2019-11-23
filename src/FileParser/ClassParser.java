@@ -14,13 +14,18 @@ public class ClassParser {
             if (content.get(i).contains("class") || content.get(i).contains("enum")) {
                 ClassObject classObject = parseClassDecLine(getDeclarationLine(content, i));
                 classObject.setPath(path);
-                // getContent(content, i);
+                getContent(content, i);
                 System.out.println(classObject.toString());
-                //extractContent(content, getContent(content, i), classObject);
+                extractContent(getContent(content, i), classObject);
             }
         }
         return null;
     }
+
+    private static void extractContent(String content, ClassObject classObject) {
+        System.out.println(content);
+    }
+
 
     private static String getContent(List<String> content, int i) {
         while (!content.get(i).contains("{")) {
@@ -28,24 +33,26 @@ public class ClassParser {
         }
         i++;
         // number of open currently open curly-braces
-        int open = 0;
+        int open = 1;
         List<String> classContent = new ArrayList<>();
-        while (open != -1) {
+        while (open != 0) {
             for (int j = 0; j < content.get(i).length(); j++) {
                 if (content.get(i).charAt(j) == '{') {
                     open++;
                 } else if (content.get(i).charAt(j) == '}') {
                     open--;
                 }
+                if (open == 0) {
+                    break;
+                }
             }
             classContent.add(content.get(i++));
         }
-
-        for (int j = 0; j < classContent.size(); j++) {
-            System.out.println(classContent.get(j));
+        String ret = "";
+        for (int j = 0; j < classContent.size()-1; j++) {
+            ret += classContent.get(j).replaceFirst("    ", "") + "\n";
         }
-
-        return null;
+        return ret;
     }
 
     /**
