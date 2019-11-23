@@ -11,41 +11,73 @@ public class ClassParser {
     static ArrayList<SearchObject> parse(String path, List<String> content) {
         ArrayList<SearchObject> objects = new ArrayList<>();
         for (int i = 0; i < content.size(); i++) {
-            if (content.get(i).contains("class") || content.get(i).contains("enum")) {
+            if ((content.get(i).contains("class ") || content.get(i).contains("interface"))&& realClass(content.get(i))) {
                 ClassObject classObject = parseClassDecLine(getDeclarationLine(content, i));
                 classObject.setPath(path);
-                // getContent(content, i);
+                getContent(content, i);
                 System.out.println(classObject.toString());
-                //extractContent(content, getContent(content, i), classObject);
+                extractContent(getContent(content, i), classObject);
             }
         }
         return null;
     }
 
+    /**
+     * Checks whether or not the String " class " here actually belongs to the program or to a comment
+     *
+     * @param string: the line to be checked for comments
+     * @return true if the keyword class is outside of comments, else false
+     */
+    private static boolean realClass(String string) {
+        if (!string.contains("//") && !string.contains("*") && !string.contains("/*") && !string.contains("/**") ) {
+            return true;
+        }
+        // else we have to determine whether the keyword itself is commented or legit
+        string = string.substring(0, string.indexOf(" class "));
+        if (!string.contains("//") && !string.contains("*") && !string.contains("/*") && !string.contains("/**") ) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    private static void extractContent(String content, ClassObject classObject) {
+        System.out.println(content);
+    }
+
+    /**
+     * Extracts the raw content of a class as a String
+     *
+     * @param content: the content of the file with the class to be extracted
+     * @param i: index of the start of the class
+     * @return String containing whats inside the class for further parsing
+     */
     private static String getContent(List<String> content, int i) {
         while (!content.get(i).contains("{")) {
             i++;
         }
         i++;
         // number of open currently open curly-braces
-        int open = 0;
+        int open = 1;
         List<String> classContent = new ArrayList<>();
-        while (open != -1) {
+        while (open != 0) {
             for (int j = 0; j < content.get(i).length(); j++) {
                 if (content.get(i).charAt(j) == '{') {
                     open++;
                 } else if (content.get(i).charAt(j) == '}') {
                     open--;
                 }
+                if (open == 0) {
+                    break;
+                }
             }
             classContent.add(content.get(i++));
         }
-
-        for (int j = 0; j < classContent.size(); j++) {
-            System.out.println(classContent.get(j));
+        String ret = "";
+        for (int j = 0; j < classContent.size()-1; j++) {
+            ret += classContent.get(j).replaceFirst("    ", "") + "\n";
         }
-
-        return null;
+        return ret;
     }
 
     /**
