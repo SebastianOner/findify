@@ -3,7 +3,9 @@ package GUI;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
+import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import java.io.IOException;
 
@@ -11,9 +13,11 @@ public class ControllerClass {
     private Stage thisStage;
     //yes no checkbox variables
     private CheckBox extendedYCheck, extendedNCheck, implementedYCheck, implementedNCheck, genericsYCheck, genericsNCheck;
-    //rest of the check box variablesü
+    //rest of the check box variables
     private CheckBox publicCheck, privateCheck, protectedCheck, staticCheck, intCheck, stringCheck, doubleCheck, booleanCheck,
             charCheck, arraysCheck, abstractCheck, interfaceCheck, ENUMCheck, finalCheck, classCheck;
+    private TextField searchField;
+    private Button goButton;
 
 
     //initializes the controller for the class stage
@@ -32,103 +36,124 @@ public class ControllerClass {
     }
 
     public void showStage() {
-        thisStage.showAndWait();
+        thisStage.show();
     }
 
-    public void interfaceFired(ActionEvent actionEvent){
-
+    public void interfaceFired(){
+        if(interfaceCheck.isSelected())
+            System.out.println("True");
     }
 
-    public void abstractFired(ActionEvent actionEvent){
-
+    public void abstractFired(){
+        if(abstractCheck.isSelected())
+            System.out.println("True");
     }
 
-    public void ENUMFired(ActionEvent actionEvent){
-
+    public void ENUMFired(){
+        if(ENUMCheck.isSelected())
+            System.out.println("True");
     }
 
-    public void finalFired(ActionEvent actionEvent){
-
+    public void finalFired(){
+        if(finalCheck.isSelected())
+            System.out.println("True");
     }
 
-    public void standardClassFired(ActionEvent actionEvent){
-
+    public void standardClassFired(){
+        if(classCheck.isSelected())
+            System.out.println("True");
     }
 
-    public void publicFired(ActionEvent actionEvent){
-
+    public void publicFired(){
+        if(publicCheck.isSelected())
+            System.out.println("True");
     }
 
-    public void privateFired(ActionEvent actionEvent){
-
+    public void privateFired(){
+        if(privateCheck.isSelected())
+            System.out.println("True");
     }
 
-    public void protectedFired(ActionEvent actionEvent){
-
+    public void protectedFired(){
+        if(protectedCheck.isSelected())
+            System.out.println("True");
     }
 
-    public void staticFired(ActionEvent actionEvent){
-
+    public void staticFired(){
+        if(staticCheck.isSelected())
+            System.out.println("True");
     }
 
-    public void extendedYFired(ActionEvent actionEvent){
+    public void extendedYFired(){
         if(extendedYCheck.isSelected()){
             extendedNCheck.setSelected(false);
         }
 
     }
 
-    public void extendedNFired(ActionEvent actionEvent){
+    public void extendedNFired(){
         if(extendedNCheck.isSelected()){
             extendedYCheck.setSelected(false);
         }
     }
 
-    public void implementedYFired(ActionEvent actionEvent){
+    public void implementedYFired(){
+        if(implementedYCheck.isSelected())
+            extendedNCheck.setSelected(false);
+    }
+
+    public void implementedNFired(){
+        if(implementedNCheck.isSelected())
+            extendedYCheck.setSelected(false);
+    }
+
+    public void genericYFired(){
+        if(genericsYCheck.isSelected())
+            genericsNCheck.setSelected(false);
+    }
+
+    public void genericNFired(){
+        if(genericsNCheck.isSelected())
+            genericsYCheck.setSelected(false);
+    }
+
+    public void intFired(){
+        if(intCheck.isSelected())
+            System.out.println("True");
+    }
+
+    public void stringFired(){
+        if(stringCheck.isSelected())
+            System.out.println("True");
+    }
+
+    public void arraysFired(){
+        if(arraysCheck.isSelected())
+            System.out.println("True");
+    }
+
+    public void doubleFired(){
+        if(doubleCheck.isSelected())
+            System.out.println("True");
+    }
+
+    public void booleanFired(){
+        if(booleanCheck.isSelected())
+            System.out.println("True");
+    }
+
+    public void charFired(){
+        if(charCheck.isSelected())
+            System.out.println("True");
+    }
+
+    public void searchFired(){
+        CharSequence charSequence = searchField.getCharacters();
+        System.out.println(charSequence.toString());
 
     }
 
-    public void implementedNFired(ActionEvent actionEvent){
-
-    }
-
-    public void genericYFired(ActionEvent actionEvent){
-
-    }
-
-    public void genericNFired(ActionEvent actionEvent){
-
-    }
-
-    public void intFired(ActionEvent actionEvent){
-
-    }
-
-    public void stringFired(ActionEvent actionEvent){
-
-    }
-
-    public void arraysFired(ActionEvent actionEvent){
-
-    }
-
-    public void doubleFired(ActionEvent actionEvent){
-
-    }
-
-    public void booleanFired(ActionEvent actionEvent){
-
-    }
-
-    public void charFired(ActionEvent actionEvent){
-
-    }
-
-    public void searchFired(ActionEvent actionEvent){
-
-    }
-
-    public void goFired(ActionEvent actionEvent){
-
+    public void goFired(){
+        System.out.println("GOOOO");
     }
 }

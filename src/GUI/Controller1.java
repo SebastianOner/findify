@@ -28,7 +28,7 @@ public class Controller1 {
 
 
     //executes the button actionEvent for the project file opening
-    public void projectButtonFired(ActionEvent actionEvent){
+    public void projectButtonFired(){
         DirectoryChooser chooser = new DirectoryChooser();
         chooser.setTitle("Project Path");
 
@@ -62,6 +62,6 @@ public class Controller1 {
     }
 
     public void showStage() {
-        thisStage.showAndWait();
+        thisStage.show();
     }
 }

@@ -31,23 +31,24 @@ public class Controller2 {
     }
 
     public void showStage() {
-        thisStage.showAndWait();
+        thisStage.show();
     }
 
     //creates the action event for clicking on the class button
-    public void classFired(ActionEvent actionEvent){
+    public void classFired(){
         thisStage.close();
         initializeControllerClass();
     }
 
     //creates the action event for clicking on the method button
-    public void methodFired(ActionEvent actionEvent){
+    public void methodFired(){
         thisStage.close();
         initializeControllerMethod();
     }
 
     //creates the action for clicking on the attribute button
-    public void attributeFired(ActionEvent actionEvent){
+    public void attributeFired(){
+
         thisStage.close();
         initializeControllerAttribute();
     }
