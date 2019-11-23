@@ -56,16 +56,17 @@ public class ClassObject extends SearchObject {
     }
 
     //Constructor for normal Class without inheritance, generic, implementing Class
-    public ClassObject(String name, String path, byte visibilty, int line, List<String> content) {
-        super(name, visibilty, path, content, line);
+    public ClassObject(String name, String path, AccessModifier accessModifier, int line,
+                       List<String> content) {
+        super(name, accessModifier, path, content, line);
         this.classList = new ArrayList<>();
         this.methodList = new ArrayList<>();
         this.attributes = new ArrayList<>();
     }
 
-    public ClassObject(String name, String path, byte visibilty, int line,
+    public ClassObject(String name, String path, AccessModifier accessModifier, int line,
                        boolean isChild, boolean hasGeneric, List<String> content) {
-        super(name, visibilty, path, content, line);
+        super(name, accessModifier, path, content, line);
         this.isChild = isChild;
         this.hasGeneric = hasGeneric;
         this.classList = new ArrayList<>();
@@ -106,7 +107,8 @@ public class ClassObject extends SearchObject {
 
     @Override
     public String toString() {
-        return "CLASS:\nname: " + getName() + "\nvisibility: " + getVisibility() + "\nisChild: " + isChild + "\nisImplemented: " +
+        return "CLASS:\nname: " + getName() + "\nvisibility: " + getAccessModifier() +
+               "\nisChild: " + isChild + "\nisImplemented: " +
                 isImplemented + "\nHas Generics: " + hasGeneric + "\n" + Arrays.toString(classType) + "\n" +
                 getAttributes().toString() + "\n" + getMethodList().toString() + "\n" + getClassList().toString();
     }

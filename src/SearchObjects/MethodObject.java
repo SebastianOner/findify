@@ -8,7 +8,8 @@ public class MethodObject extends SearchObject {
     private List<FieldObject> parameters;
     private String returnType;
 
-    public MethodObject(String name, byte visibility, String path, int line, List<String> content, boolean isStatic, String returnType) {
+    public MethodObject(String name, AccessModifier visibility, String path, int line,
+                        List<String> content, boolean isStatic, String returnType) {
         super(name, visibility, path, content, line);
         this.isStatic = isStatic;
         this.returnType = returnType;
@@ -43,6 +44,6 @@ public class MethodObject extends SearchObject {
 
     public String toString() {
         return "METHOD:\nName: " + getName() + "\nreturn type: " + getReturnType() + "\nvisibility: "
-                + getVisibility() + "\nisStatic: " + isStatic() + "\n" + parameters.toString();
+               + getAccessModifier() + "\nisStatic: " + isStatic() + "\n" + parameters.toString();
     }
 }
