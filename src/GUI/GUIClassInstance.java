@@ -14,7 +14,7 @@ public class GUIClassInstance {
     //attribute types
     public Boolean intAtt = null, stringAtt = null, arraysAtt = null, doubleAtt = null, booleanAtt = null, charAtt = null;
     //possible class name
-    public String name = null;
+    public String name = "";
 
     public String toString(GUIClassInstance classInstance) {
         String extend, implement, generic;
@@ -38,26 +38,24 @@ public class GUIClassInstance {
         else
             generic = "Not specified";
 
-        return  "Interface: " + interfaceAtt.toString() +
-                "\nAbstract Class: " + abstractClassAtt.toString() +
-                "\nENUM: " + ENUMAtt.toString() +
-                "\nFinal: " + finalAtt.toString() +
-                "\nStandard class: " + standardClassAtt.toString() +
-                "\nPublic: " + publicAtt.toString() +
-                "\nPrivate: " + privateAtt.toString() +
-                "\nProtected: " + protectedAtt.toString() +
-                "\nStatic: " + staticAtt.toString() +
+        return  ("Interface: " + classInstance.interfaceAtt +
+                "\nAbstract Class: " + classInstance.abstractClassAtt +
+                "\nENUM: " + classInstance.ENUMAtt +
+                "\nFinal: " + classInstance.finalAtt +
+                "\nStandard class: " + classInstance.standardClassAtt +
+                "\nPublic: " + classInstance.publicAtt +
+                "\nPrivate: " + classInstance.privateAtt +
+                "\nProtected: " + classInstance.protectedAtt +
+                "\nStatic: " + classInstance.staticAtt +
                 "\nExtended?: " + extend +
                 "\nImplemented?: " + implement +
                 "\nGenerics?: " + generic +
-                "\nInts: " + intAtt.toString() +
-                "\nStrings: " + stringAtt.toString() +
-                "\nArrays: " + arraysAtt.toString() +
-                "\nDoubles: " + doubleAtt.toString() +
-                "\nBooleans: " + booleanAtt.toString() +
-                "\nChars: " + charAtt.toString() +
-                "\nName: " + name;
-
+                "\nInts: " + classInstance.intAtt +
+                "\nStrings: " + classInstance.stringAtt +
+                "\nArrays: " + classInstance.arraysAtt +
+                "\nDoubles: " + classInstance.doubleAtt +
+                "\nBooleans: " + classInstance.booleanAtt +
+                "\nChars: " + classInstance.charAtt +
+                "\nName: " + classInstance.name);
     }
-
 }
