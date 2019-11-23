@@ -25,7 +25,18 @@ public class GUIMain extends Application {
     public void start(Stage primaryStage) throws Exception{
         DirectoryChooser chooser = new DirectoryChooser();
         chooser.setTitle("Project Path");
-        File defaultDir = new File("/home/");
+
+        String os = System.getProperty("os.name").toLowerCase();
+        String defaultPath = "";
+        if (os.equals("linux") || os.equals("mac os x")) {
+            defaultPath = "/home/";
+        } else if (os.contains("windows")) {
+            defaultPath = "%userprofile%";
+        }
+
+        System.out.println(System.getProperty("os.name").toLowerCase());
+
+        File defaultDir = new File(defaultPath);
         chooser.setInitialDirectory(defaultDir);
         File selected = chooser.showDialog(primaryStage);
         System.out.println(selected.getPath());
