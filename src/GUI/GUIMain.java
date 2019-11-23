@@ -25,25 +25,6 @@ public class GUIMain extends Application implements EventHandler<ActionEvent> {
 
     @Override
     public void start(Stage primaryStage) throws Exception {
-
-        /*DirectoryChooser chooser = new DirectoryChooser();
-        chooser.setTitle("Project Path");
-
-        String os = System.getProperty("os.name").toLowerCase();
-        String defaultPath = "";
-        if (os.equals("linux") || os.equals("mac os x")) {
-            defaultPath = "/home/";
-        } else if (os.contains("windows")) {
-            defaultPath = "C:\\Users\\";
-        }
-
-        System.out.println(System.getProperty("os.name").toLowerCase());
-
-        File defaultDir = new File(defaultPath);
-        chooser.setInitialDirectory(defaultDir);
-        File selected = chooser.showDialog(primaryStage);
-        System.out.println(selected.getPath());
-*/
         //window definitions
         window = primaryStage;
         window.setTitle("findify");
