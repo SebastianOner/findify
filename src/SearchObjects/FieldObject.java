@@ -8,7 +8,7 @@ public class FieldObject extends SearchObject{
 		super(name, accessModifier, path, null, line);
 		this.type = type;
 	}
-
+	
 	public FieldObject(String type){
 		super();
 		this.type = type;
@@ -26,11 +26,15 @@ public class FieldObject extends SearchObject{
 		FieldObject fieldObject = ((FieldObject)searchObject);
 		double similarity =
 				semanticWeb.getSimilarity(getName(), fieldObject.getName());
-		if(!getName().equals(fieldObject.getName()))
+		if(getName() != null && fieldObject.getName() != null &&
+		   !getName().equals(fieldObject.getName()))
 			similarity *= 0.9;
-		if(getAccessModifier() != fieldObject.getAccessModifier())
+		if(getAccessModifier() != null &&
+		   fieldObject.getAccessModifier() != null &&
+		   getAccessModifier() != fieldObject.getAccessModifier())
 			similarity *= 0.9;
-		if(getType() != fieldObject.getType())
+		if(getType() != null && fieldObject.getType() != null &&
+		   getType() != fieldObject.getType())
 			similarity *= 0.9;
 		//TODO: Change weights
 		return similarity;

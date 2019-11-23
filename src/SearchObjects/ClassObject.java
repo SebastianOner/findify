@@ -33,15 +33,15 @@ public class ClassObject extends SearchObject{
 	
 	public ClassObject(String name, AccessModifier accessModifier,
 	                   Boolean isChild, Boolean hasGeneric,
-	                   Boolean isImplemented, InheritanceType inheritanceType
-			, ClassType classType, List<FieldObject> attributes) {
+	                   Boolean isImplemented, InheritanceType inheritanceType,
+	                   ClassType classType, List<FieldObject> attributes){
 		super(name, accessModifier);
-		this.isChild = isChild;
-		this.hasGeneric = hasGeneric;
-		this.isImplemented = isImplemented;
+		this.isChild         = isChild;
+		this.hasGeneric      = hasGeneric;
+		this.isImplemented   = isImplemented;
 		this.inheritanceType = inheritanceType;
-		this.classType = classType;
-		this.attributes = attributes;
+		this.classType       = classType;
+		this.attributes      = attributes;
 	}
 	
 	public Boolean isChild(){
@@ -136,20 +136,28 @@ public class ClassObject extends SearchObject{
 		       "\n" + getClasses().toString();
 	}
 	@Override public double getSimilarity(SearchObject searchObject){
-		ClassObject classObject = ((ClassObject) searchObject);
+		ClassObject classObject = ((ClassObject)searchObject);
 		double similarity =
 				semanticWeb.getSimilarity(getName(), classObject.getName());
-		if(!getName().equals(classObject.getName()))
+		if(getName() != null && classObject.getName() != null &&
+		   !getName().equals(classObject.getName()))
 			similarity *= 0.9;
-		if(getAccessModifier() != classObject.getAccessModifier())
+		if(getAccessModifier() != null &&
+		   classObject.getAccessModifier() == null &&
+		   getAccessModifier() != classObject.getAccessModifier())
 			similarity *= 0.9;
-		if(isChild != classObject.isChild)
+		if(isChild != null && classObject.isChild != null &&
+		   isChild != classObject.isChild)
 			similarity *= 0.9;
-		if(hasGeneric != classObject.hasGeneric)
+		if(hasGeneric != null && classObject.hasGeneric != null &&
+		   hasGeneric != classObject.hasGeneric)
 			similarity *= 0.9;
-		if(getInheritanceType() != classObject.getInheritanceType())
+		if(getInheritanceType() != null &&
+		   classObject.getInheritanceType() != null &&
+		   getInheritanceType() != classObject.getInheritanceType())
 			similarity *= 0.9;
-		if(getClassType() != classObject.getClassType()) {
+		if(getClassType() != null && classObject.getClassType() != null &&
+		   getClassType() != classObject.getClassType()){
 			similarity *= 0.9;
 		}
 		//TODO: Change weights

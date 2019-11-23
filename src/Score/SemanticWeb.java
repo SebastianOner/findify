@@ -85,6 +85,8 @@ final public class SemanticWeb{
 	}
 	
 	public double getSimilarity(String a, String b){
+		if(a == null || b == null)
+			return 0;
 		PriorityHeap<Entry> unvisitedEntries = new PriorityHeap<Entry>();
 		for(Entry entry : entries){
 			unvisitedEntries.enqueue(entry, a.equals(entry.getWord()) ? 1 : 0);
