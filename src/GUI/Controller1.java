@@ -46,7 +46,7 @@ public class Controller1 {
         File defaultDir = new File(defaultPath);
         chooser.setInitialDirectory(defaultDir);
         File selected = chooser.showDialog(thisStage);
-        System.out.println(selected.getPath());
+
 
 
     }
