@@ -34,13 +34,14 @@ public class ClassObject extends SearchObject{
 	public ClassObject(String name, AccessModifier accessModifier,
 	                   boolean isChild, boolean hasGeneric,
 	                   boolean isImplemented, InheritanceType inheritanceType
-			, ClassType classType) {
+			, ClassType classType, List<FieldObject> attributes) {
 		super(name, accessModifier);
 		this.isChild = isChild;
 		this.hasGeneric = hasGeneric;
 		this.isImplemented = isImplemented;
 		this.inheritanceType = inheritanceType;
 		this.classType = classType;
+		this.attributes = attributes;
 	}
 	
 	public Boolean isChild(){

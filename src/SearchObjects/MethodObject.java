@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class MethodObject extends SearchObject {
-    private boolean isStatic;
+    private Boolean isStatic;
     private List<FieldObject> parameters;
     private String returnType;
 
@@ -21,7 +21,7 @@ public class MethodObject extends SearchObject {
         this.parameters = parameters;
     }
 
-    public void setStatic(boolean aStatic) {
+    public void setStatic(Boolean aStatic) {
         isStatic = aStatic;
     }
 
@@ -29,7 +29,7 @@ public class MethodObject extends SearchObject {
         this.returnType = returnType;
     }
 
-    public boolean isStatic() {
+    public Boolean isStatic() {
         return isStatic;
     }
 
