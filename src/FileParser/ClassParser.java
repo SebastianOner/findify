@@ -2,7 +2,6 @@ package FileParser;
 
 import SearchObjects.*;
 
-import java.io.FileReader;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -112,7 +111,7 @@ public class ClassParser {
      * @return a basic {@link ClassObject} containing all the info from the declaration line
      */
     private static ClassObject parseClassDecLine(String declarationLine) {
-        ClassObject classObject = new ClassObject(null, null, (byte) 0, 0, null);
+        ClassObject classObject = new ClassObject(null, null, SearchObject.AccessModifier.DEFAULT, 0, null);
         String[] lineArgs = declarationLine.split(" ");
         boolean[] classTypeArr = new boolean[4];
 
@@ -138,8 +137,9 @@ public class ClassParser {
             classObject.setImplemented(true);
         }
 
-        byte visibility = visibilityParser(declarationLine);
-        classObject.setVisibility(visibility);
+        SearchObject.AccessModifier
+		        accessModifier = visibilityParser(declarationLine);
+        classObject.setAccessModifier(accessModifier);
 
         for (int i = 0; i < lineArgs.length; i++) {
             if (lineArgs[i].contains("class") || lineArgs[i].contains("interface")) {
@@ -154,15 +154,15 @@ public class ClassParser {
         return classObject;
     }
 
-    public static byte visibilityParser(String line) {
+    public static SearchObject.AccessModifier visibilityParser(String line) {
         if (line.contains("public")) {
-            return 1;
+            return SearchObject.AccessModifier.PUBLIC;
         } else if (line.contains("private")) {
-            return 2;
+            return SearchObject.AccessModifier.PRIVATE;
         } else if (line.contains("protected")) {
-            return 3;
+            return SearchObject.AccessModifier.PROTECTED;
         }
-        return 0;
+        return SearchObject.AccessModifier.DEFAULT;
     }
 
     /**
@@ -171,8 +171,8 @@ public class ClassParser {
      * @return FieldObject: A FieldObject
      */
     public static FieldObject fieldParser(String fieldString, String path) {
-        byte visibility = visibilityParser(fieldString);
-        String[] stream = fieldString.split(" ");
+        SearchObject.AccessModifier visibility = visibilityParser(fieldString);
+        String[]                    stream     = fieldString.split(" ");
         return new FieldObject(stream[stream.length - 1], visibility, path, 0, stream[stream.length - 2]);
     }
 
@@ -182,10 +182,10 @@ public class ClassParser {
      * @return: MethodObject: A MethodObject with List of Parameters
      */
     public static MethodObject methodParser(String method, String path) {
-        byte visibility = visibilityParser(method);
-        String[] front = method.substring(0, method.indexOf('(')).split(" ");
-        String[] back = method.substring(method.indexOf('(') + 1, method.indexOf(')')).split(", ");
-        MethodObject result = null;
+        SearchObject.AccessModifier visibility = visibilityParser(method);
+        String[]                    front      = method.substring(0, method.indexOf('(')).split(" ");
+        String[]                    back       = method.substring(method.indexOf('(') + 1, method.indexOf(')')).split(", ");
+        MethodObject                result     = null;
 
         result = new MethodObject(front[front.length - 1], visibility, path, 0, null, method.contains("static"), front[front.length - 2]);
 
@@ -196,5 +196,4 @@ public class ClassParser {
         result.setParameters(parameters);
         return result;
     }
-
 }

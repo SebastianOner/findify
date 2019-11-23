@@ -3,8 +3,10 @@ package SearchObjects;
 public class FieldObject extends SearchObject {
     private String type;
 
-    public FieldObject(String name, byte visibility, String path, int line, String type) {
-        super(name, visibility, path, null, line);
+    public FieldObject(String name, AccessModifier accessModifier, String path,
+                       int line,
+                       String type) {
+        super(name, accessModifier, path, null, line);
         this.type = type;
     }
 
@@ -13,7 +15,7 @@ public class FieldObject extends SearchObject {
     }
 
     public String toString() {
-        return (getVisibility() + " " + type + " " + getName());
+        return (getAccessModifier() + " " + type + " " + getName());
     }
 
 }

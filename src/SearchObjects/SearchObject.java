@@ -3,16 +3,20 @@ package SearchObjects;
 import java.util.List;
 
 public abstract class SearchObject {
-    private String name;
-    private byte visibility;
-    private String path;
-    private int line;
+	public static enum AccessModifier{
+		PUBLIC, PROTECTED, PRIVATE, DEFAULT;
+	}
+    private String         name;
+    private AccessModifier accessModifier;
+    private String         path;
+    private int            line;
 
-    public SearchObject(String name, byte visibility, String path, List<String> content, int line) {
-        this.name = name;
-        this.visibility = visibility;
-        this.path = path;
-        this.line = line;
+    public SearchObject(String name, AccessModifier accessModifier, String path,
+                        List<String> content, int line) {
+	    this.name           = name;
+	    this.accessModifier = accessModifier;
+	    this.path           = path;
+	    this.line           = line;
     }
 
     //Getters
@@ -21,8 +25,8 @@ public abstract class SearchObject {
         return name;
     }
 
-    public byte getVisibility() {
-        return visibility;
+    public AccessModifier getAccessModifier() {
+        return accessModifier;
     }
 
     public String getPath() {
@@ -33,8 +37,8 @@ public abstract class SearchObject {
         this.name = name;
     }
 
-    public void setVisibility(byte visibility) {
-        this.visibility = visibility;
+    public void setAccessModifier(AccessModifier accessModifier) {
+	    this.accessModifier = accessModifier;
     }
 
     public void setPath(String path) {
