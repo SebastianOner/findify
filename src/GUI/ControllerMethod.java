@@ -1,5 +1,8 @@
 package GUI;
 
+import SearchObjects.FieldObject;
+import SearchObjects.MethodObject;
+import SearchObjects.SearchObject;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.CheckBox;
@@ -8,6 +11,9 @@ import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.lang.reflect.Field;
+import java.util.ArrayList;
+import java.util.List;
 
 public class ControllerMethod {
     private Stage thisStage;
@@ -202,6 +208,53 @@ public class ControllerMethod {
     }
 
     public void goFired(){
+        String name = nameFired();
+        Boolean isStatic = staticYFired();
+
+        //calculating the return type
+        String returnType;
+        if(intArrayRFired())
+            returnType = "int[]";
+        else if(intRFired())
+            returnType = "int";
+        else if(booleanRFired())
+            returnType = "boolean";
+        else if(doubleRFired())
+            returnType = "double";
+        else if(stringRFired())
+            returnType = "String";
+        else if(charRFired())
+            returnType = "char";
+        else
+            returnType = "void";
+
+        List<FieldObject> parameterTypes = new ArrayList<FieldObject>();
+        if(intArrayPFired())
+            parameterTypes.add(new FieldObject("int[]"));
+        if(intPFired())
+            parameterTypes.add(new FieldObject("int"));
+        if(booleanPFired())
+            parameterTypes.add(new FieldObject("boolean"));
+        if(doublePFired())
+            parameterTypes.add(new FieldObject("double"));
+        if(stringPFired())
+            parameterTypes.add(new FieldObject("String"));
+        if(charPFired())
+            parameterTypes.add(new FieldObject("char"));
+
+        //visibility in the methods
+        SearchObject.AccessModifier am;
+        if (protectedFired() != null) {
+            am = SearchObject.AccessModifier.PROTECTED;
+        } else if (publicFired() != null) {
+            am = SearchObject.AccessModifier.PUBLIC;
+        } else if (privateFired() != null) {
+            am = SearchObject.AccessModifier.PRIVATE;
+        } else {
+            am = SearchObject.AccessModifier.DEFAULT;
+        }
+
+        MethodObject MO = new MethodObject(name, am, isStatic, returnType, parameterTypes);
 
     }
 }
