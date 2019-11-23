@@ -1,5 +1,6 @@
 package SearchObjects;
 
+import java.lang.reflect.Constructor;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -11,24 +12,46 @@ public class ClassObject extends SearchObject{
 	public enum ClassType{
 		ENUM, INTERFACE, DEFAULT
 	}
-	private boolean            isChild;
-	private boolean            hasGeneric;
-	private boolean            isImplemented;
+	private Boolean            isChild;
+	private Boolean            hasGeneric;
+	private Boolean            isImplemented;
 	private List<FieldObject>  attributes;
 	private List<ClassObject>  classes;
 	private List<MethodObject> methods;
 	private InheritanceType    inheritanceType;
 	private ClassType          classType;
 	
-	public boolean isChild(){
+	//Constructor for normal Class without inheritance, generic, implementing
+	// Class
+	public ClassObject(String name, String path, AccessModifier accessModifier,
+	                   int line, List<String> content){
+		super(name, accessModifier, path, content, line);
+		this.classes    = new ArrayList<>();
+		this.methods    = new ArrayList<>();
+		this.attributes = new ArrayList<>();
+	}
+	
+	public ClassObject(String name, AccessModifier accessModifier,
+	                   boolean isChild, boolean hasGeneric,
+	                   boolean isImplemented, InheritanceType inheritanceType
+			, ClassType classType) {
+		super(name, accessModifier);
+		this.isChild = isChild;
+		this.hasGeneric = hasGeneric;
+		this.isImplemented = isImplemented;
+		this.inheritanceType = inheritanceType;
+		this.classType = classType;
+	}
+	
+	public Boolean isChild(){
 		return isChild;
 	}
 	
-	public boolean hasGeneric(){
+	public Boolean hasGeneric(){
 		return hasGeneric;
 	}
 	
-	public boolean isImplemented(){
+	public Boolean isImplemented(){
 		return isImplemented;
 	}
 	
@@ -62,15 +85,6 @@ public class ClassObject extends SearchObject{
 		this.attributes = attributes;
 	}
 	
-	//Constructor for normal Class without inheritance, generic, implementing Class
-	public ClassObject(String name, String path, AccessModifier accessModifier,
-	                   int line, List<String> content){
-		super(name, accessModifier, path, content, line);
-		this.classes    = new ArrayList<>();
-		this.methods    = new ArrayList<>();
-		this.attributes = new ArrayList<>();
-	}
-	
 	public ClassObject(String name, String path, AccessModifier accessModifier,
 	                   int line, boolean isChild, boolean hasGeneric,
 	                   List<String> content){
@@ -96,19 +110,19 @@ public class ClassObject extends SearchObject{
 		return inheritanceType;
 	}
 	
-	public boolean isHasGeneric(){
+	public Boolean isHasGeneric(){
 		return hasGeneric;
 	}
 	
-	public void setChild(boolean child){
+	public void setChild(Boolean child){
 		isChild = child;
 	}
 	
-	public void setHasGeneric(boolean hasGeneric){
+	public void setHasGeneric(Boolean hasGeneric){
 		this.hasGeneric = hasGeneric;
 	}
 	
-	public void setImplemented(boolean implemented){
+	public void setImplemented(Boolean implemented){
 		isImplemented = implemented;
 	}
 	
