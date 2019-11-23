@@ -17,14 +17,15 @@ import javafx.stage.Stage;
 import java.io.File;
 import java.util.Stack;
 
-public class GUIMain extends Application {
+public class GUIMain extends Application implements EventHandler<ActionEvent> {
 
     Stage window;
-    Scene startupScene, classScene, methodScene, attributeScene;
-    Button classButton, methodButton, attributeButton;
+    Scene chooseProjectScene, startupScene, classScene, methodScene, attributeScene;
+    Button projectButton, classButton, methodButton, attributeButton;
 
     @Override
     public void start(Stage primaryStage) throws Exception {
+
         /*DirectoryChooser chooser = new DirectoryChooser();
         chooser.setTitle("Project Path");
 
@@ -47,14 +48,24 @@ public class GUIMain extends Application {
         window = primaryStage;
         window.setTitle("findify");
 
+
+
         //startup window buttons definitions
         classButton = new Button("Class");
         methodButton = new Button("Method");
         attributeButton = new Button("Attribute");
+        projectButton = new Button("Choose Project File");
 
         classButton.setOnAction(e -> window.setScene(classScene));
         methodButton.setOnAction(e -> window.setScene(methodScene));
         attributeButton.setOnAction(e -> window.setScene(attributeScene));
+        projectButton.setOnAction(this);
+
+        //project choosing scene definition
+        Label projectLabel = new Label("Please select your project path: ");
+        StackPane projectLayout = new StackPane();
+        projectLayout.getChildren().add(projectButton);
+        chooseProjectScene = new Scene(projectLayout, 400, 400);
 
         //startup window scene definition
         Label startupText = new Label("Welcome to findify! What are you trying to find?");
@@ -70,7 +81,7 @@ public class GUIMain extends Application {
         StackPane attributeLayout = new StackPane();
         attributeScene = new Scene(attributeLayout, 600, 300);
 
-        window.setScene(startupScene);
+        window.setScene(chooseProjectScene);
         window.show();
 
 
@@ -78,5 +89,28 @@ public class GUIMain extends Application {
 
     public static void main(String[] args) {
         launch(args);
+    }
+
+    @Override
+    public void handle(ActionEvent actionEvent) {
+        if(actionEvent.getSource() == projectButton){
+            DirectoryChooser chooser = new DirectoryChooser();
+            chooser.setTitle("Project Path");
+
+            String os = System.getProperty("os.name").toLowerCase();
+            String defaultPath = "";
+            if (os.equals("linux") || os.equals("mac os x")) {
+                defaultPath = "/home/";
+            } else if (os.contains("windows")) {
+                defaultPath = "C:\\Users\\";
+            }
+
+            System.out.println(System.getProperty("os.name").toLowerCase());
+
+            File defaultDir = new File(defaultPath);
+            chooser.setInitialDirectory(defaultDir);
+            File selected = chooser.showDialog(window);
+            System.out.println(selected.getPath());
+        }
     }
 }
