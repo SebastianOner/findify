@@ -17,7 +17,7 @@ import javafx.stage.Stage;
 import java.io.File;
 import java.util.Stack;
 
-public class GUIMain extends Application implements EventHandler<ActionEvent> {
+public class GUIMain extends Application{
 
     Stage window;
     Scene chooseProjectScene, startupScene, classScene, methodScene, attributeScene;
@@ -25,13 +25,17 @@ public class GUIMain extends Application implements EventHandler<ActionEvent> {
 
     @Override
     public void start(Stage primaryStage) throws Exception {
+        Parent root = FXMLLoader.load(getClass().getResource("projectSelectorScene.fxml"));
         //window definitions
         window = primaryStage;
         window.setTitle("findify");
+        window.setScene(new Scene(root, 300, 275));
+        window.show();
 
 
 
         //startup window buttons definitions
+        /*
         classButton = new Button("Class");
         methodButton = new Button("Method");
         attributeButton = new Button("Attribute");
@@ -61,8 +65,9 @@ public class GUIMain extends Application implements EventHandler<ActionEvent> {
         StackPane attributeLayout = new StackPane();
         attributeScene = new Scene(attributeLayout, 600, 300);
 
-        window.setScene(chooseProjectScene);
-        window.show();
+         */
+
+
 
 
     }
@@ -70,7 +75,7 @@ public class GUIMain extends Application implements EventHandler<ActionEvent> {
     public static void main(String[] args) {
         launch(args);
     }
-
+/*
     @Override
     public void handle(ActionEvent actionEvent) {
         if(actionEvent.getSource() == projectButton){
@@ -85,12 +90,14 @@ public class GUIMain extends Application implements EventHandler<ActionEvent> {
                 defaultPath = "C:\\Users\\";
             }
 
-            System.out.println(System.getProperty("os.name").toLowerCase());
-
             File defaultDir = new File(defaultPath);
             chooser.setInitialDirectory(defaultDir);
             File selected = chooser.showDialog(window);
+
+            // TODO: 23.11.19 Hand the selected path over to the crawler for indexing over to the crawler
             System.out.println(selected.getPath());
         }
     }
+    */
+
 }
