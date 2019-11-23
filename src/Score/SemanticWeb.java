@@ -104,13 +104,13 @@ final public class SemanticWeb{
 					                                                   .find(entries[reference
 							                                                   .getPosition()]))
 			     .forEach(unvisitedReference -> {
+				     double alternative = unvisitedReference.getWeight() *
+				                          unvisitedReference.getPosition();
 				     if(unvisitedEntries.getPriority(unvisitedReference) <
-				        unvisitedReference.getWeight() *
-				        unvisitedReference.getPosition())
+				        alternative)
 					     unvisitedEntries.IncreaseKey(
 							     entries[unvisitedReference.getPosition()],
-							     unvisitedEntries
-									     .getPriority(unvisitedReference));
+							     alternative);
 			     });
 		}
 		return 0;
