@@ -43,7 +43,6 @@ public class GUIMain extends Application implements EventHandler<ActionEvent> {
         projectButton.setOnAction(this);
 
         //project choosing scene definition
-        Label projectLabel = new Label("Please select your project path: ");
         StackPane projectLayout = new StackPane();
         projectLayout.getChildren().add(projectButton);
         chooseProjectScene = new Scene(projectLayout, 400, 400);
