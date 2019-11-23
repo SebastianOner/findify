@@ -26,7 +26,13 @@ public class ClassParser {
         System.out.println(content);
     }
 
-
+    /**
+     * Extracts the raw content of a class as a String
+     *
+     * @param content: the content of the file with the class to be extracted
+     * @param i: index of the start of the class
+     * @return String containing whats inside the class for further parsing
+     */
     private static String getContent(List<String> content, int i) {
         while (!content.get(i).contains("{")) {
             i++;
