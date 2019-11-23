@@ -85,29 +85,31 @@ final class SemanticWeb{
 	}
 	
 	double getSimilarity(String a, String b){
-//		FibonacciHeap<Entry> unvisitedEntries = new FibonacciHeap<Entry>();
-//		for(Entry entry : entries){
-//			unvisitedEntries.enqueue(entry, a.equals(entry.getWord()) ? 1 : 0);
-//		}
-//		Score.FibonacciHeap.Node fibonacciHeapNode;
-//		while(!unvisitedEntries.isEmpty()){
-//			fibonacciHeapNode = unvisitedEntries.dequeueMax();
-//			Entry entry = (Entry)fibonacciHeapNode.getObject();
-//			if(b.equals(entry.getWord())){
-//				return fibonacciHeapNode.getPriority();
-//			}
-//			entry.getReferences().stream().filter(reference -> unvisitedEntries
-//					.contains(entries[reference.getPosition()]))
-//			     .forEach(unvisitedReference -> {
-//				     if(unvisitedEntries.getPriority(unvisitedReference) <
-//				        unvisitedReference.getWeight() *
-//				        unvisitedReference.getPosition())
-//					     unvisitedEntries.IncreaseKey(unvisitedReference,
-//					                                  unvisitedEntries
-//							                                  .getPriority(
-//									                                  unvisitedReference));
-//			     });
-//		}
+		FibonacciHeap<Entry> unvisitedEntries = new FibonacciHeap<Entry>();
+		for(Entry entry : entries){
+			unvisitedEntries.enqueue(entry, a.equals(entry.getWord()) ? 1 : 0);
+		}
+		Score.FibonacciHeap.Node fibonacciHeapNode;
+		while(!unvisitedEntries.isEmpty()){
+			fibonacciHeapNode = unvisitedEntries.dequeueMax();
+			Entry entry = (Entry)fibonacciHeapNode.getObject();
+			if(b.equals(entry.getWord())){
+				return fibonacciHeapNode.getPriority();
+			}
+			entry.getReferences().stream().filter(reference -> null !=
+			                                                   unvisitedEntries
+					                                                   .find(entries[reference
+							                                                   .getPosition()]))
+			     .forEach(unvisitedReference -> {
+				     if(unvisitedEntries.getPriority(unvisitedReference) <
+				        unvisitedReference.getWeight() *
+				        unvisitedReference.getPosition())
+					     unvisitedEntries.IncreaseKey(
+							     entries[unvisitedReference.getPosition()],
+							     unvisitedEntries
+									     .getPriority(unvisitedReference));
+			     });
+		}
 		return 0;
 	}
 	

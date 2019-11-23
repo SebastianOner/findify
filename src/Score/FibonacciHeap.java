@@ -103,7 +103,8 @@ final class FibonacciHeap<T>{
 		}
 		return maxElem;
 	}
-	void IncreaseKey(Node<T> node, double newPriority){
+	void IncreaseKey(T object, double newPriority){
+		Node node = find(object);
 		checkPriority(newPriority);
 		if(newPriority < node.priority)
 			throw new IllegalArgumentException("New priority exceeds old.");
@@ -164,10 +165,15 @@ final class FibonacciHeap<T>{
 			node.parent.isMarked = true;
 		node.parent = null;
 	}
-	public double getPriority(SemanticWeb.Entry.Reference unvisitedReference){
+	double getPriority(SemanticWeb.Entry.Reference unvisitedReference){
 		return 1;
 	}
-	public boolean contains(T object){
-		return true;
+	Node find(T object){
+		//nicht ganz richtig
+		Node current = max;
+		while(current.degree > 0 && object != current.getObject()){
+			current = current.child;
+		}
+		return null;
 	}
 }
