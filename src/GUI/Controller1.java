@@ -1,18 +1,23 @@
 package GUI;
+
 import FileParser.FileCrawler;
-import FileParser.Project;
+import SearchObjects.ClassObject;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.image.Image;
 import javafx.stage.DirectoryChooser;
 import javafx.stage.Stage;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Controller1 {
-    public Project project;
+    public List<ClassObject> projectClasses = new ArrayList<>();
+    public String projectPath;
 
     private Stage thisStage;
     private Controller2 controller2;
@@ -20,6 +25,7 @@ public class Controller1 {
 
     public Controller1() throws IOException {
         thisStage = new Stage();
+        thisStage.getIcons().add(new Image("file:resources/findifyIcon.png"));
 
         FXMLLoader loader = new FXMLLoader(getClass().getResource("projectSelectorScene.fxml"));
         loader.setController(this);
@@ -30,7 +36,7 @@ public class Controller1 {
 
 
     //executes the button actionEvent for the project file opening
-    public void projectButtonFired(){
+    public void projectButtonFired() {
         DirectoryChooser chooser = new DirectoryChooser();
         chooser.setTitle("Project Path");
 
@@ -45,21 +51,25 @@ public class Controller1 {
         File defaultDir = new File(defaultPath);
         chooser.setInitialDirectory(defaultDir);
         File selected = chooser.showDialog(thisStage);
-
+        projectPath = selected.getPath();
         // TODO: 23.11.19 Change this to the project interface, not just crawl
-        FileCrawler.crawl(selected.getPath());
-        this.project = new Project(selected.getPath());
+
+        FileCrawler.crawl(projectPath, projectClasses);
+        for (int i = 0; i < projectClasses.size(); i++) {
+            System.out.println(projectClasses.get(i));
+        }
+
         thisStage.close();
         initializeController2();
 
     }
 
     //creates and initializes our second controller and stage
-    private void initializeController2(){
+    private void initializeController2() {
         try {
             controller2 = new Controller2();
             controller2.showStage();
-        }catch (IOException e){
+        } catch (IOException e) {
             e.printStackTrace();
         }
     }
