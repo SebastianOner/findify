@@ -15,7 +15,6 @@ public class Controller1 {
 
     private Stage thisStage;
     private Controller2 controller2;
-
     public Button projectButton;
 
     public Controller1() throws IOException {
@@ -30,7 +29,7 @@ public class Controller1 {
         thisStage.setTitle("findify");
     }
 
-    public void projectButtonFired(ActionEvent actionEvent) {
+    public void projectButtonFired(ActionEvent actionEvent){
         DirectoryChooser chooser = new DirectoryChooser();
         chooser.setTitle("Project Path");
 
@@ -48,22 +47,21 @@ public class Controller1 {
 
         //TODO hand over to file crawler
 
-        controller2 = new Controller2();
+        initializeController2();
 
-        controller2.showStage();
+    }
+
+    private void initializeController2(){
+        try {
+            controller2 = new Controller2();
+            controller2.showStage();
+        }catch (IOException e){
+            e.printStackTrace();
+        }
 
     }
 
     public void showStage() {
         thisStage.showAndWait();
-    }
-
-    public void classFired(ActionEvent actionEvent) {
-    }
-
-    public void attributeFired(ActionEvent actionEvent) {
-    }
-
-    public void methodFired(ActionEvent actionEvent) {
     }
 }
