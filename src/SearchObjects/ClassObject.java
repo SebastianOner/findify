@@ -119,4 +119,9 @@ public class ClassObject extends SearchObject {
     public void setImplemented(boolean implemented) {
         isImplemented = implemented;
     }
+
+    @Override
+    public String toString() {
+        return "name: "+getName() +" isChild: " + isChild + " isImplemented: " + isImplemented + " visibility: " + getVisibility();
+    }
 }
