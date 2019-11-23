@@ -4,11 +4,11 @@ import java.util.List;
 
 public abstract class SearchObject {
     private String name;
-    private String visibility;
+    private byte visibility;
     private String path;
     private List<String> content;
 
-    public SearchObject(String name, String visibility, String path, List<String> content) {
+    public SearchObject(String name, byte visibility, String path, List<String> content) {
         this.name = name;
         this.visibility = visibility;
         this.path = path;
@@ -23,7 +23,7 @@ public abstract class SearchObject {
         return name;
     }
 
-    public String getVisibility() {
+    public byte getVisibility() {
         return visibility;
     }
 
@@ -33,5 +33,21 @@ public abstract class SearchObject {
 
     public List<String> getContent() {
         return content;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setVisibility(byte visibility) {
+        this.visibility = visibility;
+    }
+
+    public void setPath(String path) {
+        this.path = path;
+    }
+
+    public void setContent(List<String> content) {
+        this.content = content;
     }
 }

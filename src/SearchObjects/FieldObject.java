@@ -3,7 +3,7 @@ package SearchObjects;
 public class FieldObject extends SearchObject{
     private String type;
 
-    public FieldObject(String name, String visibility, String path, String type) {
+    public FieldObject(String name, byte visibility, String path, String type) {
         super(name, visibility, path, null);
         this.type = type;
     }

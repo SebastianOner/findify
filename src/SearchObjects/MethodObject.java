@@ -8,7 +8,7 @@ public class MethodObject extends SearchObject{
     private List<FieldObject> parameters;
     private String returnType;
 
-    public MethodObject(String name, String visibility, String path, List<String> content, boolean isStatic, String returnType) {
+    public MethodObject(String name, byte visibility, String path, List<String> content, boolean isStatic, String returnType) {
         super(name, visibility, path, content);
         this.isStatic = isStatic;
         this.returnType = returnType;

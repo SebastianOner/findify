@@ -1,6 +1,7 @@
 package CodeBase;
 
-class Crocodile extends Reptile {
+class Crocodile<T> extends Reptile
+implements Animal {
     int numTeeth;
     double length;
     Crocodile father, mother;
