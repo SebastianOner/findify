@@ -14,7 +14,7 @@ final public class Search{
 	
 	public static ArrayList<SearchObject> getBests(Project project,
 	                                               SearchObject request){
-		List<SearchObject> searchObjects = project.getJavaFileList();
+		List<ClassObject> searchObjects = project.getJavaFileList();
 		searchObjects.forEach(o -> traverse(o, request));
 		ArrayList<SearchObject> bests = new ArrayList<>();
 		for(int i = 0; i < 5 && !priorityHeap.isEmpty(); ++i)
