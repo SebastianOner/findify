@@ -61,6 +61,6 @@ public class GUIClassInstance {
                 "\nBooleans: " + classInstance.booleanAtt +
                 "\nChars: " + classInstance.charAtt +
                 "\nName: " + classInstance.name +
-                "\nTags: " + tags;
+                "\nTags: " + classInstance.tags;
     }
 }
