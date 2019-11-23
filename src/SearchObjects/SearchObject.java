@@ -58,6 +58,11 @@ public abstract class SearchObject{
 		this.path           = path;
 		this.line           = line;
 	}
+
+	public SearchObject(String name, AccessModifier accessModifier){
+	    this.name = name;
+	    this.accessModifier = accessModifier;
+    }
 	
 	//Getters
 	
