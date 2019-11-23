@@ -231,7 +231,7 @@ public class ControllerClass {
         return charSequence.toString();
     }
 
-    public String tagsField(){
+    public String tagsFired(){
         CharSequence charSequence = tagsField.getCharacters();
         return charSequence.toString();
     }
@@ -286,9 +286,9 @@ public class ControllerClass {
         }
 
         ClassObject.InheritanceType inh;
-        if (isFinal) {
+        if (isFinal != null) {
             inh = ClassObject.InheritanceType.FINAL;
-        } else if (isAbstract) {
+        } else if (isAbstract != null) {
             inh = ClassObject.InheritanceType.ABSTRACT;
         } else {
             inh = ClassObject.InheritanceType.DEFAULT;
