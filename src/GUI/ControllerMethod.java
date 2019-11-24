@@ -228,7 +228,6 @@ public class ControllerMethod {
         else
             returnType = "void";
 
-        //adding the parameter types if they exist in the method
         List<FieldObject> parameterTypes = new ArrayList<FieldObject>();
         if(intArrayPFired())
             parameterTypes.add(new FieldObject("int[]"));
