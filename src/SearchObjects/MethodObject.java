@@ -65,7 +65,6 @@ public class MethodObject extends SearchObject {
         double similarity = 1;
         if (getName() != null)
             similarity *= semanticWeb.getSimilarity(getName(), methodObject.getName());
-        else similarity *= 0.1;
 
         if (isStatic != null)
             if (methodObject.isStatic != null &&

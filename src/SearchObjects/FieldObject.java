@@ -26,15 +26,20 @@ public class FieldObject extends SearchObject {
     public double getSimilarity(SearchObject searchObject) {
         FieldObject fieldObject = ((FieldObject) searchObject);
         double similarity = 1;
-        if (0 != semanticWeb.getSimilarity(getName(), fieldObject.getName()))
+        if (getName() != null)
             similarity *= semanticWeb.getSimilarity(getName(), fieldObject.getName());
-        if (getAccessModifier() != null &&
-                fieldObject.getAccessModifier() != null &&
-                getAccessModifier() != fieldObject.getAccessModifier())
-            similarity *= 0.9;
-        if (getType() != null && fieldObject.getType() != null &&
-                getType() != fieldObject.getType())
-            similarity *= 0.9;
+
+        if (getAccessModifier() != null)
+            if (fieldObject.getAccessModifier() != null &&
+                    getAccessModifier() == fieldObject.getAccessModifier())
+                similarity *= 0.9;
+            else similarity *= 0.1;
+
+        if (getType() != null)
+            if (fieldObject.getType() != null &&
+                    getType() == fieldObject.getType())
+                similarity *= 0.9;
+            else similarity *= 0.1;
         //TODO: Change weights
         return similarity;
     }

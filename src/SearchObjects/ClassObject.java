@@ -150,7 +150,6 @@ public class ClassObject extends SearchObject {
         double similarity = 1;
         if (getName() != null)
             similarity *= semanticWeb.getSimilarity(getName(), classObject.getName());
-        else similarity *= 0.1;
 
         if (getAccessModifier() != null)
             if (classObject.getAccessModifier() != null &&
