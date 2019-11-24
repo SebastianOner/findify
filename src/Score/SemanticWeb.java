@@ -3,48 +3,7 @@ package Score;
 import java.util.ArrayList;
 
 final public class SemanticWeb{
-	class Entry{
-		class Reference{
-			private int    position;
-			private double weight;
-			
-			private Reference(int position){
-				this.position = position;
-				weight        = 0.5;
-			}
-			private int getPosition(){
-				return position;
-			}
-			
-			private double getWeight(){
-				return weight;
-			}
-		}
-		String               word;
-		ArrayList<Reference> references = new ArrayList<>();
-		
-		private Entry(String word){
-			this.word = word;
-		}
-		
-		private void addReference(int position){
-			for(Reference reference : references){
-				if(position == reference.getPosition())
-					return;
-			}
-			references.add(new Reference(position));
-		}
-		
-		private String getWord(){
-			return word;
-		}
-		
-		private ArrayList<Reference> getReferences(){
-			return references;
-		}
-	}
-	/**
-	 Hashtabelle. Größe sollte prim sein.
+/*Hashtabelle. Größe sollte prim sein.
 	 */
 	private Entry[] entries = new Entry[97];
 	
@@ -89,7 +48,8 @@ final public class SemanticWeb{
 			return 0;
 		PriorityHeap<Entry> unvisitedEntries = new PriorityHeap<Entry>();
 		for(Entry entry : entries){
-			unvisitedEntries.enqueue(entry, a.equals(entry.getWord()) ? 1 : 0);
+			if(entry != null)
+				unvisitedEntries.enqueue(entry, a.equals(entry.getWord()) ? 1 : 0);
 		}
 		PriorityHeap.Node priorityHeapNode;
 		while(!unvisitedEntries.isEmpty()){
@@ -150,7 +110,43 @@ final public class SemanticWeb{
 		return index;
 	}
 	
-	private int map(int i){
+	class Entry{
+		String               word;
+		ArrayList<Reference> references = new ArrayList<>();
+		private Entry(String word){
+			this.word = word;
+		}
+		private void addReference(int position){
+			for(Reference reference : references){
+				if(position == reference.getPosition())
+					return;
+			}
+			references.add(new Reference(position));
+		}
+		private String getWord(){
+			return word;
+		}
+		private ArrayList<Reference> getReferences(){
+			return references;
+		}
+		class Reference{
+			private int    position;
+			private double weight;
+			
+			private Reference(int position){
+				this.position = position;
+				weight        = 0.5;
+			}
+			private int getPosition(){
+				return position;
+			}
+			
+			private double getWeight(){
+				return weight;
+			}
+		}
+	}
+	  int map(int i){
 		return i >= 0 ? i : i + entries.length;
 	}
 }

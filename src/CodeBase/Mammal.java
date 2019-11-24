@@ -1,7 +1,7 @@
 package CodeBase;
 
-abstract class Mammal implements Animal {
-    class dog {
-
-    }
+abstract class Mammal implements Animal{
+	class dog{
+	
+	}
 }

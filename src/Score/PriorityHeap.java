@@ -5,35 +5,26 @@ import java.util.List;
 import java.util.NoSuchElementException;
 
 /**
- Implemented as fibonacci heap
- */
+ Implemented as fibonacci heap */
 final class PriorityHeap<T>{
-	static final class Node<T>{
-		private int     degree   = 0;
-		private boolean isMarked = false;
-		private Node<T> next;
-		private Node<T> previous;
-		private Node<T> parent;
-		private Node<T> child;
-		private T       object;
-		private double  priority;
-		T getObject(){
-			return object;
-		}
-		void setObject(T object){
-			this.object = object;
-		}
-		double getPriority(){
-			return priority;
-		}
-		private Node(T object, double priority){
-			next          = previous = this;
-			this.object   = object;
-			this.priority = priority;
-		}
-	}
 	private Node<T> max  = null;
 	private int     size = 0;
+	private static <T> Node<T> mergeLists(Node<T> one, Node<T> two){
+		if(one == null && two == null){
+			return null;
+		} else if(one != null && two == null){
+			return one;
+		} else if(one == null && two != null){
+			return two;
+		} else{
+			Node<T> oneNext = one.next;
+			one.next          = two.next;
+			one.next.previous = one;
+			two.next          = oneNext;
+			two.next.previous = two;
+			return one.priority > two.priority ? one : two;
+		}
+	}
 	public Node<T> enqueue(T object, double priority){
 		checkPriority(priority);
 		Node<T> newNode = new Node<T>(object, priority);
@@ -121,22 +112,6 @@ final class PriorityHeap<T>{
 		if(Double.isNaN(priority))
 			throw new IllegalArgumentException(priority + " is invalid.");
 	}
-	private static <T> Node<T> mergeLists(Node<T> one, Node<T> two){
-		if(one == null && two == null){
-			return null;
-		} else if(one != null && two == null){
-			return one;
-		} else if(one == null && two != null){
-			return two;
-		} else{
-			Node<T> oneNext = one.next;
-			one.next          = two.next;
-			one.next.previous = one;
-			two.next          = oneNext;
-			two.next.previous = two;
-			return one.priority > two.priority ? one : two;
-		}
-	}
 	private void decreaseKeyUnchecked(Node<T> node, double priority){
 		node.priority = priority;
 		if(node.parent != null && node.priority <= node.parent.priority)
@@ -183,5 +158,29 @@ final class PriorityHeap<T>{
 		}while(current != max);
 		
 		return null;
+	}
+	static final class Node<T>{
+		private int     degree   = 0;
+		private boolean isMarked = false;
+		private Node<T> next;
+		private Node<T> previous;
+		private Node<T> parent;
+		private Node<T> child;
+		private T       object;
+		private double  priority;
+		private Node(T object, double priority){
+			next          = previous = this;
+			this.object   = object;
+			this.priority = priority;
+		}
+		T getObject(){
+			return object;
+		}
+		void setObject(T object){
+			this.object = object;
+		}
+		double getPriority(){
+			return priority;
+		}
 	}
 }

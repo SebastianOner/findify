@@ -1,26 +1,43 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.Label?>
+
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.text.Font?>
-
-
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="300.0" prefWidth="300.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
-   <children>
-      <Label alignment="CENTER" layoutX="108.0" layoutY="11.0" prefHeight="48.0" prefWidth="72.0" text="findify" AnchorPane.leftAnchor="108.0" AnchorPane.rightAnchor="120.0" AnchorPane.topAnchor="11.0">
-         <font>
-            <Font name="Avenir Book" size="26.0" />
-         </font>
-      </Label>
-      <Label alignment="CENTER" layoutX="10.0" layoutY="168.0" prefHeight="17.0" prefWidth="266.0" text="What are you trying to find?" />
-      <HBox layoutX="22.0" layoutY="216.0" spacing="40.0" AnchorPane.leftAnchor="22.0" AnchorPane.rightAnchor="23.5" AnchorPane.topAnchor="216.0">
-         <children>
-            <Button fx:id="classButton" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#classFired" text="Class" />
-            <Button fx:id="methodButton" alignment="CENTER" mnemonicParsing="false" onAction="#methodFired" text="Method" />
-            <Button fx:id="attributeButton" alignment="CENTER" mnemonicParsing="false" onAction="#attributeFired" text="Attribute" />
-         </children>
-      </HBox>
-   </children>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.control.Button?>
+<AnchorPane xmlns:fx="http://javafx.com/fxml/1" maxHeight="-Infinity" maxWidth="-Infinity"
+            minHeight="-Infinity" minWidth="-Infinity" prefHeight="300.0"
+            prefWidth="300.0"
+            xmlns="http://javafx.com/javafx/11.0.1">
+    <children>
+        <Label alignment="CENTER" layoutX="108.0" layoutY="11.0"
+               prefHeight="48.0" prefWidth="72.0" text="findify"
+               AnchorPane.leftAnchor="108.0" AnchorPane.rightAnchor="120.0"
+               AnchorPane.topAnchor="11.0">
+            <font>
+                <Font name="Avenir Book" size="26.0"/>
+            </font>
+        </Label>
+        <Label alignment="CENTER" layoutX="10.0" layoutY="168.0"
+               prefHeight="17.0" prefWidth="266.0"
+               text="What are you trying to find?"/>
+        <HBox layoutX="22.0" layoutY="216.0" spacing="40.0"
+              AnchorPane.leftAnchor="22.0" AnchorPane.rightAnchor="23.5"
+              AnchorPane.topAnchor="216.0">
+            <children>
+                <Button fx:id="classButton" alignment="CENTER"
+                        maxHeight="-Infinity" maxWidth="-Infinity"
+                        minHeight="-Infinity" minWidth="-Infinity"
+                        mnemonicParsing="false" onAction="#classFired"
+                        text="Class"/>
+                <Button fx:id="methodButton" alignment="CENTER"
+                        mnemonicParsing="false" onAction="#methodFired"
+                        text="Method"/>
+                <Button fx:id="attributeButton" alignment="CENTER"
+                        mnemonicParsing="false" onAction="#attributeFired"
+                        text="Attribute"/>
+            </children>
+        </HBox>
+    </children>
 </AnchorPane>

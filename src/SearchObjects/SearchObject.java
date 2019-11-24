@@ -5,14 +5,7 @@ import Score.SemanticWeb;
 import java.util.List;
 
 public abstract class SearchObject{
-	public static enum AccessModifier{
-		PUBLIC, PROTECTED, PRIVATE, DEFAULT
-	}
-	private        String         name;
-	private        AccessModifier accessModifier;
-	private        String         path;
-	private        int            line;
-	static SemanticWeb    semanticWeb = new SemanticWeb(new String[][]{
+	static  SemanticWeb    semanticWeb = new SemanticWeb(new String[][]{
 			{"search", "find", "inquire", "request", "explore", "hunt"},
 			{"sort", "arrange", "catalogue", "categorize", "comb", "separate",
 			 "sift", "classify", "group", "rank", "order"},
@@ -31,11 +24,29 @@ public abstract class SearchObject{
 			 "multiply", "times", "divide", "division", "power", "root",
 			 "square root", "logarithm", "log", "round", "absolute",
 			 "factorial", "binomial"}});
+	private String         name;
+	private AccessModifier accessModifier;
+	private String         path;
+	private int            line;
+	public SearchObject(String name, AccessModifier accessModifier, String path,
+	                    List<String> content, int line){
+		this.name           = name;
+		this.accessModifier = accessModifier;
+		this.path           = path;
+		this.line           = line;
+	}
 	
+	public SearchObject(String name, AccessModifier accessModifier){
+		this.name           = name;
+		this.accessModifier = accessModifier;
+	}
+	
+	public SearchObject(){
+	} //default Constructor
+	//Constructors
 	private static String[] split(String string){
 		return string.split("_|,| |-");
 	}
-	
 	public static double getStringSimilarity(String a, String b){
 		String[][] words =
 				a.length() < b.length() ? new String[][]{split(a), split(b)} :
@@ -50,55 +61,34 @@ public abstract class SearchObject{
 		}
 		return product;
 	}
-	//Constructors
-
-	public SearchObject(String name, AccessModifier accessModifier, String path,
-	                    List<String> content, int line){
-		this.name           = name;
-		this.accessModifier = accessModifier;
-		this.path           = path;
-		this.line           = line;
-	}
-
-	public SearchObject(String name, AccessModifier accessModifier){
-	    this.name = name;
-	    this.accessModifier = accessModifier;
-    }
-
-    public SearchObject(){} //default Constructor
-	
-	//Getters
-	
 	public String getName(){
 		return name;
 	}
 	
-	public AccessModifier getAccessModifier(){
-		return accessModifier;
-	}
-	
-	public String getPath(){
-		return path;
-	}
-	
+	//Getters
 	public void setName(String name){
 		this.name = name;
 	}
-	
+	public AccessModifier getAccessModifier(){
+		return accessModifier;
+	}
 	public void setAccessModifier(AccessModifier accessModifier){
 		this.accessModifier = accessModifier;
 	}
-	
+	public String getPath(){
+		return path;
+	}
 	public void setPath(String path){
 		this.path = path;
 	}
-	
 	public int getLine(){
 		return line;
 	}
-	
 	public void setLine(int line){
 		this.line = line;
 	}
 	public abstract double getSimilarity(SearchObject searchObject);
+	public enum AccessModifier{
+		PUBLIC, PROTECTED, PRIVATE, DEFAULT
+	}
 }

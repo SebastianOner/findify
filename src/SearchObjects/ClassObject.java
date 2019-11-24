@@ -1,17 +1,9 @@
 package SearchObjects;
 
-import java.lang.reflect.Constructor;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 public class ClassObject extends SearchObject{
-	public enum InheritanceType{
-		ABSTRACT, FINAL, DEFAULT
-	}
-	public enum ClassType{
-		ENUM, INTERFACE, DEFAULT
-	}
 	private Boolean            isChild;
 	private Boolean            hasGeneric;
 	private Boolean            isImplemented;
@@ -20,7 +12,6 @@ public class ClassObject extends SearchObject{
 	private List<MethodObject> methods;
 	private InheritanceType    inheritanceType;
 	private ClassType          classType;
-	
 	//Constructor for normal Class without inheritance, generic, implementing
 	// Class
 	public ClassObject(String name, String path, AccessModifier accessModifier,
@@ -30,7 +21,6 @@ public class ClassObject extends SearchObject{
 		this.methods    = new ArrayList<>();
 		this.attributes = new ArrayList<>();
 	}
-	
 	public ClassObject(String name, AccessModifier accessModifier,
 	                   Boolean isChild, Boolean hasGeneric,
 	                   Boolean isImplemented, InheritanceType inheritanceType,
@@ -44,48 +34,6 @@ public class ClassObject extends SearchObject{
 		this.attributes      = attributes;
 	}
 	
-	public Boolean isChild(){
-		return isChild;
-	}
-	
-	public Boolean hasGeneric(){
-		return hasGeneric;
-	}
-	
-	public Boolean isImplemented(){
-		return isImplemented;
-	}
-	
-	public List<FieldObject> getAttributes(){
-		return attributes;
-	}
-	
-	public List<ClassObject> getClasses(){
-		return classes;
-	}
-	
-	public List<MethodObject> getMethods(){
-		return methods;
-	}
-	
-	/**
-	 Setters for Lists of Class-, Method-, and AttributeObject
-	 Useful for the ClassParser that will browse the content of
-	 the class and find internal classes, methods, and attributes.
-	 It will then use the setters.
-	 */
-	public void setClasses(List<ClassObject> classes){
-		this.classes = classes;
-	}
-	
-	public void setMethods(List<MethodObject> methods){
-		this.methods = methods;
-	}
-	
-	public void setAttributes(List<FieldObject> attributes){
-		this.attributes = attributes;
-	}
-	
 	public ClassObject(String name, String path, AccessModifier accessModifier,
 	                   int line, Boolean isChild, Boolean hasGeneric,
 	                   List<String> content){
@@ -96,37 +44,63 @@ public class ClassObject extends SearchObject{
 		this.methods    = new ArrayList<>();
 		this.attributes = new ArrayList<>();
 	}
-	
-	public void setClassType(ClassType classType){
-		this.classType = classType;
+	public Boolean isChild(){
+		return isChild;
 	}
-	public void setInheritanceType(InheritanceType inheritanceType){
-		this.inheritanceType = inheritanceType;
+	public Boolean hasGeneric(){
+		return hasGeneric;
+	}
+	public Boolean isImplemented(){
+		return isImplemented;
+	}
+	public List<FieldObject> getAttributes(){
+		return attributes;
+	}
+	public void setAttributes(List<FieldObject> attributes){
+		this.attributes = attributes;
+	}
+	public List<ClassObject> getClasses(){
+		return classes;
+	}
+	/**
+	 Setters for Lists of Class-, Method-, and AttributeObject
+	 Useful for the ClassParser that will browse the content of
+	 the class and find internal classes, methods, and attributes.
+	 It will then use the setters.
+	 */
+	public void setClasses(List<ClassObject> classes){
+		this.classes = classes;
+	}
+	public List<MethodObject> getMethods(){
+		return methods;
+	}
+	public void setMethods(List<MethodObject> methods){
+		this.methods = methods;
 	}
 	public ClassType getClassType(){
 		return classType;
 	}
-	
+	public void setClassType(ClassType classType){
+		this.classType = classType;
+	}
 	public InheritanceType getInheritanceType(){
 		return inheritanceType;
 	}
-	
+	public void setInheritanceType(InheritanceType inheritanceType){
+		this.inheritanceType = inheritanceType;
+	}
 	public Boolean isHasGeneric(){
 		return hasGeneric;
 	}
-	
 	public void setChild(Boolean child){
 		isChild = child;
 	}
-	
 	public void setHasGeneric(Boolean hasGeneric){
 		this.hasGeneric = hasGeneric;
 	}
-	
 	public void setImplemented(Boolean implemented){
 		isImplemented = implemented;
 	}
-	
 	@Override public String toString(){
 		return "CLASS:\nname: " + getName() + "\nvisibility: " +
 		       getAccessModifier() + "\nisChild: " + isChild +
@@ -163,5 +137,12 @@ public class ClassObject extends SearchObject{
 		}
 		//TODO: Change weights
 		return similarity;
+	}
+	
+	public enum InheritanceType{
+		ABSTRACT, FINAL, DEFAULT
+	}
+	public enum ClassType{
+		ENUM, INTERFACE, DEFAULT
 	}
 }

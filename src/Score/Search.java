@@ -1,13 +1,10 @@
 package Score;
 
-import FileParser.Project;
 import SearchObjects.ClassObject;
 import SearchObjects.MethodObject;
 import SearchObjects.SearchObject;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
-import java.util.List;
 
 final public class Search{
 	private static PriorityHeap<SearchObject> priorityHeap;
