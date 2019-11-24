@@ -63,15 +63,21 @@ public class MethodObject extends SearchObject {
     public double getSimilarity(SearchObject searchObject) {
         MethodObject methodObject = ((MethodObject) searchObject);
         double similarity = 1;
-        if (0 != semanticWeb.getSimilarity(getName(), methodObject.getName()))
+        if (getName() != null)
             similarity *= semanticWeb.getSimilarity(getName(), methodObject.getName());
-        if (isStatic != null && methodObject.isStatic != null &&
-                isStatic != methodObject.isStatic)
-            similarity *= 0.9;
-        if (returnType != null && methodObject.returnType != null &&
-                !returnType.equals(methodObject.returnType))
-            similarity *= 0.9;
-        //TODO: Change weights
+        else similarity *= 0.1;
+
+        if (isStatic != null)
+            if (methodObject.isStatic != null &&
+                    isStatic == methodObject.isStatic)
+                similarity *= 0.9;
+            else similarity *= 0.1;
+
+        if (returnType != null)
+            if (methodObject.returnType != null &&
+                    returnType.equals(methodObject.returnType))
+                similarity *= 0.9;
+            else similarity *= 0.1;
         return similarity;
     }
 
