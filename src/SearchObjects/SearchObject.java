@@ -56,7 +56,7 @@ public abstract class SearchObject {
         return string.split("[_, \\-]");
     }
 
-    public static double getStringSimilarity(String[] a, String[] b) {
+    static double getStringSimilarity(String[] a, String[] b) {
         String[][] words = a.length < b.length ? new String[][]{a,b} : new String[][]{b,a};
         double product = 1, sum;
         for (String wordA : words[0]) {
