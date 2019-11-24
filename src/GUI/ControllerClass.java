@@ -27,7 +27,7 @@ public class ControllerClass {
     public CheckBox extendedYCheck, extendedNCheck, implementedYCheck, implementedNCheck, genericsYCheck, genericsNCheck;
     //rest of the check box variables
     public CheckBox publicCheck, privateCheck, protectedCheck, staticCheck, intCheck, stringCheck, doubleCheck, booleanCheck,
-            charCheck, arraysCheck, abstractCheck, interfaceCheck, ENUMCheck, finalCheck, classCheck;
+            charCheck, arraysCheck, abstractCheck, interfaceCheck, ENUMCheck, finalCheck, classCheck, ppCheck;
     public TextField searchField, tagsField;
 
     //initializes the controller for the class stage
@@ -231,6 +231,17 @@ public class ControllerClass {
     public String tagsFired() {
         CharSequence charSequence = tagsField.getCharacters();
         return charSequence.toString();
+    }
+
+    public Boolean ppFired(){
+        if(ppCheck.isSelected()){
+            privateCheck.setSelected(false);
+            publicCheck.setSelected(false);
+            protectedCheck.setSelected(false);
+            return Boolean.TRUE;
+        }
+        else
+            return null;
     }
 
     public void goFired() {

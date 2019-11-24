@@ -97,6 +97,11 @@
                                                                   <Font size="12.0" />
                                                                </font>
                                                             </CheckBox>
+                                                            <CheckBox fx:id="ppCheck" mnemonicParsing="false" onAction="#ppFired" text="Private Package">
+                                                               <font>
+                                                                  <Font size="12.0" />
+                                                               </font>
+                                                            </CheckBox>
                                                          </children>
                                                       </VBox>
                                                    </children>
