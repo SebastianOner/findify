@@ -1,501 +1,248 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-
-<?import javafx.scene.control.SplitPane?>
-<?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.text.Font?>
-<?import javafx.scene.layout.VBox?>
-<?import javafx.scene.control.CheckBox?>
-<?import javafx.scene.control.TextField?>
 <?import javafx.scene.control.Button?>
-<AnchorPane xmlns:fx="http://javafx.com/fxml/1" maxHeight="-Infinity" maxWidth="-Infinity"
-            prefHeight="400.0" prefWidth="800.0"
-            xmlns="http://javafx.com/javafx/11.0.1">
-    <children>
-        <SplitPane dividerPositions="0.12814070351758794" layoutX="99.0"
-                   layoutY="30.0" orientation="VERTICAL" prefHeight="400.0"
-                   prefWidth="600.0" AnchorPane.bottomAnchor="0.0"
-                   AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0"
-                   AnchorPane.topAnchor="0.0">
-            <items>
-                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0"
-                            prefWidth="160.0">
-                    <children>
-                        <Label layoutX="346.0" layoutY="3.0" prefHeight="26.0"
-                               prefWidth="107.0" text="CLASS"
-                               AnchorPane.bottomAnchor="-6.0"
-                               AnchorPane.rightAnchor="345.0"
-                               AnchorPane.topAnchor="3.0">
-                            <font>
-                                <Font name="Avenir Book" size="34.0"/>
-                            </font>
-                        </Label>
-                    </children>
-                </AnchorPane>
-                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0"
-                            prefWidth="160.0">
-                    <children>
-                        <SplitPane dividerPositions="0.6300940438871473"
-                                   layoutX="181.0" layoutY="81.0"
-                                   orientation="VERTICAL" prefHeight="321.0"
-                                   prefWidth="598.0"
-                                   AnchorPane.bottomAnchor="0.0"
-                                   AnchorPane.leftAnchor="0.0"
-                                   AnchorPane.rightAnchor="0.0"
-                                   AnchorPane.topAnchor="0.0">
-                            <items>
-                                <AnchorPane minHeight="0.0" minWidth="0.0"
-                                            prefHeight="100.0"
-                                            prefWidth="160.0">
-                                    <children>
-                                        <SplitPane
-                                                dividerPositions="0.15491183879093198"
-                                                layoutX="54.0" layoutY="14.0"
-                                                prefHeight="211.0"
-                                                prefWidth="596.0"
-                                                AnchorPane.bottomAnchor="0.0"
-                                                AnchorPane.leftAnchor="0.0"
-                                                AnchorPane.rightAnchor="0.0"
-                                                AnchorPane.topAnchor="0.0">
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="400.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <SplitPane dividerPositions="0.12814070351758794" layoutX="99.0" layoutY="30.0" orientation="VERTICAL" prefHeight="400.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+        <items>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
+               <children>
+                  <Label layoutX="346.0" layoutY="3.0" prefHeight="26.0" prefWidth="107.0" text="CLASS" AnchorPane.bottomAnchor="-6.0" AnchorPane.rightAnchor="345.0" AnchorPane.topAnchor="3.0">
+                     <font>
+                        <Font name="Avenir Book" size="34.0" />
+                     </font>
+                  </Label>
+               </children>
+            </AnchorPane>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
+               <children>
+                  <SplitPane dividerPositions="0.6300940438871473" layoutX="181.0" layoutY="81.0" orientation="VERTICAL" prefHeight="321.0" prefWidth="598.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                    <items>
+                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
+                           <children>
+                              <SplitPane dividerPositions="0.15491183879093198" layoutX="54.0" layoutY="14.0" prefHeight="211.0" prefWidth="596.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                <items>
+                                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
+                                       <children>
+                                          <Label layoutX="27.0" layoutY="5.0" text="Class Type" underline="true">
+                                             <font>
+                                                <Font size="14.0" />
+                                             </font>
+                                          </Label>
+                                          <VBox layoutX="2.0" layoutY="32.0" spacing="10.0">
+                                             <children>
+                                                <CheckBox fx:id="interfaceCheck" mnemonicParsing="false" onAction="#interfaceFired" text="Interface">
+                                                   <font>
+                                                      <Font size="12.0" />
+                                                   </font>
+                                                </CheckBox>
+                                                <CheckBox fx:id="abstractCheck" mnemonicParsing="false" onAction="#abstractFired" text="Abstract Class">
+                                                   <font>
+                                                      <Font size="12.0" />
+                                                   </font>
+                                                </CheckBox>
+                                                <CheckBox fx:id="ENUMCheck" mnemonicParsing="false" onAction="#ENUMFired" text="ENUM">
+                                                   <font>
+                                                      <Font size="12.0" />
+                                                   </font>
+                                                </CheckBox>
+                                                <CheckBox fx:id="finalCheck" mnemonicParsing="false" onAction="#finalFired" text="Final">
+                                                   <font>
+                                                      <Font size="12.0" />
+                                                   </font>
+                                                </CheckBox>
+                                                <CheckBox fx:id="classCheck" mnemonicParsing="false" onAction="#standardClassFired" text="Standard Class">
+                                                   <font>
+                                                      <Font size="12.0" />
+                                                   </font>
+                                                </CheckBox>
+                                             </children>
+                                          </VBox>
+                                       </children>
+                                    </AnchorPane>
+                                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
+                                       <children>
+                                          <SplitPane dividerPositions="0.19548872180451127" layoutX="93.0" layoutY="7.0" prefHeight="209.0" prefWidth="468.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                             <items>
-                                                <AnchorPane minHeight="0.0"
-                                                            minWidth="0.0"
-                                                            prefHeight="160.0"
-                                                            prefWidth="100.0">
-                                                    <children>
-                                                        <Label layoutX="27.0"
-                                                               layoutY="5.0"
-                                                               text="Class Type"
-                                                               underline="true">
-                                                            <font>
-                                                                <Font size="14.0"/>
-                                                            </font>
-                                                        </Label>
-                                                        <VBox layoutX="2.0"
-                                                              layoutY="32.0"
-                                                              spacing="10.0">
-                                                            <children>
-                                                                <CheckBox
-                                                                        fx:id="interfaceCheck"
-                                                                        mnemonicParsing="false"
-                                                                        onAction="#interfaceFired"
-                                                                        text="Interface">
-                                                                    <font>
-                                                                        <Font size="12.0"/>
-                                                                    </font>
-                                                                </CheckBox>
-                                                                <CheckBox
-                                                                        fx:id="abstractCheck"
-                                                                        mnemonicParsing="false"
-                                                                        onAction="#abstractFired"
-                                                                        text="Abstract Class">
-                                                                    <font>
-                                                                        <Font size="12.0"/>
-                                                                    </font>
-                                                                </CheckBox>
-                                                                <CheckBox
-                                                                        fx:id="ENUMCheck"
-                                                                        mnemonicParsing="false"
-                                                                        onAction="#ENUMFired"
-                                                                        text="ENUM">
-                                                                    <font>
-                                                                        <Font size="12.0"/>
-                                                                    </font>
-                                                                </CheckBox>
-                                                                <CheckBox
-                                                                        fx:id="finalCheck"
-                                                                        mnemonicParsing="false"
-                                                                        onAction="#finalFired"
-                                                                        text="Final">
-                                                                    <font>
-                                                                        <Font size="12.0"/>
-                                                                    </font>
-                                                                </CheckBox>
-                                                                <CheckBox
-                                                                        fx:id="classCheck"
-                                                                        mnemonicParsing="false"
-                                                                        onAction="#standardClassFired"
-                                                                        text="Standard Class">
-                                                                    <font>
-                                                                        <Font size="12.0"/>
-                                                                    </font>
-                                                                </CheckBox>
-                                                            </children>
-                                                        </VBox>
-                                                    </children>
+                                              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="207.0" prefWidth="135.0">
+                                                   <children>
+                                                      <Label layoutX="33.0" layoutY="5.0" text="Visibilities" underline="true" />
+                                                      <VBox layoutX="7.0" layoutY="31.0" spacing="10.0">
+                                                         <children>
+                                                            <CheckBox fx:id="publicCheck" mnemonicParsing="false" onAction="#publicFired" text="public">
+                                                               <font>
+                                                                  <Font size="12.0" />
+                                                               </font>
+                                                            </CheckBox>
+                                                            <CheckBox fx:id="privateCheck" mnemonicParsing="false" onAction="#privateFired" text="private">
+                                                               <font>
+                                                                  <Font size="12.0" />
+                                                               </font>
+                                                            </CheckBox>
+                                                            <CheckBox fx:id="protectedCheck" mnemonicParsing="false" onAction="#protectedFired" text="protected">
+                                                               <font>
+                                                                  <Font size="12.0" />
+                                                               </font>
+                                                            </CheckBox>
+                                                            <CheckBox fx:id="staticCheck" mnemonicParsing="false" onAction="#staticFired" text="static">
+                                                               <font>
+                                                                  <Font size="12.0" />
+                                                               </font>
+                                                            </CheckBox>
+                                                         </children>
+                                                      </VBox>
+                                                   </children>
                                                 </AnchorPane>
-                                                <AnchorPane minHeight="0.0"
-                                                            minWidth="0.0"
-                                                            prefHeight="160.0"
-                                                            prefWidth="100.0">
-                                                    <children>
-                                                        <SplitPane
-                                                                dividerPositions="0.19548872180451127"
-                                                                layoutX="93.0"
-                                                                layoutY="7.0"
-                                                                prefHeight="209.0"
-                                                                prefWidth="468.0"
-                                                                AnchorPane.bottomAnchor="0.0"
-                                                                AnchorPane.leftAnchor="0.0"
-                                                                AnchorPane.rightAnchor="0.0"
-                                                                AnchorPane.topAnchor="0.0">
-                                                            <items>
-                                                                <AnchorPane
-                                                                        minHeight="0.0"
-                                                                        minWidth="0.0"
-                                                                        prefHeight="207.0"
-                                                                        prefWidth="135.0">
-                                                                    <children>
-                                                                        <Label layoutX="33.0"
-                                                                               layoutY="5.0"
-                                                                               text="Visibilities"
-                                                                               underline="true"/>
-                                                                        <VBox layoutX="7.0"
-                                                                              layoutY="31.0"
-                                                                              spacing="10.0">
-                                                                            <children>
-                                                                                <CheckBox
-                                                                                        fx:id="publicCheck"
-                                                                                        mnemonicParsing="false"
-                                                                                        onAction="#publicFired"
-                                                                                        text="public">
-                                                                                    <font>
-                                                                                        <Font size="12.0"/>
-                                                                                    </font>
-                                                                                </CheckBox>
-                                                                                <CheckBox
-                                                                                        fx:id="privateCheck"
-                                                                                        mnemonicParsing="false"
-                                                                                        onAction="#privateFired"
-                                                                                        text="private">
-                                                                                    <font>
-                                                                                        <Font size="12.0"/>
-                                                                                    </font>
-                                                                                </CheckBox>
-                                                                                <CheckBox
-                                                                                        fx:id="protectedCheck"
-                                                                                        mnemonicParsing="false"
-                                                                                        onAction="#protectedFired"
-                                                                                        text="protected">
-                                                                                    <font>
-                                                                                        <Font size="12.0"/>
-                                                                                    </font>
-                                                                                </CheckBox>
-                                                                                <CheckBox
-                                                                                        fx:id="staticCheck"
-                                                                                        mnemonicParsing="false"
-                                                                                        onAction="#staticFired"
-                                                                                        text="static">
-                                                                                    <font>
-                                                                                        <Font size="12.0"/>
-                                                                                    </font>
-                                                                                </CheckBox>
-                                                                            </children>
-                                                                        </VBox>
-                                                                    </children>
-                                                                </AnchorPane>
-                                                                <AnchorPane
-                                                                        minHeight="0.0"
-                                                                        minWidth="0.0"
-                                                                        prefHeight="160.0"
-                                                                        prefWidth="100.0">
-                                                                    <children>
-                                                                        <SplitPane
-                                                                                dividerPositions="0.2589118198874296"
-                                                                                layoutX="77.0"
-                                                                                layoutY="33.0"
-                                                                                prefHeight="207.0"
-                                                                                prefWidth="323.0"
-                                                                                AnchorPane.bottomAnchor="0.0"
-                                                                                AnchorPane.leftAnchor="0.0"
-                                                                                AnchorPane.rightAnchor="0.0"
-                                                                                AnchorPane.topAnchor="0.0">
-                                                                            <items>
-                                                                                <AnchorPane
-                                                                                        minHeight="0.0"
-                                                                                        minWidth="0.0"
-                                                                                        prefHeight="205.0"
-                                                                                        prefWidth="125.0">
-                                                                                    <children>
-                                                                                        <Label layoutX="39.0"
-                                                                                               layoutY="5.0"
-                                                                                               text="Extended"
-                                                                                               underline="true"/>
-                                                                                        <VBox layoutX="14.0"
-                                                                                              layoutY="29.0"
-                                                                                              spacing="10.0">
-                                                                                            <children>
-                                                                                                <CheckBox
-                                                                                                        fx:id="extendedYCheck"
-                                                                                                        mnemonicParsing="false"
-                                                                                                        text="Yes">
-                                                                                                    <font>
-                                                                                                        <Font size="12.0"/>
-                                                                                                    </font>
+                                              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
+                                                   <children>
+                                                      <SplitPane dividerPositions="0.2589118198874296" layoutX="77.0" layoutY="33.0" prefHeight="207.0" prefWidth="323.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                                        <items>
+                                                          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="205.0" prefWidth="125.0">
+                                                               <children>
+                                                                  <Label layoutX="39.0" layoutY="5.0" text="Extended" underline="true" />
+                                                                  <VBox layoutX="14.0" layoutY="29.0" spacing="10.0">
+                                                                     <children>
+                                                                        <CheckBox fx:id="extendedYCheck" mnemonicParsing="false" text="Yes">
+                                                                           <font>
+                                                                              <Font size="12.0" />
+                                                                           </font>
+                                                                        </CheckBox>
+                                                                        <CheckBox fx:id="extendedNCheck" mnemonicParsing="false" onAction="#extendedNFired" text="No">
+                                                                           <font>
+                                                                              <Font size="12.0" />
+                                                                           </font>
+                                                                        </CheckBox>
+                                                                     </children>
+                                                                  </VBox>
+                                                               </children>
+                                                            </AnchorPane>
+                                                          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
+                                                               <children>
+                                                                  <SplitPane dividerPositions="0.324468085106383" layoutX="34.0" layoutY="23.0" prefHeight="205.0" prefWidth="221.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                                                    <items>
+                                                                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
+                                                                           <children>
+                                                                              <Label layoutX="22.0" layoutY="5.0" text="Implemented" underline="true" />
+                                                                              <VBox layoutX="6.0" layoutY="33.0" prefHeight="60.0" prefWidth="61.0" spacing="10.0">
+                                                                                 <children>
+                                                                                    <CheckBox fx:id="implementedYCheck" mnemonicParsing="false" onAction="#implementedYFired" text="Yes">
+                                                                                       <font>
+                                                                                          <Font size="12.0" />
+                                                                                       </font>
+                                                                                    </CheckBox>
+                                                                                    <CheckBox fx:id="implementedNCheck" mnemonicParsing="false" onAction="#implementedNFired" prefHeight="26.0" prefWidth="48.0" text="No">
+                                                                                       <font>
+                                                                                          <Font size="12.0" />
+                                                                                       </font>
+                                                                                    </CheckBox>
+                                                                                 </children>
+                                                                              </VBox>
+                                                                           </children>
+                                                                        </AnchorPane>
+                                                                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
+                                                                           <children>
+                                                                              <SplitPane dividerPositions="0.4847328244274809" layoutX="-37.0" layoutY="-8.0" prefHeight="203.0" prefWidth="109.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                                                                <items>
+                                                                                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
+                                                                                       <children>
+                                                                                          <Label layoutX="6.0" layoutY="5.0" text="Contains Generics" underline="true" />
+                                                                                          <VBox layoutX="6.0" layoutY="30.0" spacing="10.0">
+                                                                                             <children>
+                                                                                                <CheckBox fx:id="genericsYCheck" mnemonicParsing="false" onAction="#genericYFired" text="Yes">
+                                                                                                   <font>
+                                                                                                      <Font size="12.0" />
+                                                                                                   </font>
                                                                                                 </CheckBox>
-                                                                                                <CheckBox
-                                                                                                        fx:id="extendedNCheck"
-                                                                                                        mnemonicParsing="false"
-                                                                                                        onAction="#extendedNFired"
-                                                                                                        text="No">
-                                                                                                    <font>
-                                                                                                        <Font size="12.0"/>
-                                                                                                    </font>
+                                                                                                <CheckBox fx:id="genericsNCheck" mnemonicParsing="false" onAction="#genericNFired" text="No">
+                                                                                                   <font>
+                                                                                                      <Font size="12.0" />
+                                                                                                   </font>
                                                                                                 </CheckBox>
-                                                                                            </children>
-                                                                                        </VBox>
-                                                                                    </children>
-                                                                                </AnchorPane>
-                                                                                <AnchorPane
-                                                                                        minHeight="0.0"
-                                                                                        minWidth="0.0"
-                                                                                        prefHeight="160.0"
-                                                                                        prefWidth="100.0">
-                                                                                    <children>
-                                                                                        <SplitPane
-                                                                                                dividerPositions="0.324468085106383"
-                                                                                                layoutX="34.0"
-                                                                                                layoutY="23.0"
-                                                                                                prefHeight="205.0"
-                                                                                                prefWidth="221.0"
-                                                                                                AnchorPane.bottomAnchor="0.0"
-                                                                                                AnchorPane.leftAnchor="0.0"
-                                                                                                AnchorPane.rightAnchor="0.0"
-                                                                                                AnchorPane.topAnchor="0.0">
-                                                                                            <items>
-                                                                                                <AnchorPane
-                                                                                                        minHeight="0.0"
-                                                                                                        minWidth="0.0"
-                                                                                                        prefHeight="160.0"
-                                                                                                        prefWidth="100.0">
-                                                                                                    <children>
-                                                                                                        <Label layoutX="22.0"
-                                                                                                               layoutY="5.0"
-                                                                                                               text="Implemented"
-                                                                                                               underline="true"/>
-                                                                                                        <VBox layoutX="6.0"
-                                                                                                              layoutY="33.0"
-                                                                                                              prefHeight="60.0"
-                                                                                                              prefWidth="61.0"
-                                                                                                              spacing="10.0">
-                                                                                                            <children>
-                                                                                                                <CheckBox
-                                                                                                                        fx:id="implementedYCheck"
-                                                                                                                        mnemonicParsing="false"
-                                                                                                                        onAction="#implementedYFired"
-                                                                                                                        text="Yes">
-                                                                                                                    <font>
-                                                                                                                        <Font size="12.0"/>
-                                                                                                                    </font>
-                                                                                                                </CheckBox>
-                                                                                                                <CheckBox
-                                                                                                                        fx:id="implementedNCheck"
-                                                                                                                        mnemonicParsing="false"
-                                                                                                                        onAction="#implementedNFired"
-                                                                                                                        prefHeight="26.0"
-                                                                                                                        prefWidth="48.0"
-                                                                                                                        text="No">
-                                                                                                                    <font>
-                                                                                                                        <Font size="12.0"/>
-                                                                                                                    </font>
-                                                                                                                </CheckBox>
-                                                                                                            </children>
-                                                                                                        </VBox>
-                                                                                                    </children>
-                                                                                                </AnchorPane>
-                                                                                                <AnchorPane
-                                                                                                        minHeight="0.0"
-                                                                                                        minWidth="0.0"
-                                                                                                        prefHeight="160.0"
-                                                                                                        prefWidth="100.0">
-                                                                                                    <children>
-                                                                                                        <SplitPane
-                                                                                                                dividerPositions="0.4847328244274809"
-                                                                                                                layoutX="-37.0"
-                                                                                                                layoutY="-8.0"
-                                                                                                                prefHeight="203.0"
-                                                                                                                prefWidth="109.0"
-                                                                                                                AnchorPane.bottomAnchor="0.0"
-                                                                                                                AnchorPane.leftAnchor="0.0"
-                                                                                                                AnchorPane.rightAnchor="0.0"
-                                                                                                                AnchorPane.topAnchor="0.0">
-                                                                                                            <items>
-                                                                                                                <AnchorPane
-                                                                                                                        minHeight="0.0"
-                                                                                                                        minWidth="0.0"
-                                                                                                                        prefHeight="160.0"
-                                                                                                                        prefWidth="100.0">
-                                                                                                                    <children>
-                                                                                                                        <Label layoutX="6.0"
-                                                                                                                               layoutY="5.0"
-                                                                                                                               text="Contains Generics"
-                                                                                                                               underline="true"/>
-                                                                                                                        <VBox layoutX="6.0"
-                                                                                                                              layoutY="30.0"
-                                                                                                                              spacing="10.0">
-                                                                                                                            <children>
-                                                                                                                                <CheckBox
-                                                                                                                                        fx:id="genericsYCheck"
-                                                                                                                                        mnemonicParsing="false"
-                                                                                                                                        onAction="#genericYFired"
-                                                                                                                                        text="Yes">
-                                                                                                                                    <font>
-                                                                                                                                        <Font size="12.0"/>
-                                                                                                                                    </font>
-                                                                                                                                </CheckBox>
-                                                                                                                                <CheckBox
-                                                                                                                                        fx:id="genericsNCheck"
-                                                                                                                                        mnemonicParsing="false"
-                                                                                                                                        onAction="#genericNFired"
-                                                                                                                                        text="No">
-                                                                                                                                    <font>
-                                                                                                                                        <Font size="12.0"/>
-                                                                                                                                    </font>
-                                                                                                                                </CheckBox>
-                                                                                                                            </children>
-                                                                                                                        </VBox>
-                                                                                                                    </children>
-                                                                                                                </AnchorPane>
-                                                                                                                <AnchorPane
-                                                                                                                        minHeight="0.0"
-                                                                                                                        minWidth="0.0"
-                                                                                                                        prefHeight="160.0"
-                                                                                                                        prefWidth="100.0">
-                                                                                                                    <children>
-                                                                                                                        <Label layoutX="19.0"
-                                                                                                                               layoutY="5.0"
-                                                                                                                               text="Attribute Types"
-                                                                                                                               underline="true"/>
-                                                                                                                        <VBox layoutX="14.0"
-                                                                                                                              layoutY="26.0"
-                                                                                                                              spacing="5.0">
-                                                                                                                            <children>
-                                                                                                                                <CheckBox
-                                                                                                                                        fx:id="intCheck"
-                                                                                                                                        mnemonicParsing="false"
-                                                                                                                                        onAction="#intFired"
-                                                                                                                                        text="Int">
-                                                                                                                                    <font>
-                                                                                                                                        <Font size="12.0"/>
-                                                                                                                                    </font>
-                                                                                                                                </CheckBox>
-                                                                                                                                <CheckBox
-                                                                                                                                        fx:id="stringCheck"
-                                                                                                                                        mnemonicParsing="false"
-                                                                                                                                        onAction="#stringFired"
-                                                                                                                                        text="String">
-                                                                                                                                    <font>
-                                                                                                                                        <Font size="12.0"/>
-                                                                                                                                    </font>
-                                                                                                                                </CheckBox>
-                                                                                                                                <CheckBox
-                                                                                                                                        fx:id="arraysCheck"
-                                                                                                                                        mnemonicParsing="false"
-                                                                                                                                        onAction="#arraysFired"
-                                                                                                                                        text="Int Array">
-                                                                                                                                    <font>
-                                                                                                                                        <Font size="12.0"/>
-                                                                                                                                    </font>
-                                                                                                                                </CheckBox>
-                                                                                                                                <CheckBox
-                                                                                                                                        fx:id="doubleCheck"
-                                                                                                                                        mnemonicParsing="false"
-                                                                                                                                        onAction="#doubleFired"
-                                                                                                                                        text="Double">
-                                                                                                                                    <font>
-                                                                                                                                        <Font size="12.0"/>
-                                                                                                                                    </font>
-                                                                                                                                </CheckBox>
-                                                                                                                                <CheckBox
-                                                                                                                                        fx:id="booleanCheck"
-                                                                                                                                        mnemonicParsing="false"
-                                                                                                                                        onAction="#booleanFired"
-                                                                                                                                        text="Boolean">
-                                                                                                                                    <font>
-                                                                                                                                        <Font size="12.0"/>
-                                                                                                                                    </font>
-                                                                                                                                </CheckBox>
-                                                                                                                                <CheckBox
-                                                                                                                                        fx:id="charCheck"
-                                                                                                                                        mnemonicParsing="false"
-                                                                                                                                        onAction="#charFired"
-                                                                                                                                        text="Char">
-                                                                                                                                    <font>
-                                                                                                                                        <Font size="12.0"/>
-                                                                                                                                    </font>
-                                                                                                                                </CheckBox>
-                                                                                                                            </children>
-                                                                                                                        </VBox>
-                                                                                                                    </children>
-                                                                                                                </AnchorPane>
-                                                                                                            </items>
-                                                                                                        </SplitPane>
-                                                                                                    </children>
-                                                                                                </AnchorPane>
-                                                                                            </items>
-                                                                                        </SplitPane>
-                                                                                    </children>
-                                                                                </AnchorPane>
-                                                                            </items>
-                                                                        </SplitPane>
-                                                                    </children>
-                                                                </AnchorPane>
-                                                            </items>
-                                                        </SplitPane>
-                                                    </children>
+                                                                                             </children>
+                                                                                          </VBox>
+                                                                                       </children>
+                                                                                    </AnchorPane>
+                                                                                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
+                                                                                       <children>
+                                                                                          <Label layoutX="19.0" layoutY="5.0" text="Attribute Types" underline="true" />
+                                                                                          <VBox layoutX="14.0" layoutY="26.0" spacing="5.0">
+                                                                                             <children>
+                                                                                                <CheckBox fx:id="intCheck" mnemonicParsing="false" onAction="#intFired" text="Int">
+                                                                                                   <font>
+                                                                                                      <Font size="12.0" />
+                                                                                                   </font>
+                                                                                                </CheckBox>
+                                                                                                <CheckBox fx:id="stringCheck" mnemonicParsing="false" onAction="#stringFired" text="String">
+                                                                                                   <font>
+                                                                                                      <Font size="12.0" />
+                                                                                                   </font>
+                                                                                                </CheckBox>
+                                                                                                <CheckBox fx:id="arraysCheck" mnemonicParsing="false" onAction="#arraysFired" text="Int Array">
+                                                                                                   <font>
+                                                                                                      <Font size="12.0" />
+                                                                                                   </font>
+                                                                                                </CheckBox>
+                                                                                                <CheckBox fx:id="doubleCheck" mnemonicParsing="false" onAction="#doubleFired" text="Double">
+                                                                                                   <font>
+                                                                                                      <Font size="12.0" />
+                                                                                                   </font>
+                                                                                                </CheckBox>
+                                                                                                <CheckBox fx:id="booleanCheck" mnemonicParsing="false" onAction="#booleanFired" text="Boolean">
+                                                                                                   <font>
+                                                                                                      <Font size="12.0" />
+                                                                                                   </font>
+                                                                                                </CheckBox>
+                                                                                                <CheckBox fx:id="charCheck" mnemonicParsing="false" onAction="#charFired" text="Char">
+                                                                                                   <font>
+                                                                                                      <Font size="12.0" />
+                                                                                                   </font>
+                                                                                                </CheckBox>
+                                                                                             </children>
+                                                                                          </VBox>
+                                                                                       </children>
+                                                                                    </AnchorPane>
+                                                                                </items>
+                                                                              </SplitPane>
+                                                                           </children>
+                                                                        </AnchorPane>
+                                                                    </items>
+                                                                  </SplitPane>
+                                                               </children>
+                                                            </AnchorPane>
+                                                        </items>
+                                                      </SplitPane>
+                                                   </children>
                                                 </AnchorPane>
                                             </items>
-                                        </SplitPane>
-                                    </children>
-                                </AnchorPane>
-                                <AnchorPane minHeight="0.0" minWidth="0.0"
-                                            prefHeight="100.0"
-                                            prefWidth="160.0">
-                                    <children>
-                                        <Label layoutX="14.0" layoutY="25.0"
-                                               prefHeight="18.0"
-                                               prefWidth="246.0"
-                                               text="Name of Class (leave blank if unknown):"/>
-                                        <TextField fx:id="searchField"
-                                                   layoutX="260.0"
-                                                   layoutY="21.0"
-                                                   onAction="#searchFired"
-                                                   prefHeight="26.0"
-                                                   prefWidth="388.0"
-                                                   promptText="class name"
-                                                   AnchorPane.bottomAnchor="75.0"
-                                                   AnchorPane.leftAnchor="260.0"
-                                                   AnchorPane.rightAnchor="148.0"
-                                                   AnchorPane.topAnchor="21.0"/>
-                                        <Button fx:id="goButton" layoutX="714.0"
-                                                layoutY="75.0"
-                                                mnemonicParsing="false"
-                                                onAction="#goFired" text="Go!"
-                                                AnchorPane.rightAnchor="28.5"
-                                                AnchorPane.topAnchor="75.0"/>
-                                        <Label layoutX="14.0" layoutY="75.0"
-                                               prefHeight="18.0"
-                                               prefWidth="233.0"
-                                               text="Tags Assosciated to your class:"/>
-                                        <TextField fx:id="tagsField"
-                                                   layoutX="220.0"
-                                                   layoutY="71.0"
-                                                   onAction="#tagsFired"
-                                                   prefHeight="26.0"
-                                                   prefWidth="359.0"
-                                                   promptText="tags"
-                                                   AnchorPane.bottomAnchor="25.0"
-                                                   AnchorPane.leftAnchor="220.0"
-                                                   AnchorPane.rightAnchor="188.0"
-                                                   AnchorPane.topAnchor="71.0"/>
-                                    </children>
-                                </AnchorPane>
-                            </items>
-                        </SplitPane>
-                    </children>
-                </AnchorPane>
-            </items>
-        </SplitPane>
-    </children>
+                                          </SplitPane>
+                                       </children>
+                                    </AnchorPane>
+                                </items>
+                              </SplitPane>
+                           </children>
+                        </AnchorPane>
+                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
+                           <children>
+                              <Label layoutX="14.0" layoutY="25.0" prefHeight="18.0" prefWidth="246.0" text="Name of Class (leave blank if unknown):" />
+                              <TextField fx:id="searchField" layoutX="260.0" layoutY="21.0" onAction="#searchFired" prefHeight="26.0" prefWidth="388.0" promptText="class name" AnchorPane.bottomAnchor="75.0" AnchorPane.leftAnchor="260.0" AnchorPane.rightAnchor="148.0" AnchorPane.topAnchor="21.0" />
+                              <Button fx:id="goButton" layoutX="714.0" layoutY="75.0" mnemonicParsing="false" onAction="#goFired" text="GO" AnchorPane.rightAnchor="28.5" AnchorPane.topAnchor="75.0" />
+                              <Label layoutX="14.0" layoutY="75.0" prefHeight="18.0" prefWidth="233.0" text="Tags Assosciated to your class:" />
+                              <TextField fx:id="tagsField" layoutX="216.0" layoutY="71.0" onAction="#tagsFired" prefHeight="26.0" prefWidth="359.0" promptText="tags" />
+                           </children>
+                        </AnchorPane>
+                    </items>
+                  </SplitPane>
+               </children>
+            </AnchorPane>
+        </items>
+      </SplitPane>
+   </children>
 </AnchorPane>

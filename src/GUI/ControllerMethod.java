@@ -33,7 +33,7 @@ public class ControllerMethod {
     //static yes or no
     public CheckBox staticYCheck, staticNCheck;
     //method name textField
-    public TextField nameField;
+    public TextField nameField, tagsField;
 
     public ControllerMethod(ArrayList<ClassObject> projectClasses) throws IOException {
         thisStage = new Stage();
@@ -217,6 +217,11 @@ public class ControllerMethod {
 
     public String nameFired(){
         CharSequence charSequence = nameField.getCharacters();
+        return charSequence.toString();
+    }
+
+    public String tagsFired(){
+        CharSequence charSequence = tagsField.getCharacters();
         return charSequence.toString();
     }
 
