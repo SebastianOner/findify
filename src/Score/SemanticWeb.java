@@ -46,6 +46,8 @@ final public class SemanticWeb {
     public double getSimilarity(String a, String b) {
         if (a == null || b == null)
             return 0;
+        if(a.equals(b))
+            return 1;
         MaxHeap<Entry> unvisitedEntries = new MaxHeap<>();
         for (Entry entry : entries) {
             if (entry != null)

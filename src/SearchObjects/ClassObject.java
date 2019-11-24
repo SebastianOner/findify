@@ -148,7 +148,6 @@ public class ClassObject extends SearchObject {
     public double getSimilarity(SearchObject searchObject) {
         ClassObject classObject = ((ClassObject) searchObject);
         double similarity = 1;
-        //TODO: Beautify following code
         if (getName() != null)
             similarity *= semanticWeb.getSimilarity(getName(), classObject.getName());
         else similarity *= 0.1;
