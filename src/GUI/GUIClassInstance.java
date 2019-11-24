@@ -64,3 +64,31 @@ public class GUIClassInstance {
                 classInstance.tags;
     }
 }
+/*
+GUIClassInstance classInstance = new GUIClassInstance();
+        classInstance.interfaceAtt = interfaceFired();
+        classInstance.abstractClassAtt = abstractFired();
+        classInstance.ENUMAtt = ENUMFired();
+        classInstance.finalAtt = finalFired();
+        classInstance.standardClassAtt = standardClassFired();
+        classInstance.publicAtt = publicFired();
+        classInstance.privateAtt = privateFired();
+        classInstance.protectedAtt = protectedFired();
+        classInstance.staticAtt = staticFired();
+        classInstance.extendedYes = extendedYFired();
+        classInstance.extendedNo = extendedNFired();
+        classInstance.implementedYes = implementedYFired();
+        classInstance.implementedNo = implementedNFired();
+        classInstance.genericsYes = genericYFired();
+        classInstance.genericsNo = genericNFired();
+        classInstance.intAtt = intFired();
+        classInstance.stringAtt = stringFired();
+        classInstance.doubleAtt = doubleFired();
+        classInstance.charAtt = charFired();
+        classInstance.arraysAtt = arraysFired();
+        classInstance.booleanAtt = booleanFired();
+        classInstance.name = searchFired();
+
+
+        System.out.println(classInstance.toString(classInstance));
+ */

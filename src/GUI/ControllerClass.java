@@ -304,33 +304,6 @@ public class ControllerClass {
 
         ArrayList<SearchObject> al = Score.Search.getBests(projectClasses, CO);
 
-        GUIClassInstance classInstance = new GUIClassInstance();
-        classInstance.interfaceAtt = interfaceFired();
-        classInstance.abstractClassAtt = abstractFired();
-        classInstance.ENUMAtt = ENUMFired();
-        classInstance.finalAtt = finalFired();
-        classInstance.standardClassAtt = standardClassFired();
-        classInstance.publicAtt = publicFired();
-        classInstance.privateAtt = privateFired();
-        classInstance.protectedAtt = protectedFired();
-        classInstance.staticAtt = staticFired();
-        classInstance.extendedYes = extendedYFired();
-        classInstance.extendedNo = extendedNFired();
-        classInstance.implementedYes = implementedYFired();
-        classInstance.implementedNo = implementedNFired();
-        classInstance.genericsYes = genericYFired();
-        classInstance.genericsNo = genericNFired();
-        classInstance.intAtt = intFired();
-        classInstance.stringAtt = stringFired();
-        classInstance.doubleAtt = doubleFired();
-        classInstance.charAtt = charFired();
-        classInstance.arraysAtt = arraysFired();
-        classInstance.booleanAtt = booleanFired();
-        classInstance.name = searchFired();
-
-
-        System.out.println(classInstance.toString(classInstance));
-
         thisStage.close();
 
         finalOutput(al);
@@ -340,7 +313,7 @@ public class ControllerClass {
         thisStage = new Stage();
         thisStage.setTitle("findify");
 
-        String text = "Related Results:\n";
+        String text = "Most similar classes based on your query:\n";
 
         for(int i=0; i<al.size(); i++){
             SearchObject current = al.get(i);

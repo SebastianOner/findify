@@ -20,6 +20,8 @@ import java.util.List;
 import java.util.Stack;
 
 public class ControllerMethod {
+    private ArrayList<ClassObject> projectClasses;
+
     private Stage thisStage;
 
     //visibility for methods
@@ -35,6 +37,7 @@ public class ControllerMethod {
 
     public ControllerMethod(ArrayList<ClassObject> projectClasses) throws IOException {
         thisStage = new Stage();
+        this.projectClasses = projectClasses;
 
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("methodScene.fxml"));
@@ -267,6 +270,32 @@ public class ControllerMethod {
 
         MethodObject MO = new MethodObject(name, am, isStatic, returnType, parameterTypes);
 
+        ArrayList<SearchObject> al = Score.Search.getBests(projectClasses, MO);
+
         thisStage.close();
+
+        finalOutput(al);
+    }
+
+    public void finalOutput(ArrayList<SearchObject> al){
+        thisStage = new Stage();
+        thisStage.setTitle("findify");
+
+        String text = "Most similar methods based on your query:\n";
+
+        for(int i=0; i<al.size(); i++){
+            SearchObject current = al.get(i);
+            text = text + (i+1) + ".) Method name: " + current.getName() + "\n      Path:" + current.getPath() +
+                    "\n      Line: " + current.getLine() + "\n\n\n";
+        }
+
+        TextArea ta = new TextArea(text);
+
+        StackPane layout = new StackPane();
+        layout.getChildren().add(ta);
+        Scene scene = new Scene(layout, 550, 400);
+        thisStage.setScene(scene);
+
+        thisStage.show();
     }
 }
