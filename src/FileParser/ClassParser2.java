@@ -320,20 +320,24 @@ public class ClassParser2 {
                 "\n" +
                 "}\n";
         List<String> reptileLines = Arrays.asList(reptile.split("\n"));
-        String[] a = refineText(reptileLines);
+        /*String[] a = refineText(reptileLines);
         for (int i = 0; i < a.length; i++) {
             System.out.println(a[i]);
         }
         ClassObject file = fileParser("Path", reptileLines);
         System.out.println("Size: " + file.getAttributes().size());
-        System.out.println(file.toString());
+        System.out.println(file.toString());*/
+        System.out.println(Arrays.toString(documentation(reptileLines)));
     }
 
     public static ClassObject fileParser(String path, List<String> content) {
+        String[] tags = documentation(content);
         String[] refinedText = refineText(content);
         int number = Integer.parseInt(refinedText[0].substring(0, refinedText[0].indexOf(' ')));
         ClassObject classObject = classHeadParser(refinedText[0]);
         classObject.setLine(number);
+        classObject.setPath(path);
+        classObject.setTags(tags);
         classObject.setMethods(new ArrayList<>());
         classObject.setAttributes(new ArrayList<>());
         for (int i = 1; i < refinedText.length; i++) {
@@ -443,8 +447,25 @@ public class ClassParser2 {
     }
 
 
-    public static String[] documentation() {
-        return null;
+    public static String[] documentation(List<String> content) {
+        StringBuilder comments = new StringBuilder();
+        for (int i = 0; i < content.size(); i++) {
+            String line = content.get(i);
+            content.set(i, line.replaceAll("\\t", ""));
+            content.set(i, line.replaceAll("  ", ""));
+            if (line.contains("/*") || line.contains("//") || line.contains("*/") || line.contains("*")) {
+                content.set(i, line.replaceAll("//", ""));
+                content.set(i, line.replaceAll("/*", ""));
+                content.set(i, line.replaceAll("\\*/", ""));
+                content.set(i, line.replaceAll("\\*", ""));
+                if (line.length() > 10)
+                    comments.append(line);
+            }
+        }
+
+        String[] result = comments.toString().split(" ");
+        result = Arrays.stream(result).filter(x -> x.length() > 5).distinct().toArray(String[] :: new);
+        return result;
     }
 
     /**

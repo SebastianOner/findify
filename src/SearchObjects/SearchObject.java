@@ -2,8 +2,6 @@ package SearchObjects;
 
 import Score.SemanticWeb;
 
-import java.util.List;
-
 public abstract class SearchObject {
     static SemanticWeb semanticWeb = new SemanticWeb(new String[][]{
             {"search", "find", "inquire", "request", "explore", "hunt"},
@@ -28,7 +26,7 @@ public abstract class SearchObject {
     private AccessModifier accessModifier;
     private String path;
     private int line;
-    private String[] content;
+    private String[] tags;
 
     public SearchObject(String name, AccessModifier accessModifier, String path,
                          int line) {
@@ -75,12 +73,12 @@ public abstract class SearchObject {
         this.name = name;
     }
 
-    public void setContent(String[] content) {
-        this.content = content;
+    public void setTags(String[] tags) {
+        this.tags = tags;
     }
 
-    public String[] getContent() {
-        return content;
+    public String[] getTags() {
+        return tags;
     }
 
     public AccessModifier getAccessModifier() {
