@@ -8,28 +8,6 @@ import java.util.List;
 
 public class ClassParser2 {
 
-    public static void main(String[] args) {
-        String reptile = "package CodeBase;\n" +
-                "\n" +
-                "abstract class Reptile implements Animal {\n" +
-                "    boolean hasScales;\n" +
-                "\n" +
-                "//class hello whats up    " +
-                "static class ReptileActions {\n" +
-                "        void bite() {\n" +
-                "\n" +
-                "        }\n" +
-                "    }\n" +
-                "}";
-        List<String> reptileLines = Arrays.asList(reptile.split("\n"));
-        String[] a = refineText(reptileLines);
-        for (int i = 0; i < a.length; i++) {
-            System.out.println(a[i]);
-        }
-        ClassObject file = fileParser("Path", reptileLines);
-        System.out.println(file.toString());
-    }
-
     public static ClassObject fileParser(String path, List<String> content) {
         String[] refined = refineText(content);
         ClassObject javaFile = classParser(refined, path);
@@ -67,7 +45,10 @@ public class ClassParser2 {
         checkList[1] = head.contains("extends ");
         checkList[2] = head.contains("<") && head.contains(">");
         String sub = head.substring(head.indexOf("class ") + 6);
-        String name = sub.substring(0, sub.indexOf(" "));
+        String name = sub.substring(0);
+        if(head.contains("{")) {
+            name = sub.substring(0, sub.indexOf(" "));
+        }
         ClassObject.InheritanceType type = ClassObject.InheritanceType.DEFAULT;
         if (head.contains("abstract "))
             type = ClassObject.InheritanceType.ABSTRACT;
@@ -119,14 +100,27 @@ public class ClassParser2 {
      * @return String[]: Filtered version with only necessary Code with index in front
      */
     public static String[] refineText(List<String> content) {
-        boolean isClass = true;
+        boolean isMethod = false;
         StringBuilder result = new StringBuilder();
         for (int i = 0; i < content.size(); i++) {
             content.set(i, content.get(i).replaceAll("  ",""));
         }
         for (int i = 0; i < content.size(); i++) {
+            if(content.get(i).contains("{") || (content.get(i).contains("}") && isMethod)) {
+                result.append(i + " " + content.get(i) + "\n");
+                continue;
+            }
+            if (content.get(i).isEmpty() || content.get(i).isBlank() || isMethod
+                    || content.get(i).contains("import ") || content.get(i).contains("package ")) {
+                continue;
+            }
+            if(content.get(i).contains(")")) {
+                isMethod = true;
+            }
+            result.append(i +" " + content.get(i) + "\n");
+        }
 
-            if ((!content.get(i).contains("class ") || !content.get(i).contains("interface ")
+            /*if ((!content.get(i).contains("class ") || !content.get(i).contains("interface ")
                     || !content.get(i).contains("enum ")) && content.get(i).contains("{")) {
                 String replace = i + " " + content.get(i) + "\n";
                 result.append(replace);
@@ -143,7 +137,7 @@ public class ClassParser2 {
             }
             String replace = i + " " + content.get(i) + "\n";
             result.append(replace);
-        }
+        }*/
         return result.toString().split("\n");
     }
 
