@@ -23,6 +23,19 @@ public class ClassObject extends SearchObject {
         this.attributes = new ArrayList<>();
     }
 
+    public ClassObject(String name, AccessModifier accessModifier,
+                       Boolean isChild, Boolean hasGeneric,
+                       Boolean isImplemented, InheritanceType inheritanceType,
+                       ClassType classType, List<FieldObject> attributes) {
+        super(name, accessModifier);
+        this.isChild = isChild;
+        this.hasGeneric = hasGeneric;
+        this.isImplemented = isImplemented;
+        this.inheritanceType = inheritanceType;
+        this.classType = classType;
+        this.attributes = attributes;
+    }
+
     //constructor for GUI
     public ClassObject(String name, AccessModifier accessModifier,
                        Boolean isChild, Boolean hasGeneric,

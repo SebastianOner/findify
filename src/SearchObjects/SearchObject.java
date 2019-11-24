@@ -36,10 +36,16 @@ public abstract class SearchObject {
         this.line = line;
     }
 
+    public SearchObject(String name, AccessModifier accessModifier) {
+        this.name = name;
+        this.accessModifier = accessModifier;
+    }
+
     //constructor for GUI
     public SearchObject(String name, AccessModifier accessModifier, String[] tags) {
         this.name = name;
         this.accessModifier = accessModifier;
+        this.tags = tags;
     }
 
     public SearchObject() {
