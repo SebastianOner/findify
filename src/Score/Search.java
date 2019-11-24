@@ -17,7 +17,7 @@ final public class Search {
 //            bests.add(maxHeap.dequeueMax().getObject());
 //        }
         ArrayList<SearchObject> list = new ArrayList<>();
-        for(int i = 0; i < 5 && classObjects.get(i) != null; ++i) {
+        for(int i = 0; i < 5 && i < classObjects.size() && classObjects.get(i) != null; ++i) {
             list.add(classObjects.get(i));
         }
         return list;
