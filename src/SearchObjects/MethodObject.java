@@ -10,9 +10,9 @@ public class MethodObject extends SearchObject {
     private String returnType;
 
     public MethodObject(String name, AccessModifier visibility, String path,
-                        int line, List<String> content, Boolean isStatic,
+                        int line, Boolean isStatic,
                         String returnType) {
-        super(name, visibility, path, content, line);
+        super(name, visibility, path, line);
         this.isStatic = isStatic;
         this.returnType = returnType;
         this.parameters = new ArrayList<FieldObject>();

@@ -28,9 +28,10 @@ public abstract class SearchObject {
     private AccessModifier accessModifier;
     private String path;
     private int line;
+    private String[] content;
 
     public SearchObject(String name, AccessModifier accessModifier, String path,
-                        List<String> content, int line) {
+                         int line) {
         this.name = name;
         this.accessModifier = accessModifier;
         this.path = path;

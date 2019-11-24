@@ -5,7 +5,7 @@ public class FieldObject extends SearchObject {
 
     public FieldObject(String name, AccessModifier accessModifier, String path,
                        int line, String type) {
-        super(name, accessModifier, path, null, line);
+        super(name, accessModifier, path, line);
         this.type = type;
     }
 
