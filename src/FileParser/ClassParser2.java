@@ -36,6 +36,7 @@ public class ClassParser2 {
     }
 
     public static ClassObject classHeadParser(String head) {
+        System.out.println(head);
         boolean[] checkList = new boolean[3];
         checkList[0] = head.contains("implements ");
         checkList[1] = head.contains("extends ");
@@ -52,13 +53,13 @@ public class ClassParser2 {
         }
         if (head.contains("enum ")) {
             classType = ClassObject.ClassType.ENUM;
-            name = head.substring(head.indexOf("enum") + 5);
+            name = head.substring(head.indexOf("enum ") + 5);
         } else if (head.contains("interface ")) {
             classType = ClassObject.ClassType.INTERFACE;
-            name = head.substring(head.indexOf("interface") + 10);
+            name = head.substring(head.indexOf("interface ") + 10);
         } else {
             classType = ClassObject.ClassType.DEFAULT;
-            name = head.substring(head.indexOf("class") + 5);
+            name = head.substring(head.indexOf("class ") + 6);
         }
 
         if (checkList[2]) {
