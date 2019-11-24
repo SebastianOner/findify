@@ -75,6 +75,14 @@ public abstract class SearchObject {
         this.name = name;
     }
 
+    public void setContent(String[] content) {
+        this.content = content;
+    }
+
+    public String[] getContent() {
+        return content;
+    }
+
     public AccessModifier getAccessModifier() {
         return accessModifier;
     }
