@@ -68,7 +68,7 @@ public class ClassParser2 {
         }
 
         return new ClassObject(name, visibilityParser(head), checkList[1], checkList[2],
-                checkList[0], type, classType, null);
+                checkList[0], type, classType, null, null);
     }
 
     /**
