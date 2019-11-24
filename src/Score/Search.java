@@ -13,7 +13,7 @@ final public class Search {
             ArrayList<ClassObject> classObjects, SearchObject request) {
         classObjects.forEach(o -> traverse(o, request));
         ArrayList<SearchObject> bests = new ArrayList<>();
-        for (int i = 0; i < 5 && !maxHeap.isEmpty(); ++i){
+        for (int i = 0; i < 5 && maxHeap.size() > 0; ++i){
             bests.add(maxHeap.dequeueMax().getObject());
         }
         return bests;
