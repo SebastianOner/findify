@@ -51,7 +51,7 @@ final class MaxHeap<T> {
     }
 
     Node<T> dequeueMax() {
-        if (isEmpty())
+        if (size() <= 0)
             throw new NoSuchElementException("Heap is empty.");
         --size;
         Node<T> maxElem = max;

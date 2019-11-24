@@ -13,7 +13,7 @@ final public class Search {
             ArrayList<ClassObject> classObjects, SearchObject request) {
         classObjects.forEach(o -> traverse(o, request));
         ArrayList<SearchObject> bests = new ArrayList<>();
-        for (int i = 0; i < 5 && maxHeap.size() > 0; ++i){
+        for (int i = 0; i < 5 && !maxHeap.isEmpty(); ++i){
             bests.add(maxHeap.dequeueMax().getObject());
         }
         return bests;
@@ -27,11 +27,11 @@ final public class Search {
         //TODO: Beautify following code.
         if (searchObject instanceof ClassObject) {
             ClassObject classObject = ((ClassObject) searchObject);
-            classObject.getAttributes().forEach(o -> traverse(o, request));
             classObject.getMethods().forEach(o -> traverse(o, request));
+            classObject.getAttributes().forEach(o -> traverse(o, request));
         } else if (searchObject instanceof MethodObject) {
             MethodObject methodObject = ((MethodObject) searchObject);
-            methodObject.getParameters().forEach(o -> traverse(request, o));
+            methodObject.getParameters().forEach(o -> traverse(o, request));
         }
     }
 }
