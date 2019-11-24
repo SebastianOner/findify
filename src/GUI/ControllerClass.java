@@ -17,6 +17,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ControllerClass {
+    private ArrayList<ClassObject> projectClasses;
+
     private Stage thisStage;
     //yes no checkbox variables
     public CheckBox extendedYCheck, extendedNCheck, implementedYCheck, implementedNCheck, genericsYCheck, genericsNCheck;
@@ -26,8 +28,9 @@ public class ControllerClass {
     public TextField searchField, tagsField;
 
     //initializes the controller for the class stage
-    public ControllerClass() throws IOException{
+    public ControllerClass(ArrayList<ClassObject> projectClasses) throws IOException{
         thisStage = new Stage();
+        this.projectClasses = projectClasses;
 
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("classScene.fxml"));
@@ -305,7 +308,7 @@ public class ControllerClass {
 
         ClassObject CO = new ClassObject(name, am, isChild, isGeneric, isImplemented, inh, type, attributeList);
 
-        //Score.Search.getBests(CO);
+        Score.Search.getBests(projectClasses, CO);
 
         GUIClassInstance classInstance = new GUIClassInstance();
         classInstance.interfaceAtt = interfaceFired();
