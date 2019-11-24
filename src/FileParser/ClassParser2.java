@@ -121,7 +121,7 @@ public class ClassParser2 {
         boolean isClass = true;
         StringBuilder result = new StringBuilder();
         for (int i = 0; i < content.size(); i++) {
-            content.set(i, content.get(i).replaceAll("  ",""));
+            content.set(i, content.get(i).replaceAll("  ", ""));
         }
         for (int i = 0; i < content.size(); i++) {
 
@@ -132,7 +132,7 @@ public class ClassParser2 {
                 isClass = false;
             }
             if (content.get(i).contains("}")) {
-                result.append(i+" "+content.get(i) + "\n");
+                result.append(i + " " + content.get(i) + "\n");
                 isClass = true;
                 continue;
             }
@@ -170,7 +170,7 @@ public class ClassParser2 {
     public static FieldObject fieldParser(String fieldString, String path) {
         int number = 0;
         try {
-             number = Integer.parseInt(fieldString.substring(0, fieldString.indexOf(' ')));
+            number = Integer.parseInt(fieldString.substring(0, fieldString.indexOf(' ')));
         } catch (Exception e) {
         }
         String[] stream = fieldString.split(" ");
@@ -192,7 +192,7 @@ public class ClassParser2 {
 
         result = new MethodObject(front[front.length - 1], visibilityParser(method), path, 0, null, method.contains("static"), front[front.length - 2]);
         result.setLine(number);
-        if(back[0].isEmpty()) {
+        if (back[0].isEmpty()) {
             return result;
         }
         List<FieldObject> parameters = new ArrayList<>();

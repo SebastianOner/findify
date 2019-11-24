@@ -11,6 +11,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
+
 import java.io.IOException;
 import java.nio.charset.Charset;
 import java.util.ArrayList;
@@ -28,7 +29,7 @@ public class ControllerClass {
     public TextField searchField, tagsField;
 
     //initializes the controller for the class stage
-    public ControllerClass(ArrayList<ClassObject> projectClasses) throws IOException{
+    public ControllerClass(ArrayList<ClassObject> projectClasses) throws IOException {
         thisStage = new Stage();
         this.projectClasses = projectClasses;
 
@@ -38,7 +39,7 @@ public class ControllerClass {
 
             thisStage.setScene(new Scene(loader.load()));
             thisStage.setTitle("findify");
-        } catch (IOException e){
+        } catch (IOException e) {
             e.printStackTrace();
         }
     }
@@ -47,199 +48,190 @@ public class ControllerClass {
         thisStage.show();
     }
 
-    public Boolean interfaceFired(){
-        if(interfaceCheck.isSelected())
+    public Boolean interfaceFired() {
+        if (interfaceCheck.isSelected())
             return Boolean.TRUE;
         else
             return null;
     }
 
-    public Boolean abstractFired(){
-        if(abstractCheck.isSelected())
+    public Boolean abstractFired() {
+        if (abstractCheck.isSelected())
             return Boolean.TRUE;
         else
             return null;
     }
 
-    public Boolean ENUMFired(){
-        if(ENUMCheck.isSelected())
+    public Boolean ENUMFired() {
+        if (ENUMCheck.isSelected())
             return Boolean.TRUE;
         else
             return null;
     }
 
-    public Boolean finalFired(){
-        if(finalCheck.isSelected())
+    public Boolean finalFired() {
+        if (finalCheck.isSelected())
             return Boolean.TRUE;
         else
             return null;
     }
 
-    public Boolean standardClassFired(){
-        if(classCheck.isSelected())
+    public Boolean standardClassFired() {
+        if (classCheck.isSelected())
             return Boolean.TRUE;
         else
             return null;
     }
 
-    public Boolean publicFired(){
-        if(publicCheck.isSelected()) {
+    public Boolean publicFired() {
+        if (publicCheck.isSelected()) {
             privateCheck.setSelected(false);
             protectedCheck.setSelected(false);
             return Boolean.TRUE;
-        }
-        else
+        } else
             return null;
     }
 
-    public Boolean privateFired(){
-        if(privateCheck.isSelected()){
+    public Boolean privateFired() {
+        if (privateCheck.isSelected()) {
             publicCheck.setSelected(false);
             protectedCheck.setSelected(false);
             return Boolean.TRUE;
-        }
-        else
+        } else
             return null;
 
     }
 
-    public Boolean protectedFired(){
-        if(protectedCheck.isSelected()) {
+    public Boolean protectedFired() {
+        if (protectedCheck.isSelected()) {
             privateCheck.setSelected(false);
             publicCheck.setSelected(false);
             return Boolean.TRUE;
-        }
-        else
+        } else
             return null;
     }
 
-    public Boolean staticFired(){
-        if(staticCheck.isSelected())
+    public Boolean staticFired() {
+        if (staticCheck.isSelected())
             return Boolean.TRUE;
         else
             return null;
     }
 
-    public Boolean extendedYFired(){
-        if(extendedYCheck.isSelected()){
+    public Boolean extendedYFired() {
+        if (extendedYCheck.isSelected()) {
             extendedNCheck.setSelected(false);
             return Boolean.TRUE;
-        }
-        else if((extendedNCheck.isSelected()==false) && (extendedYCheck.isSelected()==false))
+        } else if ((extendedNCheck.isSelected() == false) && (extendedYCheck.isSelected() == false))
             return null;
         else
             return Boolean.FALSE;
     }
 
-    public Boolean extendedNFired(){
-        if(extendedNCheck.isSelected()){
+    public Boolean extendedNFired() {
+        if (extendedNCheck.isSelected()) {
             extendedYCheck.setSelected(false);
             return Boolean.FALSE;
-        }
-        else if((extendedYCheck.isSelected()==false)&&(extendedNCheck.isSelected()==false))
+        } else if ((extendedYCheck.isSelected() == false) && (extendedNCheck.isSelected() == false))
             return null;
         else
             return Boolean.TRUE;
     }
 
-    public Boolean implementedYFired(){
-        if(implementedYCheck.isSelected()){
+    public Boolean implementedYFired() {
+        if (implementedYCheck.isSelected()) {
             implementedNCheck.setSelected(false);
             return Boolean.TRUE;
-        }
-        else if(extendedNCheck.isSelected()==false && extendedYCheck.isSelected()==false)
+        } else if (extendedNCheck.isSelected() == false && extendedYCheck.isSelected() == false)
             return null;
         else
             return Boolean.FALSE;
     }
 
-    public Boolean implementedNFired(){
-        if(implementedNCheck.isSelected()){
+    public Boolean implementedNFired() {
+        if (implementedNCheck.isSelected()) {
             implementedYCheck.setSelected(false);
             return Boolean.FALSE;
-        }
-        else if(extendedNCheck.isSelected()==false && extendedYCheck.isSelected()==false)
+        } else if (extendedNCheck.isSelected() == false && extendedYCheck.isSelected() == false)
             return null;
         else
             return Boolean.TRUE;
     }
 
-    public Boolean genericYFired(){
-        if(genericsYCheck.isSelected()){
+    public Boolean genericYFired() {
+        if (genericsYCheck.isSelected()) {
             genericsNCheck.setSelected(false);
             return Boolean.TRUE;
-        }
-        else if((genericsYCheck.isSelected()==false)&&(genericsNCheck.isSelected()==false))
+        } else if ((genericsYCheck.isSelected() == false) && (genericsNCheck.isSelected() == false))
             return null;
         else
             return Boolean.FALSE;
     }
 
-    public Boolean genericNFired(){
-        if(genericsNCheck.isSelected()){
+    public Boolean genericNFired() {
+        if (genericsNCheck.isSelected()) {
             genericsYCheck.setSelected(false);
             return Boolean.FALSE;
-        }
-        else if((genericsNCheck.isSelected()==false)&&genericsYCheck.isSelected()==false)
+        } else if ((genericsNCheck.isSelected() == false) && genericsYCheck.isSelected() == false)
             return null;
         else
             return Boolean.TRUE;
     }
 
-    public Boolean intFired(){
-        if(intCheck.isSelected())
+    public Boolean intFired() {
+        if (intCheck.isSelected())
             return Boolean.TRUE;
         else
             return null;
     }
 
-    public Boolean stringFired(){
-        if(stringCheck.isSelected())
+    public Boolean stringFired() {
+        if (stringCheck.isSelected())
             return Boolean.TRUE;
         else
             return null;
 
     }
 
-    public Boolean arraysFired(){
-        if(arraysCheck.isSelected())
+    public Boolean arraysFired() {
+        if (arraysCheck.isSelected())
             return Boolean.TRUE;
         else
             return null;
     }
 
-    public Boolean doubleFired(){
-        if(doubleCheck.isSelected())
+    public Boolean doubleFired() {
+        if (doubleCheck.isSelected())
             return Boolean.TRUE;
         else
             return null;
     }
 
-    public Boolean booleanFired(){
-        if(booleanCheck.isSelected())
+    public Boolean booleanFired() {
+        if (booleanCheck.isSelected())
             return Boolean.TRUE;
         else
             return null;
     }
 
-    public Boolean charFired(){
-        if(charCheck.isSelected())
+    public Boolean charFired() {
+        if (charCheck.isSelected())
             return Boolean.TRUE;
         else
             return null;
     }
 
-    public String searchFired(){
+    public String searchFired() {
         CharSequence charSequence = searchField.getCharacters();
         return charSequence.toString();
     }
 
-    public String tagsFired(){
+    public String tagsFired() {
         CharSequence charSequence = tagsField.getCharacters();
         return charSequence.toString();
     }
 
-    public void goFired(){
+    public void goFired() {
         String name = searchFired();
         Boolean isChild = extendedYFired();
         Boolean isImplemented = implementedYFired();
