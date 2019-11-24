@@ -36,7 +36,6 @@ public class ClassParser2 {
     }
 
     public static ClassObject classHeadParser(String head) {
-        System.out.println(head);
         boolean[] checkList = new boolean[3];
         checkList[0] = head.contains("implements ");
         checkList[1] = head.contains("extends ");
