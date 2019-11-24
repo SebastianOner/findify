@@ -11,16 +11,15 @@ public class ClassParser2 {
     public static void main(String[] args) {
         String reptile = "package CodeBase;\n" +
                 "\n" +
-                "abstract class Reptile implements Animal {\n" +
-                "    boolean hasScales;\n" +
+                "public class Rabbit extends Mammal {\n" +
+                "    String color;\n" +
+                "    int numSiblings;\n" +
+                "    Rabbit father;\n" +
                 "\n" +
-                "//class hello whats up    " +
-                "static class ReptileActions {\n" +
-                "        void bite() {\n" +
-                "\n" +
-                "        }\n" +
+                "    protected class Mutt {\n" +
+                "        String secondaryColor;\n" +
                 "    }\n" +
-                "}";
+                "}\n";
         List<String> reptileLines = Arrays.asList(reptile.split("\n"));
         String[] a = refineText(reptileLines);
         for (int i = 0; i < a.length; i++) {
