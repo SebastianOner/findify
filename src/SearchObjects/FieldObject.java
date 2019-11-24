@@ -25,11 +25,10 @@ public class FieldObject extends SearchObject {
     @Override
     public double getSimilarity(SearchObject searchObject) {
         FieldObject fieldObject = ((FieldObject) searchObject);
-        double similarity =
-                semanticWeb.getSimilarity(getName(), fieldObject.getName());
+        double similarity = 1;
         if (getName() != null && fieldObject.getName() != null &&
-                !getName().equals(fieldObject.getName()))
-            similarity *= 0.9;
+                0 != semanticWeb.getSimilarity(getName(), fieldObject.getName()))
+            similarity *= semanticWeb.getSimilarity(getName(), fieldObject.getName());
         if (getAccessModifier() != null &&
                 fieldObject.getAccessModifier() != null &&
                 getAccessModifier() != fieldObject.getAccessModifier())
