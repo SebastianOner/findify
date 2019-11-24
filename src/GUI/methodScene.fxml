@@ -287,7 +287,7 @@
                                                                                                 <CheckBox
                                                                                                         fx:id="intArrayRCheck"
                                                                                                         mnemonicParsing="false"
-                                                                                                        onAction="#intArraryRFired"
+                                                                                                        onAction="#intArrayRFired"
                                                                                                         text="Int Array">
                                                                                                     <font>
                                                                                                         <Font size="12.0"/>

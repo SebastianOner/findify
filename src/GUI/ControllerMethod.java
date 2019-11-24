@@ -1,6 +1,5 @@
 package GUI;
 
-import SearchObjects.ClassObject;
 import SearchObjects.FieldObject;
 import SearchObjects.MethodObject;
 import SearchObjects.SearchObject;
@@ -17,7 +16,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ControllerMethod {
-    private ArrayList<ClassObject> projectClasses;
     private Stage thisStage;
 
     //visibility for methods
@@ -31,200 +29,224 @@ public class ControllerMethod {
     //method name textField
     public TextField nameField;
 
-    public ControllerMethod(ArrayList<ClassObject> projectClasses) throws IOException {
+    public ControllerMethod() throws IOException {
         thisStage = new Stage();
-        this.projectClasses = projectClasses;
+
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("classScene.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("methodScene.fxml"));
             loader.setController(this);
 
             thisStage.setScene(new Scene(loader.load()));
             thisStage.setTitle("findify");
-        } catch (IOException e) {
+        } catch (IOException e){
             e.printStackTrace();
         }
     }
-
     public void showStage() {
         thisStage.show();
     }
 
-    public Boolean publicFired() {
-        if (publicCheck.isSelected()) {
+    public Boolean publicFired(){
+        if(publicCheck.isSelected()){
+            privateCheck.setSelected(false);
+            protectedCheck.setSelected(false);
+            ppCheck.setSelected(false);
+            return Boolean.TRUE;
+        }
+        else
+            return null;
+    }
+
+    public Boolean privateFired(){
+        if(privateCheck.isSelected()){
+            publicCheck.setSelected(false);
+            protectedCheck.setSelected(false);
+            ppCheck.setSelected(false);
+            return Boolean.TRUE;
+        }
+        else
+            return null;
+    }
+
+    public Boolean protectedFired(){
+        if(protectedCheck.isSelected()){
+            publicCheck.setSelected(false);
+            privateCheck.setSelected(false);
+            ppCheck.setSelected(false);
+            return Boolean.TRUE;
+        }
+        else
+            return null;
+    }
+
+    public Boolean ppFired(){
+        if(ppCheck.isSelected()){
+            publicCheck.setSelected(false);
             privateCheck.setSelected(false);
             protectedCheck.setSelected(false);
             return Boolean.TRUE;
-        } else
+        }
+        else
             return null;
     }
 
-    public Boolean privateFired() {
-        if (privateCheck.isSelected()) {
-            publicCheck.setSelected(false);
-            protectedCheck.setSelected(false);
+    public Boolean intPFired(){
+        if(intPCheck.isSelected()){
             return Boolean.TRUE;
-        } else
+        }
+        else
             return null;
     }
 
-    public Boolean protectedFired() {
-        if (protectedCheck.isSelected()) {
-            publicCheck.setSelected(false);
-            privateCheck.setSelected(false);
+    public Boolean doublePFired(){
+        if(doublePCheck.isSelected()){
             return Boolean.TRUE;
-        } else
+        }
+        else
             return null;
     }
 
-    public Boolean ppFired() {
-        if (ppCheck.isSelected()) {
+    public Boolean booleanPFired(){
+        if(booleanPCheck.isSelected()){
             return Boolean.TRUE;
-        } else
+        }
+        else
             return null;
     }
 
-    public Boolean intPFired() {
-        if (intPCheck.isSelected()) {
+    public Boolean stringPFired(){
+        if(stringPCheck.isSelected()){
             return Boolean.TRUE;
-        } else
+        }
+        else
             return null;
     }
 
-    public Boolean doublePFired() {
-        if (doublePCheck.isSelected()) {
+    public Boolean intArrayPFired(){
+        if(intArrayPCheck.isSelected()){
             return Boolean.TRUE;
-        } else
+        }
+        else
             return null;
     }
 
-    public Boolean booleanPFired() {
-        if (booleanPCheck.isSelected()) {
+    public Boolean charPFired(){
+        if(charPCheck.isSelected()){
             return Boolean.TRUE;
-        } else
+        }
+        else
             return null;
     }
 
-    public Boolean stringPFired() {
-        if (stringPCheck.isSelected()) {
+    public Boolean intRFired(){
+        if(intRCheck.isSelected()){
             return Boolean.TRUE;
-        } else
+        }
+        else
             return null;
     }
 
-    public Boolean intArrayPFired() {
-        if (intArrayPCheck.isSelected()) {
+    public Boolean doubleRFired(){
+        if(doubleRCheck.isSelected()){
             return Boolean.TRUE;
-        } else
+        }
+        else
             return null;
     }
 
-    public Boolean charPFired() {
-        if (charPCheck.isSelected()) {
+    public Boolean booleanRFired(){
+        if(booleanRCheck.isSelected()){
             return Boolean.TRUE;
-        } else
+        }
+        else
             return null;
     }
 
-    public Boolean intRFired() {
-        if (intRCheck.isSelected()) {
+    public Boolean stringRFired(){
+        if(stringRCheck.isSelected()){
             return Boolean.TRUE;
-        } else
+        }
+        else
             return null;
     }
 
-    public Boolean doubleRFired() {
-        if (doubleRCheck.isSelected()) {
+    public Boolean intArrayRFired(){
+        if(intArrayRCheck.isSelected()){
             return Boolean.TRUE;
-        } else
+        }
+        else
             return null;
     }
 
-    public Boolean booleanRFired() {
-        if (booleanRCheck.isSelected()) {
+    public Boolean charRFired(){
+        if(charRCheck.isSelected()){
             return Boolean.TRUE;
-        } else
+        }
+        else
             return null;
     }
 
-    public Boolean stringRFired() {
-        if (stringRCheck.isSelected()) {
-            return Boolean.TRUE;
-        } else
-            return null;
-    }
-
-    public Boolean intArrayRFired() {
-        if (intArrayRCheck.isSelected()) {
-            return Boolean.TRUE;
-        } else
-            return null;
-    }
-
-    public Boolean charRFired() {
-        if (charRCheck.isSelected()) {
-            return Boolean.TRUE;
-        } else
-            return null;
-    }
-
-    public Boolean staticYFired() {
-        if (staticYCheck.isSelected()) {
+    public Boolean staticYFired(){
+        if(staticYCheck.isSelected()){
             staticNCheck.setSelected(false);
             return Boolean.TRUE;
-        } else if ((staticNCheck.isSelected() == false) && (staticYCheck.isSelected()))
+        }
+        else if((staticNCheck.isSelected()==false) && (staticYCheck.isSelected()))
             return null;
         else
             return Boolean.FALSE;
     }
 
-    public Boolean staticNFired() {
-        if (staticNCheck.isSelected()) {
+    public Boolean staticNFired(){
+        if(staticNCheck.isSelected()){
             staticYCheck.setSelected(false);
             return Boolean.TRUE;
-        } else if ((staticYCheck.isSelected() == false) && (staticNCheck.isSelected() == false))
+        }
+        else if((staticYCheck.isSelected()==false) && (staticNCheck.isSelected()==false))
             return null;
         else
             return Boolean.FALSE;
     }
 
-    public String nameFired() {
+    public String nameFired(){
         CharSequence charSequence = nameField.getCharacters();
         return charSequence.toString();
     }
 
-    public void goFired() {
+    public void goFired(){
         String name = nameFired();
         Boolean isStatic = staticYFired();
 
         //calculating the return type
         String returnType;
-        if (intArrayRFired())
+        if(intArrayRFired() != null)
             returnType = "int[]";
-        else if (intRFired())
+        else if(intRFired() != null)
             returnType = "int";
-        else if (booleanRFired())
+        else if(booleanRFired() != null)
             returnType = "boolean";
-        else if (doubleRFired())
+        else if(doubleRFired() != null)
             returnType = "double";
-        else if (stringRFired())
+        else if(stringRFired() != null)
             returnType = "String";
-        else if (charRFired())
+        else if(charRFired() != null)
             returnType = "char";
         else
             returnType = "void";
 
+        //adding the parameter types if they exist in the method
         List<FieldObject> parameterTypes = new ArrayList<FieldObject>();
-        if (intArrayPFired())
+        if(intArrayPFired() != null)
             parameterTypes.add(new FieldObject("int[]"));
-        if (intPFired())
+        if(intPFired() != null)
             parameterTypes.add(new FieldObject("int"));
-        if (booleanPFired())
+        if(booleanPFired() != null)
             parameterTypes.add(new FieldObject("boolean"));
-        if (doublePFired())
+        if(doublePFired() != null)
             parameterTypes.add(new FieldObject("double"));
-        if (stringPFired())
+        if(stringPFired() != null)
             parameterTypes.add(new FieldObject("String"));
-        if (charPFired())
+        if(charPFired() != null)
             parameterTypes.add(new FieldObject("char"));
 
         //visibility in the methods
@@ -241,5 +263,6 @@ public class ControllerMethod {
 
         MethodObject MO = new MethodObject(name, am, isStatic, returnType, parameterTypes);
 
+        thisStage.close();
     }
 }

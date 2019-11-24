@@ -290,9 +290,9 @@ public class ControllerClass {
         }
 
         ClassObject.ClassType type;
-        if (isInterface) {
+        if (isInterface != null) {
             type = ClassObject.ClassType.INTERFACE;
-        } else if (isENUM) {
+        } else if (isENUM != null) {
             type = ClassObject.ClassType.ENUM;
         } else {
             type = ClassObject.ClassType.DEFAULT;
@@ -328,5 +328,7 @@ public class ControllerClass {
 
 
         System.out.println(classInstance.toString(classInstance));
+
+        thisStage.close();
     }
 }
