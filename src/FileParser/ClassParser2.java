@@ -183,7 +183,7 @@ public class ClassParser2 {
         String[] back = method.substring(method.indexOf('(') + 1, method.indexOf(')')).split(", ");
         MethodObject result = null;
 
-        result = new MethodObject(front[front.length - 1], visibilityParser(method), path, 0, null, method.contains("static"), front[front.length - 2]);
+        result = new MethodObject(front[front.length - 1], visibilityParser(method), path, 0, method.contains("static"), front[front.length - 2]);
         result.setLine(number);
         if (back[0].isEmpty()) {
             return result;
