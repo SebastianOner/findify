@@ -7,7 +7,7 @@ import java.util.NoSuchElementException;
 /**
  * Implemented as fibonacci heap
  */
-final class PriorityHeap<T> {
+final class MaxHeap<T> {
     private Node<T> max = null;
     private int size = 0;
 
@@ -28,7 +28,7 @@ final class PriorityHeap<T> {
         }
     }
 
-    public Node<T> enqueue(T object, double priority) {
+    Node enqueue(T object, double priority) {
         checkPriority(priority);
         Node<T> newNode = new Node<T>(object, priority);
         max = mergeLists(max, newNode);
@@ -105,12 +105,11 @@ final class PriorityHeap<T> {
         return maxElem;
     }
 
-    void IncreaseKey(T object, double newPriority) {
-        Node node = find(object);
+    void IncreaseKey(Node node, double newPriority) {
         checkPriority(newPriority);
         if (newPriority < node.priority)
             throw new IllegalArgumentException("New priority exceeds old.");
-        decreaseKeyUnchecked(node, newPriority);
+        increaseKeyUnchecked(node, newPriority);
     }
 
     //	public void delete(Node<T> node){
@@ -122,7 +121,7 @@ final class PriorityHeap<T> {
             throw new IllegalArgumentException(priority + " is invalid.");
     }
 
-    private void decreaseKeyUnchecked(Node<T> node, double priority) {
+    private void increaseKeyUnchecked(Node<T> node, double priority) {
         node.priority = priority;
         if (node.parent != null && node.priority <= node.parent.priority)
             cutNode(node);
@@ -153,24 +152,6 @@ final class PriorityHeap<T> {
         else
             node.parent.isMarked = true;
         node.parent = null;
-    }
-
-    double getPriority(SemanticWeb.Entry.Reference unvisitedReference) {
-        return 1;
-    }
-
-    Node find(T object) {
-        Node current = max;
-        do {
-            while (current.degree > 0) {
-                if (object == current.getObject())
-                    return current;
-                current = current.child;
-            }
-            current = current.next;
-        } while (current != max);
-
-        return null;
     }
 
     static final class Node<T> {

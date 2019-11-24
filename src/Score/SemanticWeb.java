@@ -46,33 +46,31 @@ final public class SemanticWeb {
     public double getSimilarity(String a, String b) {
         if (a == null || b == null)
             return 0;
-        PriorityHeap<Entry> unvisitedEntries = new PriorityHeap<Entry>();
+        MaxHeap<Entry> unvisitedEntries = new MaxHeap<>();
         for (Entry entry : entries) {
             if (entry != null)
-                unvisitedEntries.enqueue(entry, a.equals(entry.getWord()) ? 1 : 0);
+                entry.setNode(unvisitedEntries.enqueue(entry, a.equals(entry.getWord()) ? 1 : 0));
         }
-        PriorityHeap.Node priorityHeapNode;
+        MaxHeap.Node node;
         while (!unvisitedEntries.isEmpty()) {
-            priorityHeapNode = unvisitedEntries.dequeueMax();
-            Entry entry = (Entry) priorityHeapNode.getObject();
+            node = unvisitedEntries.dequeueMax();
+            Entry entry = (Entry) node.getObject();
             if (b.equals(entry.getWord())) {
-                return priorityHeapNode.getPriority();
+                return entry.getSimilarity();
             }
-            //verbesserungswürdig
-            entry.getReferences().stream().filter(reference -> null !=
-                    unvisitedEntries
-                            .find(entries[reference
-                                    .getPosition()]))
-                    .forEach(unvisitedReference -> {
-                        double alternative = unvisitedReference.getWeight() *
-                                unvisitedReference.getPosition();
-                        if (unvisitedEntries.getPriority(unvisitedReference) <
-                                alternative)
-                            unvisitedEntries.IncreaseKey(
-                                    entries[unvisitedReference.getPosition()],
-                                    alternative);
-                    });
+            entry.getReferences().forEach(reference -> {
+                int position = reference.getPosition();
+                double alternative = entry.getSimilarity() * reference.getWeight();
+                if (entries[position].getSimilarity() <
+                        alternative) {
+                    unvisitedEntries.IncreaseKey(
+                            entries[position].getNode(),
+                            alternative);
+                    entry.setSimilarity(alternative);
+                }
+            });
         }
+        System.out.println("Yay");
         return 0;
     }
 
@@ -113,6 +111,8 @@ final public class SemanticWeb {
     class Entry {
         String word;
         ArrayList<Reference> references = new ArrayList<>();
+        double similarity;
+        MaxHeap.Node node;
 
         private Entry(String word) {
             this.word = word;
@@ -126,12 +126,29 @@ final public class SemanticWeb {
             references.add(new Reference(position));
         }
 
+        private void setNode(MaxHeap.Node node) {
+            this.node = node;
+            similarity = node.getPriority();
+        }
+
         private String getWord() {
             return word;
         }
 
         private ArrayList<Reference> getReferences() {
             return references;
+        }
+
+        private double getSimilarity() {
+            return similarity;
+        }
+
+        private MaxHeap.Node getNode() {
+            return node;
+        }
+
+        public void setSimilarity(double similarity) {
+            this.similarity = similarity;
         }
 
         class Reference {
@@ -153,7 +170,7 @@ final public class SemanticWeb {
         }
     }
 
-    int map(int i) {
+    private int map(int i) {
         return i >= 0 ? i : i + entries.length;
     }
 }

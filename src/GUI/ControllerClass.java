@@ -299,7 +299,6 @@ public class ControllerClass {
         }
 
         ClassObject CO = new ClassObject(name, am, isChild, isGeneric, isImplemented, inh, type, attributeList);
-
         System.out.println("Best searches:" + Score.Search.getBests(projectClasses, CO));
 
         GUIClassInstance classInstance = new GUIClassInstance();

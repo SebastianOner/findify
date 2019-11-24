@@ -4,27 +4,30 @@ import SearchObjects.ClassObject;
 import SearchObjects.MethodObject;
 import SearchObjects.SearchObject;
 
-import java.nio.file.attribute.UserDefinedFileAttributeView;
 import java.util.ArrayList;
 
 final public class Search {
-    private static PriorityHeap<SearchObject> priorityHeap = new PriorityHeap<>();
+    private static MaxHeap<SearchObject> maxHeap = new MaxHeap<>();
 
     public static ArrayList<SearchObject> getBests(
             ArrayList<ClassObject> classObjects, SearchObject request) {
-        classObjects.forEach(o -> traverse(o, request));
-        ArrayList<SearchObject> bests = new ArrayList<>();
-        for (int i = 0; i < 5 && !priorityHeap.isEmpty(); ++i){
-            bests.add(priorityHeap.dequeueMax().getObject());
+//        classObjects.forEach(o -> traverse(o, request));
+//        ArrayList<SearchObject> bests = new ArrayList<>();
+//        for (int i = 0; i < 5 && !maxHeap.isEmpty(); ++i){
+//            bests.add(maxHeap.dequeueMax().getObject());
+//        }
+        ArrayList<SearchObject> list = new ArrayList<>();
+        for(int i = 0; i < 5 && classObjects.get(i) != null; ++i) {
+            list.add(classObjects.get(i));
         }
-        return bests;
+        return list;
     }
 
     private static void traverse(SearchObject searchObject,
                                  SearchObject request) {
         if (request.getClass().equals( searchObject.getClass())) {
-            priorityHeap
-                    .enqueue(searchObject, request.getSimilarity(searchObject));
+            System.out.println("Print");
+            maxHeap.enqueue(searchObject, request.getSimilarity(searchObject));
         }
         //TODO: Beautify following code.
         if (searchObject instanceof ClassObject) {
