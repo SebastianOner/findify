@@ -9,7 +9,9 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
+import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -299,7 +301,8 @@ public class ControllerClass {
         }
 
         ClassObject CO = new ClassObject(name, am, isChild, isGeneric, isImplemented, inh, type, attributeList);
-        System.out.println("Best searches:" + Score.Search.getBests(projectClasses, CO));
+
+        ArrayList<SearchObject> al = Score.Search.getBests(projectClasses, CO);
 
         GUIClassInstance classInstance = new GUIClassInstance();
         classInstance.interfaceAtt = interfaceFired();
@@ -324,5 +327,34 @@ public class ControllerClass {
         classInstance.arraysAtt = arraysFired();
         classInstance.booleanAtt = booleanFired();
         classInstance.name = searchFired();
+
+
+        System.out.println(classInstance.toString(classInstance));
+
+        thisStage.close();
+
+        finalOutput(al);
+    }
+
+    public void finalOutput(ArrayList<SearchObject> al){
+        thisStage = new Stage();
+        thisStage.setTitle("findify");
+
+        String text = "Related Results:\n";
+
+        for(int i=0; i<al.size(); i++){
+            SearchObject current = al.get(i);
+            text = text + (i+1) + ".) Class name: " + current.getName() + "\n      Path:" + current.getPath() +
+                    "\n      Line: " + current.getLine() + "\n\n\n";
+        }
+
+        TextArea ta = new TextArea(text);
+
+        StackPane layout = new StackPane();
+        layout.getChildren().add(ta);
+        Scene scene = new Scene(layout, 550, 400);
+        thisStage.setScene(scene);
+
+        thisStage.show();
     }
 }
