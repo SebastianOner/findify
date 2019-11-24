@@ -234,6 +234,8 @@ public class ControllerClass {
     }
 
     public void goFired() {
+        String[] tags = split(tagsFired());
+
         String name = searchFired();
         Boolean isChild = extendedYFired();
         Boolean isImplemented = implementedYFired();
@@ -300,7 +302,7 @@ public class ControllerClass {
             type = ClassObject.ClassType.DEFAULT;
         }
 
-        ClassObject CO = new ClassObject(name, am, isChild, isGeneric, isImplemented, inh, type, attributeList);
+        ClassObject CO = new ClassObject(name, am, isChild, isGeneric, isImplemented, inh, type, attributeList, tags);
 
         ArrayList<SearchObject> al = Score.Search.getBests(projectClasses, CO);
 
@@ -329,5 +331,9 @@ public class ControllerClass {
         thisStage.setScene(scene);
 
         thisStage.show();
+    }
+
+    private static String[] split(String string) {
+        return string.split("[_, \\-]");
     }
 }

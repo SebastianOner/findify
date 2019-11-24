@@ -18,9 +18,10 @@ public class MethodObject extends SearchObject {
         this.parameters = new ArrayList<FieldObject>();
     }
 
+    //constructor for GUI
     public MethodObject(String name, AccessModifier visibility, Boolean isStatic,
-                        String returnType, List<FieldObject> parameters) {
-        super(name, visibility);
+                        String returnType, List<FieldObject> parameters, String[] tags) {
+        super(name, visibility, tags);
         this.isStatic = isStatic;
         this.returnType = returnType;
         this.parameters = parameters;
@@ -73,4 +74,5 @@ public class MethodObject extends SearchObject {
         //TODO: Change weights
         return similarity;
     }
+
 }

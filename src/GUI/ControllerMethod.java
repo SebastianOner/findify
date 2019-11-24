@@ -226,6 +226,8 @@ public class ControllerMethod {
     }
 
     public void goFired(){
+        String[] tags = split(tagsFired());
+
         String name = nameFired();
         Boolean isStatic = staticYFired();
 
@@ -273,7 +275,7 @@ public class ControllerMethod {
             am = SearchObject.AccessModifier.DEFAULT;
         }
 
-        MethodObject MO = new MethodObject(name, am, isStatic, returnType, parameterTypes);
+        MethodObject MO = new MethodObject(name, am, isStatic, returnType, parameterTypes, tags);
 
         ArrayList<SearchObject> al = Score.Search.getBests(projectClasses, MO);
 
@@ -302,5 +304,9 @@ public class ControllerMethod {
         thisStage.setScene(scene);
 
         thisStage.show();
+    }
+
+    private static String[] split(String string) {
+        return string.split("[_, \\-]");
     }
 }
