@@ -1,19 +1,24 @@
 package GUI;
 
+import SearchObjects.ClassObject;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Controller2{
+    private ArrayList<ClassObject> projectClasses;
+
 	private Stage               thisStage;
 	private ControllerClass     controllerClass;
 	private ControllerMethod    controllerMethod;
 	private ControllerAttribute controllerAttribute;
 	
-	public Controller2() throws IOException{
-		
+	public Controller2(ArrayList<ClassObject> projectClasses) throws IOException{
+        this.projectClasses = projectClasses;
 		thisStage = new Stage();
 		
 		try{
@@ -57,7 +62,7 @@ public class Controller2{
 	//creates and initializes our class controller and stage
 	private void initializeControllerClass(){
 		try{
-			controllerClass = new ControllerClass();
+			controllerClass = new ControllerClass(projectClasses);
 			controllerClass.showStage();
 		}catch(IOException e){
 			e.printStackTrace();
@@ -67,7 +72,7 @@ public class Controller2{
 	//creates and initializes our method controller and stage
 	private void initializeControllerMethod(){
 		try{
-			controllerMethod = new ControllerMethod();
+			controllerMethod = new ControllerMethod(projectClasses);
 			controllerMethod.showStage();
 		}catch(IOException e){
 			e.printStackTrace();

@@ -16,7 +16,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Controller1 {
-    public List<ClassObject> projectClasses = new ArrayList<>();
+    public ArrayList<ClassObject> projectClasses = new ArrayList<>();
     public String projectPath;
 
     private Stage thisStage;
@@ -67,7 +67,7 @@ public class Controller1 {
     //creates and initializes our second controller and stage
     private void initializeController2() {
         try {
-            controller2 = new Controller2();
+            controller2 = new Controller2(projectClasses);
             controller2.showStage();
         } catch (IOException e) {
             e.printStackTrace();

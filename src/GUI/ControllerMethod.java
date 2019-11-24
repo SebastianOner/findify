@@ -1,5 +1,6 @@
 package GUI;
 
+import SearchObjects.ClassObject;
 import SearchObjects.FieldObject;
 import SearchObjects.MethodObject;
 import SearchObjects.SearchObject;
@@ -16,6 +17,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ControllerMethod {
+    private ArrayList<ClassObject> projectClasses;
     private Stage thisStage;
 
     //visibility for methods
@@ -29,9 +31,9 @@ public class ControllerMethod {
     //method name textField
     public TextField nameField;
 
-    public ControllerMethod() throws IOException {
+    public ControllerMethod(ArrayList<ClassObject> projectClasses) throws IOException {
         thisStage = new Stage();
-
+        this.projectClasses = projectClasses;
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("classScene.fxml"));
             loader.setController(this);
