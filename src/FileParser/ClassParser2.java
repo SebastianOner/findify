@@ -8,6 +8,7 @@ import java.util.List;
 
 public class ClassParser2 {
     public static String[] taboo = {"if", "else", "switch", "while", "return", "for", "do", "++", "--", "break;", "continue;", "System."};
+
     public static void main(String[] args) {
         String reptile = "/**\n" +
                 " * The class {@code Date} represents a date.\n" +
@@ -327,7 +328,7 @@ public class ClassParser2 {
         System.out.println("Size: " + file.getAttributes().size());
         System.out.println(file.toString());
     }
-    
+
     public static ClassObject fileParser(String path, List<String> content) {
         String[] refinedText = refineText(content);
         int number = Integer.parseInt(refinedText[0].substring(0, refinedText[0].indexOf(' ')));
@@ -443,7 +444,7 @@ public class ClassParser2 {
 
 
     public static String[] documentation() {
-
+        return null;
     }
 
     /**
