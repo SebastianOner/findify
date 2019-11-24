@@ -27,33 +27,18 @@ public class ClassParser2 {
         }
         ClassObject file = fileParser("Path", reptileLines);
         System.out.println("Size: " + file.getAttributes().size());
-        for (int i = 0; i < file.getAttributes().size(); i++) {
-            System.out.println(file.getAttributes().get(i).toString());
-        }
-        //System.out.println(file.toString());
+        System.out.println(file.toString());
     }
 
     public static ClassObject fileParser(String path, List<String> content) {
-        String[] refined = refineText(content);
-        ClassObject javaFile = classParser(refined, path);
-        return javaFile;
-    }
-
-    private static int i = 1;
-
-    public static ClassObject classParser(String[] refinedText, String path) {
+        String[] refinedText = refineText(content);
         int number = Integer.parseInt(refinedText[0].substring(0, refinedText[0].indexOf(' ')));
         ClassObject classObject = classHeadParser(refinedText[0]);
         classObject.setLine(number);
-        classObject.setClasses(new ArrayList<>());
         classObject.setMethods(new ArrayList<>());
         classObject.setAttributes(new ArrayList<>());
-        for (; i < refinedText.length; i++) {
-            String line = getChunk(refinedText, i);
-            if (line.contains("class ")) {
-                String[] inClassText = line.split("\n");
-                classObject.getClasses().add(classParser(inClassText, path));
-            }
+        for (int i = 1; i < refinedText.length; i++) {
+            String line = refinedText[i];
             if (line.contains(";")) {
                 classObject.getAttributes().add(fieldParser(line, path));
             }
@@ -62,6 +47,7 @@ public class ClassParser2 {
             }
         }
         return classObject;
+
     }
 
     public static ClassObject classHeadParser(String head) {
@@ -85,36 +71,6 @@ public class ClassParser2 {
                 checkList[0], type, classType, null);
     }
 
-    public static String getChunk(String[] code, int index) {
-        if (index >= code.length || index < 0) {
-            return null;
-        }
-        for (int i = 0; i < code.length; i++) {
-            if (i == index && code[i].contains("class ") && code[i].contains("{")) {
-                StringBuilder build = new StringBuilder();
-                int open = 0;
-                do {
-                    if (code[i].contains("}")) {
-                        open--;
-                    }
-                    if (code[i].contains("{")) {
-                        open++;
-                    }
-                    build.append(code[i] + "\n");
-                    i++;
-                } while (open != 0);
-                return build.toString();
-            }
-            if (i == index && code[i].contains("(")) {
-                return code[i];
-            }
-            if (i == index && code[i].contains(";")) {
-                return code[i];
-            }
-        }
-        return code[index];
-    }
-
     /**
      * Creates a shorter, filtered version of the code, so it can be parsed easily.
      *
@@ -122,24 +78,31 @@ public class ClassParser2 {
      * @return String[]: Filtered version with only necessary Code with index in front
      */
     public static String[] refineText(List<String> content) {
+        for (int i = 0; i < content.size(); i++) {
+            content.set(i, content.get(i).replaceAll("\\t", ""));
+            content.set(i, content.get(i).replaceAll("  ", ""));
+            if (content.get(i).startsWith("//") || content.get(i).startsWith("/*") ||
+                    content.get(i).startsWith("*/") || content.get(i).contains("*")) {
+                content.set(i, "");
+            }
+        }
         boolean isMethod = false;
         StringBuilder result = new StringBuilder();
         for (int i = 0; i < content.size(); i++) {
-            content.set(i, content.get(i).replaceAll("  ", ""));
-        }
-        for (int i = 0; i < content.size(); i++) {
-            if (content.get(i).contains("{") || (content.get(i).contains("}") && isMethod)) {
-                result.append(i + " " + content.get(i) + "\n");
+            if (isMethod && content.get(i).contains("}")) {
+                isMethod = false;
                 continue;
             }
-            if (content.get(i).isEmpty() || content.get(i).isBlank() || isMethod
-                    || content.get(i).contains("import ") || content.get(i).contains("package ")) {
+            if (isMethod || content.get(i).startsWith("}"))
+                continue;
+            if (content.get(i).isEmpty() || content.get(i).isBlank()
+                    || content.get(i).contains("import ") || content.get(i).contains("package ") || content.get(i).contains("this.")) {
                 continue;
             }
             if (content.get(i).contains(")")) {
                 isMethod = true;
             }
-            result.append(i + " " + content.get(i) + "\n");
+            result.append((i + 1) + " " + content.get(i) + "\n");
         }
         /*boolean isClass = true;
         StringBuilder result = new StringBuilder();
@@ -192,13 +155,19 @@ public class ClassParser2 {
      * @return FieldObject: A FieldObject
      */
     public static FieldObject fieldParser(String fieldString, String path) {
+        if (fieldString.contains("=")) {
+            fieldString = fieldString.substring(0, fieldString.indexOf("="));
+        }
         int number = 0;
         try {
             number = Integer.parseInt(fieldString.substring(0, fieldString.indexOf(' ')));
         } catch (Exception e) {
         }
         String[] stream = fieldString.split(" ");
-        FieldObject fieldObject = new FieldObject(stream[stream.length - 1], visibilityParser(fieldString), path, 0, stream[stream.length - 2]);
+        String name = stream[stream.length - 1];
+        if (name.contains(";"))
+            name = name.substring(0, name.length() - 1);
+        FieldObject fieldObject = new FieldObject(name, visibilityParser(fieldString), path, 0, stream[stream.length - 2]);
         fieldObject.setLine(number);
         return fieldObject;
     }

@@ -53,7 +53,7 @@ public class MethodObject extends SearchObject {
     // TODO: 23-Nov-19 implement Attributes and Getters
 
     public String toString() {
-        return "METHOD:\nName: " + getName() + "\nreturn type: " +
+        return "METHOD: " + getName() + "\nreturn type: " +
                 getReturnType() + "\nvisibility: " + getAccessModifier() +
                 "\nisStatic: " + isStatic() + "\n" + parameters.toString();
     }

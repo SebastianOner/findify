@@ -123,12 +123,12 @@ public class ClassObject extends SearchObject {
 
     @Override
     public String toString() {
-        return "CLASS:\nname: " + getName() + "\nvisibility: " +
+        return "CLASS: " + getName() + "\nvisibility: " +
                 getAccessModifier() + "\nisChild: " + isChild +
                 "\nisImplemented: " + isImplemented + "\nHas Generics: " +
                 hasGeneric + "\n" + classType + "\n" + inheritanceType + "\n" +
-                getAttributes().toString() + "\n" + getMethods().toString() +
-                "\n" + getClasses().toString();
+                getAttributes().toString() + "\n" + getMethods().toString();
+                //"\n" + getClasses().toString();
     }
 
     @Override

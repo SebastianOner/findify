@@ -5,7 +5,7 @@ public class Rabbit extends Mammal {
     int numSiblings;
     Rabbit father;
 
-    protected class Mutt {
+    /*protected class Mutt {
         String secondaryColor;
-    }
+    }*/
 }
