@@ -6,24 +6,24 @@ import java.util.List;
 
 public abstract class SearchObject {
     static SemanticWeb semanticWeb = new SemanticWeb(new String[][]{
-            {"search", "find", "inquire", "request", "explore", "hunt"}});
-//            {"sort", "arrange", "catalogue", "categorize", "comb", "separate",
-//                    "sift", "classify", "group", "rank", "order"},
-//            {"input", "load", "take", "download", "pull", "ask", "request",
-//                    "query"},
-//            {"output", "print", "write", "respond", "inform", "send", "display",
-//                    "visualize", "log"},
-//            {"add", "combine", "merge", "plus", "collect", "append", "prepend",
-//                    "attach", "push"},
-//            {"remove", "subtract", "delete", "clear", "get", "take",
-//                    "get rid of", "erase", "pop"},
-//            {"iterates", "repeats", "loops", "for every", "while", "for",
-//                    "every"}, {"filter", "if", "case", "when", "whenever"},
-//            {"array", "field", "saves", "data", "matrix"},
-//            {"math", "add", "plus", "addition", "sub", "subtract", "minus",
-//                    "multiply", "times", "divide", "division", "power", "root",
-//                    "square root", "logarithm", "log", "round", "absolute",
-//                    "factorial", "binomial"}});
+            {"search", "find", "inquire", "request", "explore", "hunt"},
+            {"sort", "arrange", "catalogue", "categorize", "comb", "separate",
+                    "sift", "classify", "group", "rank", "order"},
+            {"input", "load", "take", "download", "pull", "ask", "request",
+                    "query"},
+            {"output", "print", "write", "respond", "inform", "send", "display",
+                    "visualize", "log"},
+            {"add", "combine", "merge", "plus", "collect", "append", "prepend",
+                    "attach", "push"},
+            {"remove", "subtract", "delete", "clear", "get", "take",
+                    "get rid of", "erase", "pop"},
+            {"iterates", "repeats", "loops", "for every", "while", "for",
+                    "every"}, {"filter", "if", "case", "when", "whenever"},
+            {"array", "field", "saves", "data", "matrix"},
+            {"math", "add", "plus", "addition", "sub", "subtract", "minus",
+                    "multiply", "times", "divide", "division", "power", "root",
+                    "square root", "logarithm", "log", "round", "absolute",
+                    "factorial", "binomial"}});
     private String name;
     private AccessModifier accessModifier;
     private String path;
