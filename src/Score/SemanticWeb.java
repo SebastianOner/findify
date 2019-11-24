@@ -52,7 +52,7 @@ final public class SemanticWeb {
                 entry.setNode(unvisitedEntries.enqueue(entry, a.equals(entry.getWord()) ? 1 : 0));
         }
         MaxHeap.Node node;
-        while (!unvisitedEntries.isEmpty()) {
+        while (unvisitedEntries.size() > 0) {
             node = unvisitedEntries.dequeueMax();
             Entry entry = (Entry) node.getObject();
             if (b.equals(entry.getWord())) {
@@ -70,7 +70,6 @@ final public class SemanticWeb {
                 }
             });
         }
-        System.out.println("Yay");
         return 0;
     }
 

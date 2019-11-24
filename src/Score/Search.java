@@ -11,29 +11,23 @@ final public class Search {
 
     public static ArrayList<SearchObject> getBests(
             ArrayList<ClassObject> classObjects, SearchObject request) {
-//        classObjects.forEach(o -> traverse(o, request));
-//        ArrayList<SearchObject> bests = new ArrayList<>();
-//        for (int i = 0; i < 5 && !maxHeap.isEmpty(); ++i){
-//            bests.add(maxHeap.dequeueMax().getObject());
-//        }
-        ArrayList<SearchObject> list = new ArrayList<>();
-        for(int i = 0; i < 5 && i < classObjects.size() && classObjects.get(i) != null; ++i) {
-            list.add(classObjects.get(i));
+        classObjects.forEach(o -> traverse(o, request));
+        ArrayList<SearchObject> bests = new ArrayList<>();
+        for (int i = 0; i < 5 && !maxHeap.isEmpty(); ++i){
+            bests.add(maxHeap.dequeueMax().getObject());
         }
-        return list;
+        return bests;
     }
 
     private static void traverse(SearchObject searchObject,
                                  SearchObject request) {
         if (request.getClass().equals( searchObject.getClass())) {
-            System.out.println("Print");
             maxHeap.enqueue(searchObject, request.getSimilarity(searchObject));
         }
         //TODO: Beautify following code.
         if (searchObject instanceof ClassObject) {
             ClassObject classObject = ((ClassObject) searchObject);
             classObject.getAttributes().forEach(o -> traverse(o, request));
-            classObject.getClasses().forEach(o -> traverse(o, request));
             classObject.getMethods().forEach(o -> traverse(o, request));
         } else if (searchObject instanceof MethodObject) {
             MethodObject methodObject = ((MethodObject) searchObject);
