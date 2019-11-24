@@ -154,6 +154,9 @@ public class ClassObject extends SearchObject {
         if (getClassType() != null && classObject.getClassType() != null &&
                 getClassType() != classObject.getClassType()) {
             similarity *= 0.9;
+            if(getTags() != null && getTags().length > 0) {
+                similarity *= getStringSimilarity(getTags(), classObject.getTags());
+            }
         }
         //TODO: Change weights
         return similarity;
