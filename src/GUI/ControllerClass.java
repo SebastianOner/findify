@@ -300,7 +300,7 @@ public class ControllerClass {
 
         ClassObject CO = new ClassObject(name, am, isChild, isGeneric, isImplemented, inh, type, attributeList);
 
-        Score.Search.getBests(projectClasses, CO);
+        System.out.println("Best searches:" + Score.Search.getBests(projectClasses, CO));
 
         GUIClassInstance classInstance = new GUIClassInstance();
         classInstance.interfaceAtt = interfaceFired();
@@ -325,10 +325,5 @@ public class ControllerClass {
         classInstance.arraysAtt = arraysFired();
         classInstance.booleanAtt = booleanFired();
         classInstance.name = searchFired();
-
-
-        System.out.println(classInstance.toString(classInstance));
-
-        thisStage.close();
     }
 }

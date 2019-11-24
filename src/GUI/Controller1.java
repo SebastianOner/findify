@@ -52,12 +52,9 @@ public class Controller1 {
         chooser.setInitialDirectory(defaultDir);
         File selected = chooser.showDialog(thisStage);
         projectPath = selected.getPath();
-        // TODO: 23.11.19 Change this to the project interface, not just crawl
 
         FileCrawler.crawl(projectPath, projectClasses);
-        for (int i = 0; i < projectClasses.size(); i++) {
-            System.out.println(projectClasses.get(i));
-        }
+
 
         thisStage.close();
         initializeController2();
