@@ -1,5 +1,6 @@
 package GUI;
 
+import SearchObjects.ClassObject;
 import SearchObjects.FieldObject;
 import SearchObjects.MethodObject;
 import SearchObjects.SearchObject;
@@ -29,7 +30,7 @@ public class ControllerMethod {
     //method name textField
     public TextField nameField;
 
-    public ControllerMethod() throws IOException {
+    public ControllerMethod(ArrayList<ClassObject> projectClasses) throws IOException {
         thisStage = new Stage();
 
         try {

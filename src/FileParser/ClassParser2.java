@@ -26,7 +26,11 @@ public class ClassParser2 {
             System.out.println(a[i]);
         }
         ClassObject file = fileParser("Path", reptileLines);
-        System.out.println(file.toString());
+        System.out.println("Size: " + file.getAttributes().size());
+        for (int i = 0; i < file.getAttributes().size(); i++) {
+            System.out.println(file.getAttributes().get(i).toString());
+        }
+        //System.out.println(file.toString());
     }
 
     public static ClassObject fileParser(String path, List<String> content) {
@@ -118,10 +122,29 @@ public class ClassParser2 {
      * @return String[]: Filtered version with only necessary Code with index in front
      */
     public static String[] refineText(List<String> content) {
-        boolean isClass = true;
+        boolean isMethod = false;
         StringBuilder result = new StringBuilder();
         for (int i = 0; i < content.size(); i++) {
             content.set(i, content.get(i).replaceAll("  ", ""));
+        }
+        for (int i = 0; i < content.size(); i++) {
+            if (content.get(i).contains("{") || (content.get(i).contains("}") && isMethod)) {
+                result.append(i + " " + content.get(i) + "\n");
+                continue;
+            }
+            if (content.get(i).isEmpty() || content.get(i).isBlank() || isMethod
+                    || content.get(i).contains("import ") || content.get(i).contains("package ")) {
+                continue;
+            }
+            if (content.get(i).contains(")")) {
+                isMethod = true;
+            }
+            result.append(i + " " + content.get(i) + "\n");
+        }
+        /*boolean isClass = true;
+        StringBuilder result = new StringBuilder();
+        for (int i = 0; i < content.size(); i++) {
+            content.set(i, content.get(i).replaceAll("  ",""));
         }
         for (int i = 0; i < content.size(); i++) {
 
@@ -132,7 +155,7 @@ public class ClassParser2 {
                 isClass = false;
             }
             if (content.get(i).contains("}")) {
-                result.append(i + " " + content.get(i) + "\n");
+                result.append(i+" "+content.get(i) + "\n");
                 isClass = true;
                 continue;
             }
@@ -142,7 +165,8 @@ public class ClassParser2 {
             }
             String replace = i + " " + content.get(i) + "\n";
             result.append(replace);
-        }
+        }*/
+
         return result.toString().split("\n");
     }
 
